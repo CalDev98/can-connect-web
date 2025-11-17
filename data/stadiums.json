@@ -1,0 +1,63 @@
+[
+  {
+    "id": 1,
+    "name": "Stade Mohammed V",
+    "city": "Casablanca",
+    "capacity": 67000,
+    "latitude": 33.5731,
+    "longitude": -7.5898,
+    "address": "Boulevard Zerktouni, Casablanca",
+    "image": "https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=400"
+  },
+  {
+    "id": 2,
+    "name": "Stade Ibn Batouta",
+    "city": "Tanger",
+    "capacity": 65000,
+    "latitude": 35.7595,
+    "longitude": -5.8330,
+    "address": "Route de Rabat, Tanger",
+    "image": "https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=400"
+  },
+  {
+    "id": 3,
+    "name": "Stade de Fès",
+    "city": "Fès",
+    "capacity": 45000,
+    "latitude": 34.0331,
+    "longitude": -5.0000,
+    "address": "Route de Sefrou, Fès",
+    "image": "https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=400"
+  },
+  {
+    "id": 4,
+    "name": "Stade de Marrakech",
+    "city": "Marrakech",
+    "capacity": 45000,
+    "latitude": 31.6295,
+    "longitude": -7.9811,
+    "address": "Route de l'Ourika, Marrakech",
+    "image": "https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=400"
+  },
+  {
+    "id": 5,
+    "name": "Stade Moulay Abdellah",
+    "city": "Rabat",
+    "capacity": 52000,
+    "latitude": 34.0209,
+    "longitude": -6.8416,
+    "address": "Avenue Hassan II, Rabat",
+    "image": "https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=400"
+  },
+  {
+    "id": 6,
+    "name": "Stade d'Agadir",
+    "city": "Agadir",
+    "capacity": 45000,
+    "latitude": 30.4278,
+    "longitude": -9.5981,
+    "address": "Boulevard Mohammed V, Agadir",
+    "image": "https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=400"
+  }
+]
+

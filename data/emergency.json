@@ -1,0 +1,90 @@
+{
+  "numbers": [
+    {
+      "name": "Police",
+      "number": "19",
+      "description": "Emergency police services"
+    },
+    {
+      "name": "Ambulance",
+      "number": "15",
+      "description": "Medical emergency services"
+    },
+    {
+      "name": "Firefighters",
+      "number": "15",
+      "description": "Fire and rescue services"
+    }
+  ],
+  "hospitals": [
+    {
+      "name": "Hôpital Ibn Rochd",
+      "city": "Casablanca",
+      "address": "Boulevard Zerktouni, Casablanca",
+      "latitude": 33.5731,
+      "longitude": -7.5898
+    },
+    {
+      "name": "Hôpital Cheikh Zaid",
+      "city": "Rabat",
+      "address": "Avenue Allal Ben Abdellah, Rabat",
+      "latitude": 34.0209,
+      "longitude": -6.8416
+    },
+    {
+      "name": "Hôpital Mohammed VI",
+      "city": "Marrakech",
+      "address": "Route de l'Ourika, Marrakech",
+      "latitude": 31.6295,
+      "longitude": -7.9811
+    }
+  ],
+  "embassies": [
+    {
+      "name": "French Embassy",
+      "city": "Rabat",
+      "address": "Avenue de France, Rabat",
+      "phone": "+212 537 68 70 00"
+    },
+    {
+      "name": "US Embassy",
+      "city": "Rabat",
+      "address": "Avenue Mohamed VI, Rabat",
+      "phone": "+212 537 76 22 65"
+    },
+    {
+      "name": "Spanish Embassy",
+      "city": "Rabat",
+      "address": "Rue Tiddas, Rabat",
+      "phone": "+212 537 73 20 00"
+    }
+  ],
+  "phrases": [
+    {
+      "english": "I am lost",
+      "darija": "Ana daye3",
+      "phonetic": "Ana daye3"
+    },
+    {
+      "english": "I need help",
+      "darija": "Bghit l-moussa3ada",
+      "phonetic": "Bghit l-moussa3ada"
+    },
+    {
+      "english": "I need a doctor",
+      "darija": "Bghit ttabib",
+      "phonetic": "Bghit ttabib"
+    },
+    {
+      "english": "Where is the hospital?",
+      "darija": "Fin l-moustachfa?",
+      "phonetic": "Fin l-moustachfa?"
+    },
+    {
+      "english": "Call the police",
+      "darija": "3ayet l-bolice",
+      "phonetic": "3ayet l-bolice"
+    }
+  ]
+}
+

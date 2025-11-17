@@ -1,0 +1,83 @@
+[
+  {
+    "id": 1,
+    "date": "2025-01-13",
+    "time": "20:00",
+    "team1": "Morocco",
+    "team2": "Tanzania",
+    "stadium": "Stade Mohammed V",
+    "city": "Casablanca",
+    "group": "A"
+  },
+  {
+    "id": 2,
+    "date": "2025-01-14",
+    "time": "17:00",
+    "team1": "Senegal",
+    "team2": "Mali",
+    "stadium": "Stade Ibn Batouta",
+    "city": "Tanger",
+    "group": "B"
+  },
+  {
+    "id": 3,
+    "date": "2025-01-14",
+    "time": "20:00",
+    "team1": "Egypt",
+    "team2": "Ghana",
+    "stadium": "Stade de Fès",
+    "city": "Fès",
+    "group": "C"
+  },
+  {
+    "id": 4,
+    "date": "2025-01-15",
+    "time": "17:00",
+    "team1": "Algeria",
+    "team2": "Tunisia",
+    "stadium": "Stade de Marrakech",
+    "city": "Marrakech",
+    "group": "D"
+  },
+  {
+    "id": 5,
+    "date": "2025-01-15",
+    "time": "20:00",
+    "team1": "Nigeria",
+    "team2": "Cameroon",
+    "stadium": "Stade Moulay Abdellah",
+    "city": "Rabat",
+    "group": "E"
+  },
+  {
+    "id": 6,
+    "date": "2025-01-16",
+    "time": "17:00",
+    "team1": "Ivory Coast",
+    "team2": "Burkina Faso",
+    "stadium": "Stade d'Agadir",
+    "city": "Agadir",
+    "group": "F"
+  },
+  {
+    "id": 7,
+    "date": "2025-01-17",
+    "time": "20:00",
+    "team1": "Morocco",
+    "team2": "Congo",
+    "stadium": "Stade Mohammed V",
+    "city": "Casablanca",
+    "group": "A"
+  },
+  {
+    "id": 8,
+    "date": "2025-01-18",
+    "time": "17:00",
+    "team1": "Senegal",
+    "team2": "Guinea",
+    "stadium": "Stade Ibn Batouta",
+    "city": "Tanger",
+    "group": "B"
+  }
+]
+
