@@ -192,21 +192,15 @@ export default function AssistantPage() {
       <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 p-4">
         <div className="container mx-auto">
           <div className="flex items-center gap-2">
-            <button className="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center hover:bg-gray-200 transition-colors">
-              <Plus className="w-5 h-5 text-gray-900" />
-            </button>
             <input
               type="text"
               value={inputText}
               onChange={(e) => setInputText(e.target.value)}
-              onKeyPress={(e) => e.key === "Enter" && handleSend()}
+              // onKeyPress={(e) => e.key === "Enter" && handleSend()}
               placeholder={t("assistant.placeholder")}
               disabled={isLoading}
               className="flex-1 px-4 py-3 bg-gray-100 rounded-full focus:outline-none focus:ring-2 focus:ring-moroccan-blue disabled:opacity-50"
             />
-            <button className="w-10 h-10 flex items-center justify-center">
-              <Mic className="w-5 h-5 text-gray-600" />
-            </button>
             <button
               onClick={handleSend}
               disabled={!inputText.trim() || isLoading || limitError}

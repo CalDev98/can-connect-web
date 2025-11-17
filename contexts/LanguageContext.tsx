@@ -21,6 +21,7 @@ const translations: Record<Language, Record<string, string>> = {
     "nav.settings": "Paramètres",
     "nav.matches": "Matchs",
     "nav.emergency": "Urgence",
+    "nav.translation": "Traduction",
     
     // Home
     "home.welcome": "Bienvenue au Maroc !",
@@ -139,7 +140,7 @@ const translations: Record<Language, Record<string, string>> = {
     "nav.settings": "Settings",
     "nav.matches": "Matches",
     "nav.emergency": "Emergency",
-    
+    "nav.translation": "Translation",
     // Home
     "home.welcome": "Welcome to Morocco!",
     "home.matches": "Matches & Info",
@@ -257,7 +258,7 @@ const translations: Record<Language, Record<string, string>> = {
     "nav.settings": "Configuración",
     "nav.matches": "Partidos",
     "nav.emergency": "Emergencia",
-    
+    "nav.translation": "Traducción",
     // Home
     "home.welcome": "¡Bienvenido a Marruecos!",
     "home.matches": "Partidos e Información",
@@ -375,7 +376,7 @@ const translations: Record<Language, Record<string, string>> = {
     "nav.settings": "Configurações",
     "nav.matches": "Jogos",
     "nav.emergency": "Emergência",
-    
+    "nav.translation": "Tradução",
     // Home
     "home.welcome": "Bem-vindo ao Marrocos!",
     "home.matches": "Jogos e Informações",
@@ -493,7 +494,7 @@ const translations: Record<Language, Record<string, string>> = {
     "nav.settings": "الإعدادات",
     "nav.matches": "المباريات",
     "nav.emergency": "الطوارئ",
-    
+    "nav.translation": "الترجمة",
     // Home
     "home.welcome": "مرحباً بك في المغرب!",
     "home.matches": "المباريات والمعلومات",

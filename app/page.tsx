@@ -15,6 +15,7 @@ import {
   Settings,
   ChevronRight,
   Crown,
+  Phone,
 } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 
@@ -30,15 +31,16 @@ export default function HomePage() {
       <header className="bg-white shadow-sm sticky top-0 z-10">
         <div className="container mx-auto px-4 py-3">
           <div className="flex items-center justify-between">
-            {/* <button className="p-2 hover:bg-gray-100 rounded-lg transition-colors">
-              <Menu className="w-6 h-6 text-gray-800" />
-            </button> */}
             <h1 className="text-lg font-bold text-gray-800">CAN Connect</h1>
             <div className="flex items-center justify-center">
             
-            <button onClick={() => window.location.href = "/premium"} className="p-2 flex items-center gap-1 hover:bg-gray-100 rounded-lg transition-colors">
-              Upgrade <Crown className="w-6 h-6 text-gray-800 text-moroccan-gold" />
-            </button></div>
+            <button onClick={() => window.location.href = "/premium"} className="p-2 hover:bg-gray-100 rounded-lg transition-colors">
+                            <Crown className="w-6 h-6 text-gray-800 text-moroccan-gold" />
+            </button>
+            <button onClick={() => window.location.href = "/settings"} className="p-2 flex items-center gap-1 hover:bg-gray-100 rounded-lg transition-colors">
+              <Settings className="w-5 h-5 text-gray-600" />
+            </button>
+            </div>
           </div>
         </div>
       </header>
@@ -164,19 +166,19 @@ export default function HomePage() {
               <Home className="w-5 h-5 text-moroccan-blue" />
               <span className="text-xs font-medium text-moroccan-blue">{t("nav.home")}</span>
             </Link>
-            {/* <Link
-              href="/stadiums"
-              className="flex flex-col items-center gap-1 py-2 px-4 rounded-lg transition-colors"
-            >
-              <Map className="w-5 h-5 text-gray-600" />
-              <span className="text-xs font-medium text-gray-600">{t("nav.stadiums")}</span>
-            </Link> */}
             <Link
-              href="/settings"
+              href="/translate"
               className="flex flex-col items-center gap-1 py-2 px-4 rounded-lg transition-colors"
             >
-              <Settings className="w-5 h-5 text-gray-600" />
-              <span className="text-xs font-medium text-gray-600">{t("nav.settings")}</span>
+              <Languages className="w-5 h-5 text-gray-600" />
+              <span className="text-xs font-medium text-gray-600">{t("nav.translation")}</span>
+            </Link>
+            <Link
+              href="/emergency"
+              className="flex flex-col items-center gap-1 py-2 px-4 rounded-lg transition-colors"
+            >
+              <Phone className="w-5 h-5 text-gray-600" />
+              <span className="text-xs font-medium text-gray-600">{t("nav.emergency")}</span>
             </Link>
           </div>
         </div>
