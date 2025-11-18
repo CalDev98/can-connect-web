@@ -107,7 +107,7 @@ export default function SettingsPage() {
                   </div>
                   {!isPremium && (
                     <Link
-                      href="/premium"
+                      href="/offres"
                       className="bg-moroccan-gold text-white px-4 py-2 rounded-lg hover:bg-yellow-600 transition-colors text-sm font-medium"
                     >
                       {t("settings.account.upgrade")}

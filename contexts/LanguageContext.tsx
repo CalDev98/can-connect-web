@@ -72,6 +72,12 @@ const translations: Record<Language, Record<string, string>> = {
     "matches.filter.stadium": "Stade",
     "matches.filter.date": "Date",
     "matches.group": "Phase de Groupes - Groupe {group}",
+    "matches.tabs.upcoming": "À venir",
+    "matches.tabs.live": "En direct",
+    "matches.tabs.finished": "Terminés",
+    "matches.empty.title": "Aucun match pour le moment",
+    "matches.empty.desc": "Il n'y a aucun match {tab} actuellement.",
+    "matches.live": "En direct",
     
     // Emergency
     "emergency.title": "Urgence & Assistance",
@@ -196,6 +202,12 @@ const translations: Record<Language, Record<string, string>> = {
     "matches.filter.stadium": "Stadium",
     "matches.filter.date": "Date",
     "matches.group": "Group Phase - Group {group}",
+    "matches.tabs.upcoming": "Upcoming",
+    "matches.tabs.live": "Live",
+    "matches.tabs.finished": "Finished",
+    "matches.empty.title": "No matches right now",
+    "matches.empty.desc": "There are no {tab} matches currently.",
+    "matches.live": "Live",
     
     // Emergency
     "emergency.title": "Emergency & Assistance",
@@ -318,8 +330,13 @@ const translations: Record<Language, Record<string, string>> = {
     "matches.title": "Calendario de Partidos",
     "matches.filter.city": "Ciudad",
     "matches.filter.stadium": "Estadio",
-    "matches.filter.date": "Fecha",
     "matches.group": "Fase de Grupos - Grupo {group}",
+    "matches.tabs.upcoming": "Próximos",
+    "matches.tabs.live": "En vivo",
+    "matches.tabs.finished": "Terminados",
+    "matches.empty.title": "No hay partidos por ahora",
+    "matches.empty.desc": "Actualmente no hay partidos {tab}.",
+    "matches.live": "En vivo",
     
     // Emergency
     "emergency.title": "Emergencia y Asistencia",
@@ -444,6 +461,12 @@ const translations: Record<Language, Record<string, string>> = {
     "matches.filter.stadium": "Estádio",
     "matches.filter.date": "Data",
     "matches.group": "Fase de Grupos - Grupo {group}",
+    "matches.tabs.upcoming": "Próximos",
+    "matches.tabs.live": "Ao vivo",
+    "matches.tabs.finished": "Terminados",
+    "matches.empty.title": "Nenhum jogo no momento",
+    "matches.empty.desc": "Não há jogos {tab} no momento.",
+    "matches.live": "Ao vivo",
     
     // Emergency
     "emergency.title": "Emergência e Assistência",
@@ -568,7 +591,12 @@ const translations: Record<Language, Record<string, string>> = {
     "matches.filter.stadium": "الملعب",
     "matches.filter.date": "التاريخ",
     "matches.group": "مرحلة المجموعات - المجموعة {group}",
-    
+    "matches.tabs.upcoming": "القادمة",
+    "matches.tabs.live": "حالية",
+    "matches.tabs.finished": "منتهية",
+    "matches.empty.title": "لا يوجد مباريات الآن",
+    "matches.empty.desc": "لا يوجد مباريات {tab} الآن.",
+    "matches.live": "حالية",
     // Emergency
     "emergency.title": "الطوارئ والمساعدة",
     "emergency.numbers": "أرقام الطوارئ",

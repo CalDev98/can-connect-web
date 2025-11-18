@@ -127,7 +127,7 @@ export default function LoginPage() {
           </div>
 
           <Link
-            href="/premium"
+            href="/offres"
             className="w-full flex items-center justify-center gap-3 rounded-lg bg-moroccan-gold text-white px-4 py-3 font-medium shadow-sm transition-all hover:bg-yellow-600 disabled:opacity-60 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-moroccan-gold"
           >
             Passer au Premium

@@ -78,7 +78,7 @@ export default function AssistantPage() {
               {isPremium && (
                 <Crown className="w-5 h-5 text-moroccan-gold" />
               )}
-              <Link href="/premium" className="p-2 hover:bg-gray-100 rounded-lg transition-colors">
+              <Link href="/offres" className="p-2 hover:bg-gray-100 rounded-lg transition-colors">
                 <MoreVertical className="w-6 h-6 text-gray-900" />
               </Link>
             </div>
@@ -160,7 +160,7 @@ export default function AssistantPage() {
                 {t("assistant.limit.message", { limit: messagesLimit })}
               </p>
               <Link
-                href="/premium"
+                href="/offres"
                 className="inline-block bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition-colors text-sm font-medium"
               >
                 {t("assistant.limit.upgrade")}

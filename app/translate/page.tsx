@@ -64,7 +64,7 @@ export default function TranslatePage() {
               {isPremium && (
                 <Crown className="w-5 h-5 text-moroccan-gold" />
               )}
-              <Link href="/premium" className="p-2 hover:bg-gray-100 rounded-lg transition-colors">
+              <Link href="/offres" className="p-2 hover:bg-gray-100 rounded-lg transition-colors">
                 <Crown className="w-5 h-5 text-gray-600" />
               </Link>
             </div>
@@ -145,7 +145,7 @@ export default function TranslatePage() {
                   {t("translate.limit.message", { limit: translationsLimit })}
                 </p>
                 <Link
-                  href="/premium"
+                  href="/offres"
                   className="inline-block bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition-colors text-sm font-medium"
                 >
                   {t("translate.limit.upgrade")}
