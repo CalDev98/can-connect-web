@@ -3,39 +3,45 @@
 import { useState } from "react";
 import { ArrowLeft, Check, X, Crown } from "lucide-react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { usePlan, PREMIUM_PRICE } from "@/contexts/PlanContext";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function PremiumPage() {
   const { t } = useLanguage();
-  const { isPremium, upgradeToPremium } = usePlan();
+  const { isPremium } = usePlan();
   const [isProcessing, setIsProcessing] = useState(false);
+  const router = useRouter();
 
-  const handleUpgrade = async () => {
+  const handleUpgrade = () => {
     setIsProcessing(true);
-    // Simulate payment processing
-    setTimeout(() => {
-      upgradeToPremium();
-      setIsProcessing(false);
-      // In a real app, you would redirect to a success page
-    }, 1500);
+    // Étape minimale : on envoie l'utilisateur vers /login
+    // Une fois connecté, il pourra être redirigé vers la page de paiement.
+    router.push("/login");
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-moroccan-blue to-blue-900">
+    <div
+      className="min-h-screen bg-moroccan-light"
+      style={{
+        backgroundImage:
+          "radial-gradient(circle, rgba(255, 249, 230, 0.4) 1px, transparent 1px)",
+        backgroundSize: "20px 20px",
+      }}
+    >
       {/* Header */}
-      <header className="bg-moroccan-blue/90 text-white p-4 shadow-lg">
-        <div className="container mx-auto flex items-center gap-4">
-          <Link href="/" className="hover:opacity-80 transition-opacity">
-            <ArrowLeft className="w-6 h-6" />
+      <header className="bg-white border-b border-gray-200 sticky top-0 z-10">
+        <div className="container mx-auto px-4 py-3 flex items-center gap-4">
+          <Link href="/" className="p-2 hover:bg-gray-100 rounded-lg transition-colors">
+            <ArrowLeft className="w-6 h-6 text-gray-900" />
           </Link>
-          <h1 className="text-xl font-bold">{t("premium.title")}</h1>
+          <h1 className="text-lg font-bold text-gray-900">{t("premium.title")}</h1>
         </div>
       </header>
 
       <div className="container mx-auto px-4 py-8">
         {isPremium ? (
-          <div className="max-w-md mx-auto bg-white rounded-xl shadow-xl p-8 text-center">
+          <div className="max-w-md mx-auto bg-white rounded-2xl shadow-xl p-8 text-center">
             <div className="w-20 h-20 bg-moroccan-gold rounded-full flex items-center justify-center mx-auto mb-4">
               <Crown className="w-10 h-10 text-white" />
             </div>
@@ -55,7 +61,7 @@ export default function PremiumPage() {
         ) : (
           <div className="max-w-md mx-auto">
             {/* Free Plan */}
-            <div className="bg-white rounded-xl shadow-lg p-6 mb-6">
+            <div className="bg-white rounded-2xl shadow-md p-6 mb-6">
               <h3 className="text-xl font-bold text-gray-900 mb-4">{t("premium.free.title")}</h3>
               <div className="space-y-3 mb-6">
                 <div className="flex items-center gap-3">
@@ -74,33 +80,45 @@ export default function PremiumPage() {
             </div>
 
             {/* Premium Plan */}
-            <div className="bg-gradient-to-br from-moroccan-gold to-yellow-500 rounded-xl shadow-xl p-6 mb-6 border-4 border-yellow-400">
+            <div className="bg-white rounded-2xl shadow-xl p-6 mb-6 border-2 border-moroccan-gold">
               <div className="flex items-center justify-between mb-4">
-                <h3 className="text-2xl font-bold text-white">{t("premium.premium.title")}</h3>
-                <Crown className="w-8 h-8 text-white" />
+                <h3 className="text-2xl font-bold text-gray-900 flex items-center gap-2">
+                  <Crown className="w-6 h-6 text-moroccan-gold" />
+                  {t("premium.premium.title")}
+                </h3>
               </div>
               <div className="mb-6">
-                <div className="text-4xl font-bold text-white mb-2">
+                <div className="text-4xl font-bold text-moroccan-gold mb-2">
                   {t("premium.premium.price", { price: PREMIUM_PRICE })}
                 </div>
-                <div className="text-white/90 text-sm">{t("premium.premium.lifetime")}</div>
+                <div className="text-gray-700 text-sm">
+                  {t("premium.premium.lifetime")}
+                </div>
               </div>
               <div className="space-y-3 mb-6">
                 <div className="flex items-center gap-3">
-                  <Check className="w-5 h-5 text-white" />
-                  <span className="text-white font-medium">{t("premium.premium.unlimited.messages")}</span>
+                  <Check className="w-5 h-5 text-moroccan-gold" />
+                  <span className="text-gray-900 font-medium">
+                    {t("premium.premium.unlimited.messages")}
+                  </span>
                 </div>
                 <div className="flex items-center gap-3">
-                  <Check className="w-5 h-5 text-white" />
-                  <span className="text-white font-medium">{t("premium.premium.unlimited.translations")}</span>
+                  <Check className="w-5 h-5 text-moroccan-gold" />
+                  <span className="text-gray-900 font-medium">
+                    {t("premium.premium.unlimited.translations")}
+                  </span>
                 </div>
                 <div className="flex items-center gap-3">
-                  <Check className="w-5 h-5 text-white" />
-                  <span className="text-white font-medium">{t("premium.premium.noAds")}</span>
+                  <Check className="w-5 h-5 text-moroccan-gold" />
+                  <span className="text-gray-900 font-medium">
+                    {t("premium.premium.noAds")}
+                  </span>
                 </div>
                 <div className="flex items-center gap-3">
-                  <Check className="w-5 h-5 text-white" />
-                  <span className="text-white font-medium">{t("premium.premium.support")}</span>
+                  <Check className="w-5 h-5 text-moroccan-gold" />
+                  <span className="text-gray-900 font-medium">
+                    {t("premium.premium.support")}
+                  </span>
                 </div>
               </div>
               <button
@@ -112,7 +130,9 @@ export default function PremiumPage() {
               </button>
             </div>
 
-            <p className="text-white/80 text-sm text-center">
+            
+
+            <p className="text-gray-600 text-sm text-center">
               {t("premium.disclaimer")}
             </p>
           </div>

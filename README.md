@@ -28,6 +28,18 @@ Application web Next.js 14 pour les visiteurs de la Coupe d'Afrique des Nations 
 npm install
 ```
 
+### Variables d'environnement
+
+Ajoutez les clés dans `.env.local` :
+
+```
+NEXT_PUBLIC_OPENROUTER_API_KEY=...
+NEXT_PUBLIC_SUPABASE_URL=...
+NEXT_PUBLIC_SUPABASE_ANON_KEY=...
+```
+
+> Supabase est utilisé pour stocker les e-mails des utilisateurs Premium dans la table `premium_users`.
+
 3. Configurez les variables d'environnement:
 ```bash
 cp .env.local.example .env.local

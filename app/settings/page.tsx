@@ -1,16 +1,25 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { ArrowLeft, Crown, Bell, Globe, Trash2, Moon, Sun, Info, HelpCircle, Shield, Database } from "lucide-react";
+import { ArrowLeft, Crown, Bell, Globe, Trash2, Moon, Sun, Info, HelpCircle, Shield, Database, LogIn, LogOut, Mail } from "lucide-react";
 import Link from "next/link";
 import { usePlan } from "@/contexts/PlanContext";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { supabase } from "@/lib/supabaseClient";
+import { useRouter } from "next/navigation";
 
 export default function SettingsPage() {
-  const { isPremium, upgradeToPremium, resetDailyLimits } = usePlan();
+  const { isPremium, user } = usePlan();
   const { language, setLanguage, t } = useLanguage();
   const [darkMode, setDarkMode] = useState(false);
   const [notifications, setNotifications] = useState(true);
+  const router = useRouter();
+
+  const handleLogout = async () => {
+    if (!supabase) return;
+    await supabase.auth.signOut();
+    router.push('/');
+  };
 
   const handleClearCache = () => {
     if (confirm(t("settings.confirm.clearCache"))) {
@@ -45,13 +54,6 @@ export default function SettingsPage() {
     }
   };
 
-
-  const toggleDarkMode = () => {
-    setDarkMode(!darkMode);
-    // In a real app, you would persist this and apply it to the theme
-    document.documentElement.classList.toggle("dark");
-  };
-
   return (
     <div className="min-h-screen bg-gray-50 pb-20">
       {/* Header */}
@@ -74,48 +76,70 @@ export default function SettingsPage() {
             <h2 className="font-bold text-gray-900">{t("settings.account")}</h2>
           </div>
           <div className="divide-y divide-gray-200">
-            {/* Premium Status */}
-            <div className="p-4 flex items-center justify-between">
-              <div className="flex items-center gap-3">
-                <div className={`p-2 rounded-lg ${isPremium ? "bg-moroccan-gold/20" : "bg-gray-100"}`}>
-                  <Crown className={`w-5 h-5 ${isPremium ? "text-moroccan-gold" : "text-gray-600"}`} />
+            {user ? (
+              <>
+                {/* Email Address */}
+                <div className="p-4 flex items-center gap-3">
+                  <div className="p-2 rounded-lg bg-gray-100">
+                    <Mail className="w-5 h-5 text-gray-600" />
+                  </div>
+                  <div>
+                    <p className="font-medium text-gray-900">{t("settings.account.email")}</p>
+                    <p className="text-sm text-gray-600">{user.email}</p>
+                  </div>
                 </div>
-                <div>
-                  <p className="font-medium text-gray-900">
-                    {isPremium ? t("settings.account.premium") : t("settings.account.free")}
-                  </p>
-                  <p className="text-sm text-gray-600">
-                    {isPremium
-                      ? t("settings.account.premium.desc")
-                      : t("settings.account.free.desc")}
-                  </p>
+                {/* Premium Status */}
+                <div className="p-4 flex items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <div className={`p-2 rounded-lg ${isPremium ? "bg-moroccan-gold/20" : "bg-gray-100"}`}>
+                      <Crown className={`w-5 h-5 ${isPremium ? "text-moroccan-gold" : "text-gray-600"}`} />
+                    </div>
+                    <div>
+                      <p className="font-medium text-gray-900">
+                        {isPremium ? t("settings.account.premium") : t("settings.account.free")}
+                      </p>
+                      <p className="text-sm text-gray-600">
+                        {isPremium
+                          ? t("settings.account.premium.desc")
+                          : t("settings.account.free.desc")}
+                      </p>
+                    </div>
+                  </div>
+                  {!isPremium && (
+                    <Link
+                      href="/premium"
+                      className="bg-moroccan-gold text-white px-4 py-2 rounded-lg hover:bg-yellow-600 transition-colors text-sm font-medium"
+                    >
+                      {t("settings.account.upgrade")}
+                    </Link>
+                  )}
                 </div>
-              </div>
-              {!isPremium && (
-                <Link
-                  href="/premium"
-                  className="bg-moroccan-gold text-white px-4 py-2 rounded-lg hover:bg-yellow-600 transition-colors text-sm font-medium"
+                 {/* Logout Button */}
+                 <button
+                  onClick={handleLogout}
+                  className="w-full p-4 text-left flex items-center gap-3 hover:bg-red-50 transition-colors text-red-600"
                 >
-                  {t("settings.account.upgrade")}
+                  <div className="p-2 rounded-lg bg-red-100">
+                    <LogOut className="w-5 h-5 text-red-600" />
+                  </div>
+                  <div className="flex-1">
+                    <p className="font-medium">{t("settings.account.logout")}</p>
+                  </div>
+                </button>
+              </>
+            ) : (
+              // Login Prompt
+              <div className="p-6 text-center">
+                <p className="text-gray-600 mb-4">{t("settings.account.login.prompt")}</p>
+                <Link
+                  href="/login"
+                  className="bg-moroccan-blue text-white px-6 py-2.5 rounded-lg hover:bg-blue-700 transition-colors font-medium inline-flex items-center gap-2"
+                >
+                  <LogIn className="w-5 h-5" />
+                  {t("settings.account.login.button")}
                 </Link>
-              )}
-            </div>
-
-            {/* Reset Daily Limits */}
-            {/* {!isPremium && (
-              <button
-                onClick={resetDailyLimits}
-                className="w-full p-4 text-left flex items-center gap-3 hover:bg-gray-50 transition-colors"
-              >
-                <div className="p-2 rounded-lg bg-blue-100">
-                  <Database className="w-5 h-5 text-blue-600" />
-                </div>
-                <div className="flex-1">
-                  <p className="font-medium text-gray-900">Réinitialiser les limites</p>
-                  <p className="text-sm text-gray-600">Réinitialiser les compteurs quotidiens</p>
-                </div>
-              </button>
-            )} */}
+              </div>
+            )}
           </div>
         </div>
 

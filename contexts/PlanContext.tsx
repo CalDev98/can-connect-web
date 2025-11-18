@@ -1,14 +1,17 @@
 "use client";
 
 import { createContext, useContext, useState, useEffect, ReactNode } from "react";
+import { supabase } from "@/lib/supabaseClient";
+import { User } from "@supabase/supabase-js";
 
 interface PlanContextType {
   isPremium: boolean;
+  user: User | null;
   messagesUsed: number;
   translationsUsed: number;
   messagesLimit: number;
   translationsLimit: number;
-  upgradeToPremium: () => void;
+  upgradeToPremium: () => Promise<void>;
   incrementMessages: () => boolean;
   incrementTranslations: () => boolean;
   resetDailyLimits: () => void;
@@ -18,17 +21,17 @@ const PlanContext = createContext<PlanContextType | undefined>(undefined);
 
 const FREE_MESSAGES_LIMIT = 10;
 const FREE_TRANSLATIONS_LIMIT = 15;
-const PREMIUM_PRICE = 9.99;
+const PREMIUM_PRICE = 5.99;
 
 export function PlanProvider({ children }: { children: ReactNode }) {
+  const [user, setUser] = useState<User | null>(null);
   const [isPremium, setIsPremium] = useState(false);
   const [messagesUsed, setMessagesUsed] = useState(0);
   const [translationsUsed, setTranslationsUsed] = useState(0);
   const [lastResetDate, setLastResetDate] = useState<string>("");
 
   useEffect(() => {
-    // Load from localStorage
-    const premium = localStorage.getItem("isPremium") === "true";
+    // Load usage data from localStorage
     const messages = parseInt(localStorage.getItem("messagesUsed") || "0", 10);
     const translations = parseInt(
       localStorage.getItem("translationsUsed") || "0",
@@ -36,7 +39,6 @@ export function PlanProvider({ children }: { children: ReactNode }) {
     );
     const lastReset = localStorage.getItem("lastResetDate") || "";
 
-    setIsPremium(premium);
     setMessagesUsed(messages);
     setTranslationsUsed(translations);
     setLastResetDate(lastReset);
@@ -44,25 +46,64 @@ export function PlanProvider({ children }: { children: ReactNode }) {
     // Reset daily limits if it's a new day
     const today = new Date().toDateString();
     if (lastReset !== today) {
-      setMessagesUsed(0);
-      setTranslationsUsed(0);
-      setLastResetDate(today);
-      localStorage.setItem("messagesUsed", "0");
-      localStorage.setItem("translationsUsed", "0");
-      localStorage.setItem("lastResetDate", today);
+      resetDailyLimits();
     }
+
+    // Check for user and fetch profile
+    const fetchProfile = async (user: User) => {
+      if (!supabase) return;
+      const { data, error } = await supabase
+        .from("profiles")
+        .select("plan")
+        .eq("id", user.id)
+        .single();
+
+      if (error) {
+        console.error("Error fetching profile:", error);
+        setIsPremium(false);
+      } else {
+        setIsPremium(data?.plan === "premium");
+      }
+    };
+    
+    const { data: authListener } = supabase?.auth.onAuthStateChange(
+      (event, session) => {
+        const currentUser = session?.user ?? null;
+        setUser(currentUser);
+        if (currentUser) {
+          fetchProfile(currentUser);
+        } else {
+          setIsPremium(false);
+        }
+      }
+    ) ?? { data: { subscription: null } };
+
+    return () => {
+      authListener.subscription?.unsubscribe();
+    };
   }, []);
 
-  const upgradeToPremium = () => {
+  const upgradeToPremium = async () => {
+    if (!supabase || !user) {
+      console.error("Supabase client not available or user not logged in.");
+      return;
+    }
     // In a real app, this would process payment
-    // For now, we'll simulate it
-    setIsPremium(true);
-    localStorage.setItem("isPremium", "true");
-    // Reset limits
-    setMessagesUsed(0);
-    setTranslationsUsed(0);
-    localStorage.setItem("messagesUsed", "0");
-    localStorage.setItem("translationsUsed", "0");
+    const { error } = await supabase
+      .from("profiles")
+      .update({ plan: "premium" })
+      .eq("id", user.id);
+
+    if (error) {
+      console.error("Error upgrading to premium:", error);
+    } else {
+      setIsPremium(true);
+      // Reset limits
+      setMessagesUsed(0);
+      setTranslationsUsed(0);
+      localStorage.setItem("messagesUsed", "0");
+      localStorage.setItem("translationsUsed", "0");
+    }
   };
 
   const incrementMessages = (): boolean => {
@@ -70,12 +111,7 @@ export function PlanProvider({ children }: { children: ReactNode }) {
 
     const today = new Date().toDateString();
     if (lastResetDate !== today) {
-      setMessagesUsed(0);
-      setTranslationsUsed(0);
-      setLastResetDate(today);
-      localStorage.setItem("messagesUsed", "0");
-      localStorage.setItem("translationsUsed", "0");
-      localStorage.setItem("lastResetDate", today);
+      resetDailyLimits();
     }
 
     if (messagesUsed >= FREE_MESSAGES_LIMIT) {
@@ -93,12 +129,7 @@ export function PlanProvider({ children }: { children: ReactNode }) {
 
     const today = new Date().toDateString();
     if (lastResetDate !== today) {
-      setMessagesUsed(0);
-      setTranslationsUsed(0);
-      setLastResetDate(today);
-      localStorage.setItem("messagesUsed", "0");
-      localStorage.setItem("translationsUsed", "0");
-      localStorage.setItem("lastResetDate", today);
+      resetDailyLimits();
     }
 
     if (translationsUsed >= FREE_TRANSLATIONS_LIMIT) {
@@ -125,6 +156,7 @@ export function PlanProvider({ children }: { children: ReactNode }) {
     <PlanContext.Provider
       value={{
         isPremium,
+        user,
         messagesUsed,
         translationsUsed,
         messagesLimit: isPremium ? Infinity : FREE_MESSAGES_LIMIT,

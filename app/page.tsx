@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import { usePlan } from "@/contexts/PlanContext";
 import {
   Menu,
   User,
@@ -12,7 +13,7 @@ import {
   Calendar,
   Home,
   Map,
-  Settings,
+  UserIcon,
   ChevronRight,
   Crown,
   Phone,
@@ -21,6 +22,7 @@ import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function HomePage() {
   const { t } = useLanguage();
+  const { user } = usePlan();
   
   return (
     <div className="min-h-screen bg-moroccan-light" style={{
@@ -34,12 +36,12 @@ export default function HomePage() {
             <h1 className="text-lg font-bold text-gray-800">CAN Connect</h1>
             <div className="flex items-center justify-center">
             
-            <button onClick={() => window.location.href = "/premium"} className="p-2 hover:bg-gray-100 rounded-lg transition-colors">
-                            <Crown className="w-6 h-6 text-gray-800 text-moroccan-gold" />
-            </button>
-            <button onClick={() => window.location.href = "/settings"} className="p-2 flex items-center gap-1 hover:bg-gray-100 rounded-lg transition-colors">
-              <Settings className="w-5 h-5 text-gray-600" />
-            </button>
+            <Link href="/premium" className="p-2 hover:bg-gray-100 rounded-lg transition-colors">
+                <Crown className="w-6 h-6 text-gray-800 text-moroccan-gold" />
+            </Link>
+            <Link href={user ? "/settings" : "/login"} className="p-2 flex items-center gap-1 hover:bg-gray-100 rounded-lg transition-colors">
+              <UserIcon className="w-5 h-5 text-gray-600" />
+            </Link>
             </div>
           </div>
         </div>
@@ -82,7 +84,7 @@ export default function HomePage() {
               </div>
               <Link
                 href="/matches"
-                className="bg-moroccan-blue text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors flex items-center gap-2 text-sm font-medium"
+                className="bg-green-800 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors flex items-center gap-2 text-sm font-medium"
               >
                 {t("home.viewSchedule")}
                 <ChevronRight className="w-4 h-4" />
@@ -163,8 +165,8 @@ export default function HomePage() {
               href="/"
               className="flex flex-col items-center gap-1 py-2 px-4 rounded-lg transition-colors"
             >
-              <Home className="w-5 h-5 text-moroccan-blue" />
-              <span className="text-xs font-medium text-moroccan-blue">{t("nav.home")}</span>
+              <Home className="w-5 h-5 text-green-800" />
+              <span className="text-xs font-medium text-green-800">{t("nav.home")}</span>
             </Link>
             <Link
               href="/translate"
