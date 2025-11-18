@@ -65,6 +65,12 @@ const translations: Record<Language, Record<string, string>> = {
     "stadiums.title": "Les Stades de la CAN 2025",
     "stadiums.distance": "À {distance} km",
     "stadiums.openMaps": "Ouvrir dans Maps",
+    "stadiums.yourLocation": "Votre position actuelle",
+    "stadiums.location.unavailable": "Localisation non disponible",
+    "stadiums.location.desc": "Partagez ces coordonnées avec les services d'urgence si nécessaire.",
+    "stadiums.search.placeholder": "Rechercher un stade ou une ville...",
+    "stadiums.search.noResults": "Aucun stade trouvé pour votre recherche.",
+    "stadiums.capacity": "Capacité : {capacity} places",
     
     // Matches
     "matches.title": "Calendrier des Matchs",
@@ -195,6 +201,12 @@ const translations: Record<Language, Record<string, string>> = {
     "stadiums.title": "CAN 2025 Stadiums",
     "stadiums.distance": "At {distance} km",
     "stadiums.openMaps": "Open in Maps",
+    "stadiums.yourLocation": "Your current location",
+    "stadiums.location.unavailable": "Location unavailable",
+    "stadiums.location.desc": "Share these coordinates with emergency services if needed.",
+    "stadiums.search.placeholder": "Search for a stadium or city...",
+    "stadiums.search.noResults": "No stadiums found for your search.",
+    "stadiums.capacity": "Capacity: {capacity} seats",
     
     // Matches
     "matches.title": "Match Calendar",
@@ -325,6 +337,12 @@ const translations: Record<Language, Record<string, string>> = {
     "stadiums.title": "Estadios de CAN 2025",
     "stadiums.distance": "A {distance} km",
     "stadiums.openMaps": "Abrir en Maps",
+    "stadiums.yourLocation": "Tu ubicación actual",
+    "stadiums.location.unavailable": "Ubicación no disponible",
+    "stadiums.location.desc": "Comparte estas coordenadas con los servicios de emergencia si es necesario.",
+    "stadiums.search.placeholder": "Buscar un estadio o ciudad...",
+    "stadiums.search.noResults": "No se encontraron estadios para tu búsqueda.",
+    "stadiums.capacity": "Capacidad: {capacity} asientos",
     
     // Matches
     "matches.title": "Calendario de Partidos",
@@ -454,6 +472,12 @@ const translations: Record<Language, Record<string, string>> = {
     "stadiums.title": "Estádios da CAN 2025",
     "stadiums.distance": "A {distance} km",
     "stadiums.openMaps": "Abrir no Maps",
+    "stadiums.yourLocation": "Sua localização atual",
+    "stadiums.location.unavailable": "Localização indisponível",
+    "stadiums.location.desc": "Compartilhe estas coordenadas com os serviços de emergência se necessário.",
+    "stadiums.search.placeholder": "Pesquisar um estádio ou cidade...",
+    "stadiums.search.noResults": "Nenhum estádio encontrado para sua pesquisa.",
+    "stadiums.capacity": "Capacidade: {capacity} lugares",
     
     // Matches
     "matches.title": "Calendário de Jogos",
@@ -584,6 +608,12 @@ const translations: Record<Language, Record<string, string>> = {
     "stadiums.title": "ملاعب كان 2025",
     "stadiums.distance": "على بعد {distance} كم",
     "stadiums.openMaps": "فتح في الخرائط",
+    "stadiums.yourLocation": "موقعك الحالي",
+    "stadiums.location.unavailable": "الموقع غير متاح",
+    "stadiums.location.desc": "شارك هذه الإحداثيات مع خدمات الطوارئ إذا لزم الأمر.",
+    "stadiums.search.placeholder": "البحث عن ملعب أو مدينة...",
+    "stadiums.search.noResults": "لم يتم العثور على ملاعب لبحثك.",
+    "stadiums.capacity": "السعة: {capacity} مقعد",
     
     // Matches
     "matches.title": "تقويم المباريات",

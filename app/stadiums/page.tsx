@@ -2,11 +2,11 @@
 
 import { useState, useEffect, useMemo } from "react";
 import { useLocation } from "@/hooks/useLocation";
-import { ArrowLeft, Filter, Send } from "lucide-react";
+import { ArrowLeft, Search, MapPin, Filter } from "lucide-react";
 import Link from "next/link";
-import Image from "next/image";
 import stadiumsData from "@/data/stadiums.json";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { StadiumCard } from "@/components/StadiumCard"; // Import the enhanced StadiumCard
 
 interface Stadium {
   id: number;
@@ -17,101 +17,108 @@ interface Stadium {
   longitude: number;
   address: string;
   image: string;
+  distance?: number; // Add optional distance property
 }
+
+// Haversine distance function (copied from emergency page for consistency)
+const getDistance = (lat1: number, lon1: number, lat2: number, lon2: number) => {
+  const R = 6371; // Radius of the Earth in km
+  const dLat = (lat2 - lat1) * Math.PI / 180;
+  const dLon = (lon2 - lon1) * Math.PI / 180;
+  const a =
+    Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+    Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
+    Math.sin(dLon / 2) * Math.sin(dLon / 2);
+  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+  const distance = R * c;
+  return distance;
+};
 
 export default function StadiumsPage() {
   const { t } = useLanguage();
-  const { location, calculateDistance } = useLocation();
-  const [stadiums, setStadiums] = useState<Stadium[]>([]);
+  const { location, error: locationError } = useLocation();
+  const [searchTerm, setSearchTerm] = useState("");
 
-  useEffect(() => {
-    setStadiums(stadiumsData as Stadium[]);
-  }, []);
+  const filteredAndSortedStadiums = useMemo(() => {
+    let filtered = stadiumsData.filter((stadium: Stadium) =>
+      stadium.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      stadium.city.toLowerCase().includes(searchTerm.toLowerCase())
+    );
 
-  const stadiumsWithDistance = useMemo(() => {
-    if (!location) return stadiums.map(s => ({ stadium: s, distance: undefined }));
-
-    return stadiums.map(stadium => ({
-      stadium,
-      distance: calculateDistance(
-        location.latitude,
-        location.longitude,
-        stadium.latitude,
-        stadium.longitude
-      ),
-    })).sort((a, b) => {
-      if (a.distance === undefined) return 1;
-      if (b.distance === undefined) return -1;
-      return a.distance - b.distance;
-    });
-  }, [stadiums, location, calculateDistance]);
-
-  const openMaps = (lat: number, lng: number) => {
-    const url = `https://www.google.com/maps?q=${lat},${lng}`;
-    window.open(url, "_blank");
-  };
+    if (location) {
+      filtered = filtered.map(stadium => ({
+        stadium,
+        distance: getDistance(
+          location.latitude,
+          location.longitude,
+          stadium.latitude,
+          stadium.longitude
+        ),
+      })).sort((a, b) => a.distance - b.distance)
+      .map(item => ({ ...item.stadium, distance: item.distance })); // Add distance to stadium object
+    } else {
+      filtered = filtered.map(stadium => ({ ...stadium, distance: undefined }));
+    }
+    return filtered;
+  }, [searchTerm, location]);
 
   return (
-    <div className="min-h-screen bg-gray-100 pb-20">
+    <div className="min-h-screen bg-gray-50 pb-20">
       {/* Header */}
-      <header className="bg-gray-100 border-b border-gray-200 sticky top-0 z-10">
-        <div className="container mx-auto px-4 py-3">
-          <div className="flex items-center justify-between">
-            <Link href="/" className="p-2 hover:bg-gray-200 rounded-lg transition-colors">
-              <ArrowLeft className="w-6 h-6 text-gray-900" />
-            </Link>
-            <h1 className="text-lg font-bold text-gray-900">{t("stadiums.title")}</h1>
-            <button className="p-2 hover:bg-gray-200 rounded-lg transition-colors">
-              <Filter className="w-6 h-6 text-gray-900" />
-            </button>
-          </div>
+      <header className="bg-white border-b border-gray-200 sticky top-0 z-20">
+        <div className="container mx-auto px-4 py-3 flex items-center justify-between">
+          <Link href="/" className="p-2 hover:bg-gray-100 rounded-lg transition-colors">
+            <ArrowLeft className="w-6 h-6 text-gray-900" />
+          </Link>
+          <h1 className="text-lg font-bold text-gray-900">{t("stadiums.title")}</h1>
+          <div className="w-10"></div> {/* Placeholder for alignment */}
         </div>
       </header>
 
-      <div className="container mx-auto px-4 py-4">
-        <div className="space-y-4">
-          {stadiumsWithDistance.map(({ stadium, distance }) => (
-            <div
-              key={stadium.id}
-              className="bg-white rounded-xl overflow-hidden shadow-md"
-            >
-              {/* Stadium Image */}
-              <div className="relative h-48 w-full bg-gray-200">
-                <Image
-                  src={stadium.image}
-                  alt={stadium.name}
-                  fill
-                  className="object-cover"
-                />
-              </div>
-              
-              {/* Stadium Info */}
-              <div className="p-4">
-                <h3 className="text-lg font-bold text-gray-900 mb-2">
-                  {stadium.name}
-                </h3>
-                <div className="flex items-center gap-2 text-sm text-gray-600 mb-4">
-                  <span>📍</span>
-                  <span>{stadium.city}</span>
-                  {distance !== undefined && (
-                    <>
-                      <span>•</span>
-                      <span>{t("stadiums.distance", { distance: distance.toFixed(1) })}</span>
-                    </>
-                  )}
-                </div>
-                <button
-                  onClick={() => openMaps(stadium.latitude, stadium.longitude)}
-                  className="w-full bg-red-600 text-white px-4 py-3 rounded-lg hover:bg-red-700 transition-colors flex items-center justify-center gap-2 font-medium"
-                >
-                  <Send className="w-4 h-4" />
-                  {t("stadiums.openMaps")}
-                </button>
-              </div>
-            </div>
-          ))}
+      <main className="container mx-auto px-4 py-6 space-y-6">
+        {/* Location Section */}
+        <div className="bg-blue-50 border border-blue-200 rounded-xl p-4">
+          <h2 className="text-sm font-bold text-blue-800 mb-2 uppercase tracking-wider">
+            {t("stadiums.yourLocation")}
+          </h2>
+          <div className="flex items-center gap-3">
+            <MapPin className="w-6 h-6 text-green-800 flex-shrink-0" />
+            {location ? (
+              <p className="text-lg font-mono text-blue-900">
+                {location.latitude.toFixed(5)}, {location.longitude.toFixed(5)}
+              </p>
+            ) : (
+              <p className="text-blue-800">{locationError || t("stadiums.location.unavailable")}</p>
+            )}
+          </div>
+          <p className="text-xs text-blue-700 mt-2">{t("stadiums.location.desc")}</p>
         </div>
-      </div>
+
+        {/* Search Bar */}
+        <div className="relative flex items-center bg-white w-full border border-gray-200 px-4 py-2 rounded-xl gap-2">
+          <Search className="w-5 h-5 text-green-800" />
+          <input
+            type="text"
+            placeholder={t("stadiums.search.placeholder")}
+            className="w-full p-2 focus:outline-none focus:ring-0 focus:ring-transparent focus:border-transparent transition-all"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
+        </div>
+
+        {/* Stadiums List */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {filteredAndSortedStadiums.length > 0 ? (
+            filteredAndSortedStadiums.map((stadium) => (
+              <StadiumCard key={stadium.id} stadium={stadium} distance={stadium.distance} />
+            ))
+          ) : (
+            <div className="col-span-full text-center py-10 text-gray-500">
+              <p>{t("stadiums.search.noResults")}</p>
+            </div>
+          )}
+        </div>
+      </main>
     </div>
   );
 }
