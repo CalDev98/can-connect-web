@@ -24,6 +24,8 @@ import {
 import { useLanguage } from "@/contexts/LanguageContext";
 import matchesData from "@/data/matches.json"; // Import matches data
 
+import { EmblaCarousel } from "@/components/Carousel";
+
 const countryCodes: { [key: string]: string } = {
   "Morocco": "ma", "Tanzania": "tz", "Senegal": "sn", "Mali": "ml",
   "Egypt": "eg", "Ghana": "gh", "Algeria": "dz", "Tunisia": "tn",
@@ -86,30 +88,11 @@ export default function HomePage() {
       <main className="pb-20">
         <div className="container mx-auto py-4 px-4">
           {/* Welcome Section */}
-          {/* <div className="pt-6 pb-4">
+          <div className="pt-6 pb-4">
             <h2 className="text-3xl font-bold text-gray-900">{t("home.welcome")}</h2>
-          </div> */}
-
-          {/* Moroccan Gateway Visual */}
-          <div className="mb-6 rounded-xl overflow-hidden shadow-lg">
-            <div className="relative h-64 w-full bg-gradient-to-br from-moroccan-blue to-moroccan-gold flex items-center justify-center">
-              {/* Abstract Moroccan Pattern */}
-              <div className="absolute inset-0 opacity-20" style={{
-                backgroundImage: 'radial-gradient(circle at 100% 150%, rgba(255,255,255,0.2) 0%, transparent 50%), radial-gradient(circle at 0% -50%, rgba(255,255,255,0.2) 0%, transparent 50%)',
-                backgroundSize: '50% 50%',
-              }}></div>
-              {/* Archway / Keyhole effect */}
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-48 h-48 bg-white/10 rounded-full flex items-center justify-center">
-                  <div className="w-32 h-32 bg-white/20 rounded-full"></div>
-                </div>
-              </div>
-              <div className="relative z-10 text-center text-white">
-                <h2 className="text-3xl font-bold drop-shadow">{t("home.welcome")}</h2>
-                {/* <p className="text-lg mt-1 drop-shadow">CANConnect</p> */}
-              </div>
-            </div>
           </div>
+
+          <EmblaCarousel />
 
           {/* Featured Match Card */}
           {nextMatch ? (

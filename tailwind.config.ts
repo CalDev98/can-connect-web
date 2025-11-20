@@ -10,6 +10,9 @@ const config: Config = {
     extend: {
       colors: {
         moroccan: {
+          red: "#D22D27",
+          orange: "#FFA500",
+          green: "#006225",
           blue: "#0066CC",
           gold: "#D4AF37",
           white: "#FFFFFF",
@@ -26,4 +29,3 @@ const config: Config = {
   plugins: [],
 };
 export default config;
-

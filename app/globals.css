@@ -24,3 +24,51 @@ body {
   }
 }
 
+.embla {
+  position: relative;
+  overflow: hidden;
+}
+.embla__container {
+  display: flex;
+}
+.embla__slide {
+  flex: 0 0 100%;
+  min-width: 0;
+}
+.embla__dots {
+  position: absolute;
+  bottom: 1rem;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.embla__dot {
+  background-color: transparent;
+  cursor: pointer;
+  position: relative;
+  padding: 0;
+  outline: 0;
+  border: 0;
+  width: 2rem;
+  height: 2rem;
+  margin-right: 0.25rem;
+  margin-left: 0.25rem;
+}
+.embla__dot:after {
+  background-color: #ffffff;
+  opacity: 0.5;
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 9999px;
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.embla__dot--selected:after {
+  opacity: 1;
+}
+
