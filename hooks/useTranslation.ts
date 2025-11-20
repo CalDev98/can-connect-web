@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import { usePlan } from "@/contexts/PlanContext";
+import { TranslatorPrompt } from "@/utils/prompt-traduction";
 
 interface TranslationResult {
   arabic: string;
@@ -15,7 +16,7 @@ export function useTranslation() {
 
   const mutation = useMutation({
     mutationFn: async (text: string) => {
-      const apiKey = process.env.NEXT_PUBLIC_OPENROUTER_API_KEY;
+      const apiKey = process.env.NEXT_PUBLIC_OPENROUTER_API_KEY_FOR_TRANSLATION;
       if (!apiKey) {
         throw new Error("OpenRouter API key not configured");
       }
@@ -27,12 +28,11 @@ export function useTranslation() {
           Authorization: `Bearer ${apiKey}`,
         },
         body: JSON.stringify({
-          model: "openai/gpt-4o",
+          model: "openai/gpt-oss-20b:free",
           messages: [
             {
               role: "system",
-              content:
-                "Translate the text into Moroccan Darija. Provide the translation in both Arabic script and Latin phonetic writing. Format your response as JSON with 'arabic' and 'phonetic' fields. Example: {\"arabic\": \"كيفاش\", \"phonetic\": \"Kifach\"}",
+              content:TranslatorPrompt
             },
             {
               role: "user",

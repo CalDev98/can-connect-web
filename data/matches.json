@@ -1,83 +1,1123 @@
-[
-  {
-    "id": 1,
-    "date": "2025-01-13",
-    "time": "20:00",
-    "team1": "Morocco",
-    "team2": "Tanzania",
-    "stadium": "Stade Mohammed V",
-    "city": "Casablanca",
-    "group": "A"
+{
+  "tournament": {
+    "name": "Coupe d'Afrique des Nations 2025",
+    "host_country": "Maroc",
+    "start_date": "2025-12-21",
+    "end_date": "2026-01-18",
+    "total_teams": 24
   },
-  {
-    "id": 2,
-    "date": "2025-01-14",
-    "time": "17:00",
-    "team1": "Senegal",
-    "team2": "Mali",
-    "stadium": "Stade Ibn Batouta",
-    "city": "Tanger",
-    "group": "B"
-  },
-  {
-    "id": 3,
-    "date": "2025-01-14",
-    "time": "20:00",
-    "team1": "Egypt",
-    "team2": "Ghana",
-    "stadium": "Stade de Fès",
-    "city": "Fès",
-    "group": "C"
-  },
-  {
-    "id": 4,
-    "date": "2025-01-15",
-    "time": "17:00",
-    "team1": "Algeria",
-    "team2": "Tunisia",
-    "stadium": "Stade de Marrakech",
-    "city": "Marrakech",
-    "group": "D"
-  },
-  {
-    "id": 5,
-    "date": "2025-01-15",
-    "time": "20:00",
-    "team1": "Nigeria",
-    "team2": "Cameroon",
-    "stadium": "Stade Moulay Abdellah",
-    "city": "Rabat",
-    "group": "E"
-  },
-  {
-    "id": 6,
-    "date": "2025-01-16",
-    "time": "17:00",
-    "team1": "Ivory Coast",
-    "team2": "Burkina Faso",
-    "stadium": "Stade d'Agadir",
-    "city": "Agadir",
-    "group": "F"
-  },
-  {
-    "id": 7,
-    "date": "2025-01-17",
-    "time": "20:00",
-    "team1": "Morocco",
-    "team2": "Congo",
-    "stadium": "Stade Mohammed V",
-    "city": "Casablanca",
-    "group": "A"
-  },
-  {
-    "id": 8,
-    "date": "2025-01-18",
-    "time": "17:00",
-    "team1": "Senegal",
-    "team2": "Guinea",
-    "stadium": "Stade Ibn Batouta",
-    "city": "Tanger",
-    "group": "B"
-  }
-]
-
+  "matches": [
+    {
+      "id": 1,
+      "date": "2025-12-21",
+      "time": "18:00",
+      "team1": {
+        "code": "MAR",
+        "name": "Maroc"
+      },
+      "team2": {
+        "code": "COM",
+        "name": "Comores"
+      },
+      "stadium": {
+        "id": "rabat1",
+        "name": "Complexe sportif Moulay Abdellah",
+        "city": "Rabat",
+        "capacity": 69500
+      },
+      "group": "A",
+      "match_day": 1,
+      "stage": "Group Stage"
+    },
+    {
+      "id": 2,
+      "date": "2025-12-21",
+      "time": "21:00",
+      "team1": {
+        "code": "MAR",
+        "name": "Maroc"
+      },
+      "team2": {
+        "code": "MAL",
+        "name": "Mali"
+      },
+      "stadium": {
+        "id": "rabat2",
+        "name": "Complexe sportif Moulay El Hassan",
+        "city": "Rabat",
+        "capacity": 22000
+      },
+      "group": "A",
+      "match_day": 1,
+      "stage": "Group Stage"
+    },
+    {
+      "id": 3,
+      "date": "2025-12-22",
+      "time": "18:30",
+      "team1": {
+        "code": "ZAM",
+        "name": "Zambie"
+      },
+      "team2": {
+        "code": "COM",
+        "name": "Comores"
+      },
+      "stadium": {
+        "id": "casablanca",
+        "name": "Stade Mohamed V",
+        "city": "Casablanca",
+        "capacity": 45000
+      },
+      "group": "A",
+      "match_day": 2,
+      "stage": "Group Stage"
+    },
+    {
+      "id": 4,
+      "date": "2025-12-23",
+      "time": "20:00",
+      "team1": {
+        "code": "ZAM",
+        "name": "Zambie"
+      },
+      "team2": {
+        "code": "MAR",
+        "name": "Maroc"
+      },
+      "stadium": {
+        "id": "rabat3",
+        "name": "Stade El Barid",
+        "city": "Rabat",
+        "capacity": 18000
+      },
+      "group": "A",
+      "match_day": 2,
+      "stage": "Group Stage"
+    },
+    {
+      "id": 5,
+      "date": "2025-12-24",
+      "time": "20:00",
+      "team1": {
+        "code": "COM",
+        "name": "Comores"
+      },
+      "team2": {
+        "code": "MAL",
+        "name": "Mali"
+      },
+      "stadium": {
+        "id": "fes",
+        "name": "Complexe sportif de Fès",
+        "city": "Fès",
+        "capacity": 35468
+      },
+      "group": "A",
+      "match_day": 3,
+      "stage": "Group Stage"
+    },
+    {
+      "id": 6,
+      "date": "2025-12-25",
+      "time": "15:00",
+      "team1": {
+        "code": "MAL",
+        "name": "Mali"
+      },
+      "team2": {
+        "code": "ZAM",
+        "name": "Zambie"
+      },
+      "stadium": {
+        "id": "rabat4",
+        "name": "Annexe complexe Moulay Abdellah",
+        "city": "Rabat",
+        "capacity": 21000
+      },
+      "group": "A",
+      "match_day": 3,
+      "stage": "Group Stage"
+    },
+    {
+      "id": 7,
+      "date": "2025-12-21",
+      "time": "18:00",
+      "team1": {
+        "code": "AFS",
+        "name": "Afrique du Sud"
+      },
+      "team2": {
+        "code": "ANG",
+        "name": "Angola"
+      },
+      "stadium": {
+        "id": "tanger",
+        "name": "Grand stade de Tanger",
+        "city": "Tanger",
+        "capacity": 75600
+      },
+      "group": "B",
+      "match_day": 1,
+      "stage": "Group Stage"
+    },
+    {
+      "id": 8,
+      "date": "2025-12-22",
+      "time": "13:30",
+      "team1": {
+        "code": "ANG",
+        "name": "Angola"
+      },
+      "team2": {
+        "code": "ZIM",
+        "name": "Zimbabwe"
+      },
+      "stadium": {
+        "id": "marrakech",
+        "name": "Grand stade de Marrakech",
+        "city": "Marrakech",
+        "capacity": 41245
+      },
+      "group": "B",
+      "match_day": 2,
+      "stage": "Group Stage"
+    },
+    {
+      "id": 9,
+      "date": "2025-12-23",
+      "time": "17:00",
+      "team1": {
+        "code": "ZIM",
+        "name": "Zimbabwe"
+      },
+      "team2": {
+        "code": "AFS",
+        "name": "Afrique du Sud"
+      },
+      "stadium": {
+        "id": "agadir",
+        "name": "Grand stade d'Agadir",
+        "city": "Agadir",
+        "capacity": 41144
+      },
+      "group": "B",
+      "match_day": 2,
+      "stage": "Group Stage"
+    },
+    {
+      "id": 10,
+      "date": "2025-12-24",
+      "time": "21:00",
+      "team1": {
+        "code": "ÉGY",
+        "name": "Égypte"
+      },
+      "team2": {
+        "code": "ZIM",
+        "name": "Zimbabwe"
+      },
+      "stadium": {
+        "id": "tanger",
+        "name": "Grand stade de Tanger",
+        "city": "Tanger",
+        "capacity": 75600
+      },
+      "group": "B",
+      "match_day": 1,
+      "stage": "Group Stage"
+    },
+    {
+      "id": 11,
+      "date": "2025-12-25",
+      "time": "16:00",
+      "team1": {
+        "code": "ÉGY",
+        "name": "Égypte"
+      },
+      "team2": {
+        "code": "AFS",
+        "name": "Afrique du Sud"
+      },
+      "stadium": {
+        "id": "marrakech",
+        "name": "Grand stade de Marrakech",
+        "city": "Marrakech",
+        "capacity": 41245
+      },
+      "group": "B",
+      "match_day": 3,
+      "stage": "Group Stage"
+    },
+    {
+      "id": 12,
+      "date": "2025-12-26",
+      "time": "17:00",
+      "team1": {
+        "code": "ANG",
+        "name": "Angola"
+      },
+      "team2": {
+        "code": "ÉGY",
+        "name": "Égypte"
+      },
+      "stadium": {
+        "id": "agadir",
+        "name": "Grand stade d'Agadir",
+        "city": "Agadir",
+        "capacity": 41144
+      },
+      "group": "B",
+      "match_day": 3,
+      "stage": "Group Stage"
+    },
+    {
+      "id": 13,
+      "date": "2025-12-22",
+      "time": "13:30",
+      "team1": {
+        "code": "RDC",
+        "name": "Rép. du Congo"
+      },
+      "team2": {
+        "code": "BÉN",
+        "name": "Bénin"
+      },
+      "stadium": {
+        "id": "rabat1",
+        "name": "Complexe sportif Moulay Abdellah",
+        "city": "Rabat",
+        "capacity": 69500
+      },
+      "group": "D",
+      "match_day": 1,
+      "stage": "Group Stage"
+    },
+    {
+      "id": 14,
+      "date": "2025-12-23",
+      "time": "13:30",
+      "team1": {
+        "code": "BÉN",
+        "name": "Bénin"
+      },
+      "team2": {
+        "code": "BOT",
+        "name": "Botswana"
+      },
+      "stadium": {
+        "id": "rabat2",
+        "name": "Complexe sportif Moulay El Hassan",
+        "city": "Rabat",
+        "capacity": 22000
+      },
+      "group": "D",
+      "match_day": 2,
+      "stage": "Group Stage"
+    },
+    {
+      "id": 15,
+      "date": "2025-12-25",
+      "time": "20:00",
+      "team1": {
+        "code": "BÉN",
+        "name": "Bénin"
+      },
+      "team2": {
+        "code": "SÉN",
+        "name": "Sénégal"
+      },
+      "stadium": {
+        "id": "rabat3",
+        "name": "Stade El Barid",
+        "city": "Rabat",
+        "capacity": 18000
+      },
+      "group": "D",
+      "match_day": 3,
+      "stage": "Group Stage"
+    },
+    {
+      "id": 16,
+      "date": "2025-12-26",
+      "time": "16:00",
+      "team1": {
+        "code": "SÉN",
+        "name": "Sénégal"
+      },
+      "team2": {
+        "code": "RDC",
+        "name": "Rép. du Congo"
+      },
+      "stadium": {
+        "id": "fes",
+        "name": "Complexe sportif de Fès",
+        "city": "Fès",
+        "capacity": 35468
+      },
+      "group": "D",
+      "match_day": 3,
+      "stage": "Group Stage"
+    },
+    {
+      "id": 17,
+      "date": "2025-12-27",
+      "time": "20:00",
+      "team1": {
+        "code": "BOT",
+        "name": "Botswana"
+      },
+      "team2": {
+        "code": "RDC",
+        "name": "Rép. du Congo"
+      },
+      "stadium": {
+        "id": "rabat4",
+        "name": "Annexe complexe Moulay Abdellah",
+        "city": "Rabat",
+        "capacity": 21000
+      },
+      "group": "D",
+      "match_day": 3,
+      "stage": "Group Stage"
+    },
+    {
+      "id": 18,
+      "date": "2025-12-28",
+      "time": "16:00",
+      "team1": {
+        "code": "SÉN",
+        "name": "Sénégal"
+      },
+      "team2": {
+        "code": "BOT",
+        "name": "Botswana"
+      },
+      "stadium": {
+        "id": "tanger",
+        "name": "Grand stade de Tanger",
+        "city": "Tanger",
+        "capacity": 75600
+      },
+      "group": "D",
+      "match_day": 2,
+      "stage": "Group Stage"
+    },
+    {
+      "id": 19,
+      "date": "2025-12-22",
+      "time": "16:00",
+      "team1": {
+        "code": "ALG",
+        "name": "Algérie"
+      },
+      "team2": {
+        "code": "SOU",
+        "name": "Soudan"
+      },
+      "stadium": {
+        "id": "casablanca",
+        "name": "Stade Mohamed V",
+        "city": "Casablanca",
+        "capacity": 45000
+      },
+      "group": "E",
+      "match_day": 1,
+      "stage": "Group Stage"
+    },
+    {
+      "id": 20,
+      "date": "2025-12-23",
+      "time": "18:30",
+      "team1": {
+        "code": "ALG",
+        "name": "Algérie"
+      },
+      "team2": {
+        "code": "BFA",
+        "name": "Burkina Faso"
+      },
+      "stadium": {
+        "id": "rabat3",
+        "name": "Stade El Barid",
+        "city": "Rabat",
+        "capacity": 18000
+      },
+      "group": "E",
+      "match_day": 1,
+      "stage": "Group Stage"
+    },
+    {
+      "id": 21,
+      "date": "2025-12-24",
+      "time": "17:00",
+      "team1": {
+        "code": "GEQ",
+        "name": "Guinée Équatoriale"
+      },
+      "team2": {
+        "code": "ALG",
+        "name": "Algérie"
+      },
+      "stadium": {
+        "id": "fes",
+        "name": "Complexe sportif de Fès",
+        "city": "Fès",
+        "capacity": 35468
+      },
+      "group": "E",
+      "match_day": 2,
+      "stage": "Group Stage"
+    },
+    {
+      "id": 22,
+      "date": "2025-12-25",
+      "time": "13:30",
+      "team1": {
+        "code": "BFA",
+        "name": "Burkina Faso"
+      },
+      "team2": {
+        "code": "GEQ",
+        "name": "Guinée Équatoriale"
+      },
+      "stadium": {
+        "id": "rabat4",
+        "name": "Annexe complexe Moulay Abdellah",
+        "city": "Rabat",
+        "capacity": 21000
+      },
+      "group": "E",
+      "match_day": 2,
+      "stage": "Group Stage"
+    },
+    {
+      "id": 23,
+      "date": "2025-12-26",
+      "time": "16:00",
+      "team1": {
+        "code": "GEQ",
+        "name": "Guinée Équatoriale"
+      },
+      "team2": {
+        "code": "SOU",
+        "name": "Soudan"
+      },
+      "stadium": {
+        "id": "tanger",
+        "name": "Grand stade de Tanger",
+        "city": "Tanger",
+        "capacity": 75600
+      },
+      "group": "E",
+      "match_day": 3,
+      "stage": "Group Stage"
+    },
+    {
+      "id": 24,
+      "date": "2025-12-27",
+      "time": "17:00",
+      "team1": {
+        "code": "SOU",
+        "name": "Soudan"
+      },
+      "team2": {
+        "code": "BFA",
+        "name": "Burkina Faso"
+      },
+      "stadium": {
+        "id": "marrakech",
+        "name": "Grand stade de Marrakech",
+        "city": "Marrakech",
+        "capacity": 41245
+      },
+      "group": "E",
+      "match_day": 3,
+      "stage": "Group Stage"
+    },
+    {
+      "id": 25,
+      "date": "2025-12-22",
+      "time": "18:30",
+      "team1": {
+        "code": "CIV",
+        "name": "Côte d'Ivoire"
+      },
+      "team2": {
+        "code": "MOZ",
+        "name": "Mozambique"
+      },
+      "stadium": {
+        "id": "rabat1",
+        "name": "Complexe sportif Moulay Abdellah",
+        "city": "Rabat",
+        "capacity": 69500
+      },
+      "group": "F",
+      "match_day": 1,
+      "stage": "Group Stage"
+    },
+    {
+      "id": 26,
+      "date": "2025-12-23",
+      "time": "21:00",
+      "team1": {
+        "code": "CIV",
+        "name": "Côte d'Ivoire"
+      },
+      "team2": {
+        "code": "CMR",
+        "name": "Cameroun"
+      },
+      "stadium": {
+        "id": "rabat2",
+        "name": "Complexe sportif Moulay El Hassan",
+        "city": "Rabat",
+        "capacity": 22000
+      },
+      "group": "F",
+      "match_day": 1,
+      "stage": "Group Stage"
+    },
+    {
+      "id": 27,
+      "date": "2025-12-24",
+      "time": "20:30",
+      "team1": {
+        "code": "GAB",
+        "name": "Gabon"
+      },
+      "team2": {
+        "code": "CIV",
+        "name": "Côte d'Ivoire"
+      },
+      "stadium": {
+        "id": "casablanca",
+        "name": "Stade Mohamed V",
+        "city": "Casablanca",
+        "capacity": 45000
+      },
+      "group": "F",
+      "match_day": 2,
+      "stage": "Group Stage"
+    },
+    {
+      "id": 28,
+      "date": "2025-12-25",
+      "time": "21:00",
+      "team1": {
+        "code": "CMR",
+        "name": "Cameroun"
+      },
+      "team2": {
+        "code": "GAB",
+        "name": "Gabon"
+      },
+      "stadium": {
+        "id": "fes",
+        "name": "Complexe sportif de Fès",
+        "city": "Fès",
+        "capacity": 35468
+      },
+      "group": "F",
+      "match_day": 2,
+      "stage": "Group Stage"
+    },
+    {
+      "id": 29,
+      "date": "2025-12-26",
+      "time": "13:30",
+      "team1": {
+        "code": "GAB",
+        "name": "Gabon"
+      },
+      "team2": {
+        "code": "MOZ",
+        "name": "Mozambique"
+      },
+      "stadium": {
+        "id": "rabat4",
+        "name": "Annexe complexe Moulay Abdellah",
+        "city": "Rabat",
+        "capacity": 21000
+      },
+      "group": "F",
+      "match_day": 3,
+      "stage": "Group Stage"
+    },
+    {
+      "id": 30,
+      "date": "2025-12-27",
+      "time": "20:30",
+      "team1": {
+        "code": "MOZ",
+        "name": "Mozambique"
+      },
+      "team2": {
+        "code": "CMR",
+        "name": "Cameroun"
+      },
+      "stadium": {
+        "id": "tanger",
+        "name": "Grand stade de Tanger",
+        "city": "Tanger",
+        "capacity": 75600
+      },
+      "group": "F",
+      "match_day": 3,
+      "stage": "Group Stage"
+    },
+    {
+      "id": 31,
+      "date": "2025-12-28",
+      "time": "18:30",
+      "team1": {
+        "code": "NGR",
+        "name": "Nigeria"
+      },
+      "team2": {
+        "code": "TAN",
+        "name": "Tanzanie"
+      },
+      "stadium": {
+        "id": "marrakech",
+        "name": "Grand stade de Marrakech",
+        "city": "Marrakech",
+        "capacity": 41245
+      },
+      "group": "C",
+      "match_day": 1,
+      "stage": "Group Stage"
+    },
+    {
+      "id": 32,
+      "date": "2025-12-29",
+      "time": "18:30",
+      "team1": {
+        "code": "OUG",
+        "name": "Ouganda"
+      },
+      "team2": {
+        "code": "TAN",
+        "name": "Tanzanie"
+      },
+      "stadium": {
+        "id": "agadir",
+        "name": "Grand stade d'Agadir",
+        "city": "Agadir",
+        "capacity": 41144
+      },
+      "group": "C",
+      "match_day": 2,
+      "stage": "Group Stage"
+    },
+    {
+      "id": 33,
+      "date": "2025-12-30",
+      "time": "17:00",
+      "team1": {
+        "code": "OUG",
+        "name": "Ouganda"
+      },
+      "team2": {
+        "code": "NGR",
+        "name": "Nigeria"
+      },
+      "stadium": {
+        "id": "casablanca",
+        "name": "Stade Mohamed V",
+        "city": "Casablanca",
+        "capacity": 45000
+      },
+      "group": "C",
+      "match_day": 2,
+      "stage": "Group Stage"
+    },
+    {
+      "id": 34,
+      "date": "2025-12-30",
+      "time": "21:00",
+      "team1": {
+        "code": "NGR",
+        "name": "Nigeria"
+      },
+      "team2": {
+        "code": "TUN",
+        "name": "Tunisie"
+      },
+      "stadium": {
+        "id": "rabat1",
+        "name": "Complexe sportif Moulay Abdellah",
+        "city": "Rabat",
+        "capacity": 69500
+      },
+      "group": "C",
+      "match_day": 1,
+      "stage": "Group Stage"
+    },
+    {
+      "id": 35,
+      "date": "2025-12-31",
+      "time": "17:00",
+      "team1": {
+        "code": "TAN",
+        "name": "Tanzanie"
+      },
+      "team2": {
+        "code": "TUN",
+        "name": "Tunisie"
+      },
+      "stadium": {
+        "id": "rabat2",
+        "name": "Complexe sportif Moulay El Hassan",
+        "city": "Rabat",
+        "capacity": 22000
+      },
+      "group": "C",
+      "match_day": 3,
+      "stage": "Group Stage"
+    },
+    {
+      "id": 36,
+      "date": "2025-12-31",
+      "time": "21:00",
+      "team1": {
+        "code": "TUN",
+        "name": "Tunisie"
+      },
+      "team2": {
+        "code": "OUG",
+        "name": "Ouganda"
+      },
+      "stadium": {
+        "id": "rabat3",
+        "name": "Stade El Barid",
+        "city": "Rabat",
+        "capacity": 18000
+      },
+      "group": "C",
+      "match_day": 3,
+      "stage": "Group Stage"
+    },
+    {
+      "id": 101,
+      "date": "2026-01-03",
+      "time": "17:00",
+      "team1": {
+        "name": "1er Groupe D",
+        "code": null
+      },
+      "team2": {
+        "name": "3e Groupe B/E/F",
+        "code": null
+      },
+      "stadium": {
+        "id": "tanger",
+        "name": "Grand stade de Tanger",
+        "city": "Tanger",
+        "capacity": 75600
+      },
+      "stage": "Round Of_16"
+    },
+    {
+      "id": 102,
+      "date": "2026-01-03",
+      "time": "20:00",
+      "team1": {
+        "name": "1er Groupe C",
+        "code": null
+      },
+      "team2": {
+        "name": "3e Groupe A/B/F",
+        "code": null
+      },
+      "stadium": {
+        "id": "casablanca",
+        "name": "Stade Mohamed V",
+        "city": "Casablanca",
+        "capacity": 45000
+      },
+      "stage": "Round Of_16"
+    },
+    {
+      "id": 103,
+      "date": "2026-01-04",
+      "time": "17:00",
+      "team1": {
+        "name": "2e Groupe A",
+        "code": null
+      },
+      "team2": {
+        "name": "2e Groupe C",
+        "code": null
+      },
+      "stadium": {
+        "id": "rabat1",
+        "name": "Complexe sportif Moulay Abdellah",
+        "city": "Rabat",
+        "capacity": 69500
+      },
+      "stage": "Round Of_16"
+    },
+    {
+      "id": 104,
+      "date": "2026-01-04",
+      "time": "20:00",
+      "team1": {
+        "name": "1er Groupe E",
+        "code": null
+      },
+      "team2": {
+        "name": "2e Groupe D",
+        "code": null
+      },
+      "stadium": {
+        "id": "rabat3",
+        "name": "Stade El Barid",
+        "city": "Rabat",
+        "capacity": 18000
+      },
+      "stage": "Round Of_16"
+    },
+    {
+      "id": 105,
+      "date": "2026-01-05",
+      "time": "17:00",
+      "team1": {
+        "name": "1er Groupe F",
+        "code": null
+      },
+      "team2": {
+        "name": "2e Groupe E",
+        "code": null
+      },
+      "stadium": {
+        "id": "agadir",
+        "name": "Grand stade d'Agadir",
+        "city": "Agadir",
+        "capacity": 41144
+      },
+      "stage": "Round Of_16"
+    },
+    {
+      "id": 106,
+      "date": "2026-01-05",
+      "time": "20:00",
+      "team1": {
+        "name": "1er Groupe A",
+        "code": null
+      },
+      "team2": {
+        "name": "3e Groupe C/D/E",
+        "code": null
+      },
+      "stadium": {
+        "id": "fes",
+        "name": "Complexe sportif de Fès",
+        "city": "Fès",
+        "capacity": 35468
+      },
+      "stage": "Round Of_16"
+    },
+    {
+      "id": 107,
+      "date": "2026-01-06",
+      "time": "17:00",
+      "team1": {
+        "name": "1er Groupe B",
+        "code": null
+      },
+      "team2": {
+        "name": "3e Groupe A/C/D",
+        "code": null
+      },
+      "stadium": {
+        "id": "rabat2",
+        "name": "Complexe sportif Moulay El Hassan",
+        "city": "Rabat",
+        "capacity": 22000
+      },
+      "stage": "Round Of_16"
+    },
+    {
+      "id": 108,
+      "date": "2026-01-06",
+      "time": "20:00",
+      "team1": {
+        "name": "2e Groupe B",
+        "code": null
+      },
+      "team2": {
+        "name": "2e Groupe F",
+        "code": null
+      },
+      "stadium": {
+        "id": "marrakech",
+        "name": "Grand stade de Marrakech",
+        "city": "Marrakech",
+        "capacity": 41245
+      },
+      "stage": "Round Of_16"
+    },
+    {
+      "id": 201,
+      "date": "2026-01-09",
+      "time": "17:00",
+      "team1": {
+        "name": "Vainqueur Match 101",
+        "code": null
+      },
+      "team2": {
+        "name": "Vainqueur Match 102",
+        "code": null
+      },
+      "stadium": {
+        "id": "tanger",
+        "name": "Grand stade de Tanger",
+        "city": "Tanger",
+        "capacity": 75600
+      },
+      "stage": "Quarterfinals"
+    },
+    {
+      "id": 202,
+      "date": "2026-01-09",
+      "time": "20:00",
+      "team1": {
+        "name": "Vainqueur Match 103",
+        "code": null
+      },
+      "team2": {
+        "name": "Vainqueur Match 104",
+        "code": null
+      },
+      "stadium": {
+        "id": "rabat1",
+        "name": "Complexe sportif Moulay Abdellah",
+        "city": "Rabat",
+        "capacity": 69500
+      },
+      "stage": "Quarterfinals"
+    },
+    {
+      "id": 203,
+      "date": "2026-01-10",
+      "time": "17:00",
+      "team1": {
+        "name": "Vainqueur Match 105",
+        "code": null
+      },
+      "team2": {
+        "name": "Vainqueur Match 106",
+        "code": null
+      },
+      "stadium": {
+        "id": "marrakech",
+        "name": "Grand stade de Marrakech",
+        "city": "Marrakech",
+        "capacity": 41245
+      },
+      "stage": "Quarterfinals"
+    },
+    {
+      "id": 204,
+      "date": "2026-01-10",
+      "time": "20:00",
+      "team1": {
+        "name": "Vainqueur Match 107",
+        "code": null
+      },
+      "team2": {
+        "name": "Vainqueur Match 108",
+        "code": null
+      },
+      "stadium": {
+        "id": "agadir",
+        "name": "Grand stade d'Agadir",
+        "city": "Agadir",
+        "capacity": 41144
+      },
+      "stage": "Quarterfinals"
+    },
+    {
+      "id": 301,
+      "date": "2026-01-14",
+      "time": "18:00",
+      "team1": {
+        "name": "Vainqueur Match 201",
+        "code": null
+      },
+      "team2": {
+        "name": "Vainqueur Match 202",
+        "code": null
+      },
+      "stadium": {
+        "id": "tanger",
+        "name": "Grand stade de Tanger",
+        "city": "Tanger",
+        "capacity": 75600
+      },
+      "stage": "Semifinals"
+    },
+    {
+      "id": 302,
+      "date": "2026-01-14",
+      "time": "21:00",
+      "team1": {
+        "name": "Vainqueur Match 203",
+        "code": null
+      },
+      "team2": {
+        "name": "Vainqueur Match 204",
+        "code": null
+      },
+      "stadium": {
+        "id": "rabat1",
+        "name": "Complexe sportif Moulay Abdellah",
+        "city": "Rabat",
+        "capacity": 69500
+      },
+      "stage": "Semifinals"
+    },
+    {
+      "id": 401,
+      "date": "2026-01-17",
+      "time": "17:00",
+      "team1": {
+        "name": "Perdant Demi-finale 1",
+        "code": null
+      },
+      "team2": {
+        "name": "Perdant Demi-finale 2",
+        "code": null
+      },
+      "stadium": {
+        "id": "casablanca",
+        "name": "Stade Mohamed V",
+        "city": "Casablanca",
+        "capacity": 45000
+      },
+      "stage": "Third Place"
+    },
+    {
+      "id": 501,
+      "date": "2026-01-18",
+      "time": "20:00",
+      "team1": {
+        "name": "Vainqueur Demi-finale 1",
+        "code": null
+      },
+      "team2": {
+        "name": "Vainqueur Demi-finale 2",
+        "code": null
+      },
+      "stadium": {
+        "id": "rabat1",
+        "name": "Complexe sportif Moulay Abdellah",
+        "city": "Rabat",
+        "capacity": 69500
+      },
+      "stage": "Final"
+    }
+  ]
+}

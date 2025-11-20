@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import { usePlan } from "@/contexts/PlanContext";
+import { AI_Assiantant_Prompt } from "@/utils/prompt-assistantIA";
 
 interface Message {
   role: "user" | "assistant";
@@ -16,7 +17,7 @@ export function useAI() {
 
   const mutation = useMutation({
     mutationFn: async (userMessage: string) => {
-      const apiKey = process.env.NEXT_PUBLIC_OPENROUTER_API_KEY;
+      const apiKey = process.env.NEXT_PUBLIC_OPENROUTER_API_KEY_FOR_ASSISTANT_IA;
       if (!apiKey) {
         throw new Error("OpenRouter API key not configured");
       }
@@ -28,12 +29,11 @@ export function useAI() {
           Authorization: `Bearer ${apiKey}`,
         },
         body: JSON.stringify({
-          model: "openai/gpt-4o",
+          model: "openai/gpt-oss-20b:free",
           messages: [
             {
               role: "system",
-              content:
-                "You are a helpful Moroccan travel guide for CAN 2025 visitors. Answer clearly and concisely. Provide practical advice about food, places to visit, transportation, cultural tips, and match information.",
+              content: AI_Assiantant_Prompt
             },
             ...messages.map((msg) => ({
               role: msg.role,

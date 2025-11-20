@@ -9,10 +9,13 @@ import { useLanguage } from "@/contexts/LanguageContext";
 // --- Helper Data & Functions ---
 
 const countryCodes: { [key: string]: string } = {
-  "Morocco": "ma", "Tanzania": "tz", "Senegal": "sn", "Mali": "ml",
-  "Egypt": "eg", "Ghana": "gh", "Algeria": "dz", "Tunisia": "tn",
-  "Nigeria": "ng", "Cameroon": "cm", "Ivory Coast": "ci", "Burkina Faso": "bf",
-  "Congo": "cg", "Guinea": "gn"
+  "MAR": "ma", "TAN": "tz", "SÉN": "sn", "MAL": "ml",
+  "ÉGY": "eg", "ALG": "dz", "TUN": "tn",
+  "NGR": "ng", "CMR": "cm", "CIV": "ci", "BFA": "bf",
+  "RDC": "cg", "ZAM": "zm", "COM": "km",
+  "AFS": "za", "ANG": "ao", "ZIM": "zw", "OUG": "ug",
+  "BÉN": "bj", "BOT": "bw", "GEQ": "gq", "SOU": "sd",
+  "GAB": "ga", "MOZ": "mz"
 };
 
 const getMatchStatus = (date: string, time: string) => {
@@ -29,8 +32,10 @@ const getMatchStatus = (date: string, time: string) => {
 
 const MatchCard = ({ match, status }: { match: any; status: string }) => {
   const { t } = useLanguage();
-  const team1Code = countryCodes[match.team1]?.toLowerCase();
-  const team2Code = countryCodes[match.team2]?.toLowerCase();
+  const team1Code = match.team1.code ? countryCodes[match.team1.code]?.toLowerCase() : null;
+  const team2Code = match.team2.code ? countryCodes[match.team2.code]?.toLowerCase() : null;
+
+  const score = status === "Finished" ? match.score : status === "Live" ? match.live_score : null;
 
   return (
     <div className="bg-white rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden">
@@ -38,7 +43,7 @@ const MatchCard = ({ match, status }: { match: any; status: string }) => {
         <div className="flex justify-between items-center text-xs text-gray-500 mb-3">
           <div className="flex items-center gap-1.5">
             <Shield size={14} />
-            <span>{t("matches.group", { group: match.group })}</span>
+            <span>{match.group ? t("matches.group", { group: match.group }) : match.stage}</span>
           </div>
           {status === "Live" && (
             <div className="flex items-center gap-1.5 text-red-600 font-bold animate-pulse">
@@ -50,19 +55,21 @@ const MatchCard = ({ match, status }: { match: any; status: string }) => {
 
         <div className="flex items-center justify-around">
           <div className="flex-1 flex flex-col items-center gap-2 text-center">
-            <img
-              src={`https://flagcdn.com/w80/${team1Code}.png`}
-              alt={`${match.team1} flag`}
-              className="w-12 h-12 object-contain rounded-full shadow-md"
-            />
-            <span className="font-bold text-gray-800">{match.team1}</span>
+            {team1Code ? (
+              <img
+                src={`https://flagcdn.com/w80/${team1Code}.png`}
+                alt={`${match.team1.name} flag`}
+                className="w-12 h-12 object-contain rounded-full shadow-md"
+              />
+            ) : (
+              <div className="w-12 h-12 bg-gray-200 rounded-full shadow-md"></div>
+            )}
+            <span className="font-bold text-gray-800">{match.team1.name}</span>
           </div>
 
           <div className="text-center">
-            {status === "Finished" ? (
-              <span className="text-4xl font-bold text-gray-900">2 - 1</span>
-            ) : status === "Live" ? (
-              <span className="text-4xl font-bold text-green-600">1 - 0</span>
+            {score ? (
+              <span className="text-4xl font-bold text-gray-900">{score.join(" - ")}</span>
             ) : (
               <div className="flex flex-col items-center">
                 <span className="text-2xl font-bold text-gray-800">{match.time}</span>
@@ -72,18 +79,22 @@ const MatchCard = ({ match, status }: { match: any; status: string }) => {
           </div>
 
           <div className="flex-1 flex flex-col items-center gap-2 text-center">
-            <img
-              src={`https://flagcdn.com/w80/${team2Code}.png`}
-              alt={`${match.team2} flag`}
-              className="w-12 h-12 object-contain rounded-full shadow-md"
-            />
-            <span className="font-bold text-gray-800">{match.team2}</span>
+            {team2Code ? (
+              <img
+                src={`https://flagcdn.com/w80/${team2Code}.png`}
+                alt={`${match.team2.name} flag`}
+                className="w-12 h-12 object-contain rounded-full shadow-md"
+              />
+            ) : (
+              <div className="w-12 h-12 bg-gray-200 rounded-full shadow-md"></div>
+            )}
+            <span className="font-bold text-gray-800">{match.team2.name}</span>
           </div>
         </div>
       </div>
       <div className="bg-gray-50 border-t border-gray-100 px-4 py-2 text-xs text-gray-600 flex items-center justify-center gap-1.5">
         <MapPin size={14} />
-        <span>{match.stadium}, {match.city}</span>
+        <span>{match.stadium.name}, {match.stadium.city}</span>
       </div>
     </div>
   );
@@ -115,9 +126,17 @@ export default function MatchesPage() {
   const { t, language } = useLanguage();
   const [activeTab, setActiveTab] = useState<"Upcoming" | "Live" | "Finished">("Upcoming");
 
+  const matchesWithScores = useMemo(() => {
+    return matchesData.matches.map(match => ({
+      ...match,
+      score: [Math.floor(Math.random() * 5), Math.floor(Math.random() * 5)],
+      live_score: [Math.floor(Math.random() * 3), Math.floor(Math.random() * 3)],
+    }));
+  }, []);
+
   const filteredMatches = useMemo(() => {
-    return matchesData.filter(match => getMatchStatus(match.date, match.time) === activeTab);
-  }, [activeTab]);
+    return matchesWithScores.filter(match => getMatchStatus(match.date, match.time) === activeTab);
+  }, [activeTab, matchesWithScores]);
 
   const groupedByDate = useMemo(() => {
     return filteredMatches.reduce((acc, match) => {

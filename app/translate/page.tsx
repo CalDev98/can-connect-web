@@ -46,26 +46,21 @@ export default function TranslatePage() {
   };
 
   return (
-    <div className="min-h-screen bg-white pb-20">
+    <div className="min-h-screen bg-moroccan-light pb-20" style={{
+      backgroundImage: 'radial-gradient(circle, rgba(255, 249, 230, 0.4) 1px, transparent 1px)',
+      backgroundSize: '20px 20px',
+    }}>
       {/* Header */}
-      <header className="bg-white border-b border-gray-200 sticky top-0 z-10">
+      <header className="bg-white/80 backdrop-blur-sm border-b border-gray-200/50 sticky top-0 z-10">
         <div className="container mx-auto px-4 py-3">
           <div className="flex items-center justify-between">
-            <Link href="/" className="p-2 hover:bg-gray-100 rounded-lg transition-colors">
+            <Link href="/" className="p-2 hover:bg-gray-100 rounded-full transition-colors">
               <ArrowLeft className="w-6 h-6 text-gray-900" />
             </Link>
             <h1 className="text-lg font-bold text-gray-900">{t("translate.title")}</h1>
             <div className="flex items-center gap-2">
-              {!isPremium && (
-                <div className="text-xs text-gray-600 bg-gray-100 px-2 py-1 rounded">
-                  {t("translate.remaining", { count: remainingTranslations })}
-                </div>
-              )}
-              {isPremium && (
-                <Crown className="w-5 h-5 text-moroccan-gold" />
-              )}
-              <Link href="/offres" className="p-2 hover:bg-gray-100 rounded-lg transition-colors">
-                <Crown className="w-5 h-5 text-gray-600" />
+              <Link href="/offres" className="p-2 hover:bg-gray-100 rounded-full transition-colors">
+                <Crown className="w-6 h-6 text-moroccan-gold" />
               </Link>
             </div>
           </div>
@@ -73,72 +68,168 @@ export default function TranslatePage() {
       </header>
 
       <div className="container mx-auto px-4 py-6">
-        {/* Language Selection */}
-        <div className="mb-6">
-          <div className="flex items-center gap-4 mb-3">
-            <span className="text-sm text-gray-700">{t("translate.from")}</span>
-          </div>
-          <div className="flex gap-2 bg-gray-100 rounded-full p-1">
-            {languages.map((lang) => (
-              <button
-                key={lang.code}
-                onClick={() => setSelectedLang(lang.code)}
-                className={`flex-1 px-4 py-2 rounded-full text-sm font-medium transition-colors ${
-                  selectedLang === lang.code
-                    ? "bg-red-600 text-white"
-                    : "text-gray-700"
-                }`}
-              >
-                {lang.name}
-              </button>
-            ))}
-          </div>
-        </div>
+        <div className="md:flex md:gap-6">
+          {/* Input Panel */}
+          <div className="md:w-1/2">
+            {/* Language Selection */}
+            <div className="mb-4">
+              <div className="flex items-center gap-4 mb-2">
+                <span className="text-sm font-medium text-gray-800">{t("translate.from")}</span>
+              </div>
+              <div className="flex gap-2 bg-white/50 border border-gray-200/50 rounded-full p-1">
+                {languages.map((lang) => (
+                  <button
+                    key={lang.code}
+                    onClick={() => setSelectedLang(lang.code)}
+                    className={`flex-1 px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
+                      selectedLang === lang.code
+                        ? "bg-white shadow-sm text-moroccan-blue"
+                        : "text-gray-600 hover:bg-white/50"
+                    }`}
+                  >
+                    {lang.name}
+                  </button>
+                ))}
+              </div>
+            </div>
 
-        {/* Input Field */}
-        <div className="mb-6">
-          <div className="relative">
-            <textarea
-              value={inputText}
-              onChange={(e) => setInputText(e.target.value)}
-              placeholder={t("translate.input.placeholder")}
-              className="w-full px-4 py-4 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-red-600 resize-none min-h-[120px]"
-              rows={4}
-            />
-            {inputText && (
-              <button
-                onClick={clearInput}
-                className="absolute bottom-3 right-3 w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center hover:bg-gray-300 transition-colors"
-              >
-                <X className="w-4 h-4 text-gray-600" />
-              </button>
+            {/* Input Field */}
+            <div className="mb-4">
+              <div className="relative">
+                <textarea
+                  value={inputText}
+                  onChange={(e) => setInputText(e.target.value)}
+                  placeholder={t("translate.input.placeholder")}
+                  className="w-full px-4 py-4 bg-white/80 border border-gray-200/50 rounded-xl focus:outline-none focus:ring-2 focus:ring-moroccan-blue resize-none min-h-[200px] shadow-sm"
+                  rows={6}
+                />
+                {inputText && (
+                  <button
+                    onClick={clearInput}
+                    className="absolute top-3 right-3 w-8 h-8 bg-gray-200/50 rounded-full flex items-center justify-center hover:bg-gray-300/50 transition-colors"
+                  >
+                    <X className="w-4 h-4 text-gray-600" />
+                  </button>
+                )}
+              </div>
+            </div>
+          </div>
+          {/* Output Panel */}
+          <div className="md:w-1/2">
+            {result ? (
+              <div className="space-y-4">
+                {/* Arabic Script */}
+                <div className="bg-white/80 border border-gray-200/50 rounded-xl p-4 shadow-sm min-h-[100px]">
+                  <div className="flex items-center justify-between mb-2">
+                    <h3 className="font-bold text-gray-900">{t("translate.arabic")}</h3>
+                    <button
+                      onClick={() => handleCopy(result.arabic, "arabic")}
+                      className="p-2 hover:bg-gray-200/50 rounded-lg transition-colors"
+                      title="Copier"
+                    >
+                      {copied === "arabic" ? (
+                        <Check className="w-5 h-5 text-green-600" />
+                      ) : (
+                        <Copy className="w-5 h-5 text-gray-600" />
+                      )}
+                    </button>
+                  </div>
+                  <div className="flex items-center justify-center">
+                    <p className="text-2xl text-gray-800" dir="rtl">
+                      {result.arabic}
+                    </p>
+                  </div>
+                </div>
+
+                {/* Phonetic */}
+                <div className="bg-white/80 border border-gray-200/50 rounded-xl p-4 shadow-sm min-h-[100px]">
+                  <div className="flex items-center justify-between mb-2">
+                    <h3 className="font-bold text-gray-900">{t("translate.phonetic")}</h3>
+                    <div className="flex gap-2">
+                      <button
+                        onClick={() => handleCopy(result.phonetic, "phonetic")}
+                        className="p-2 hover:bg-gray-200/50 rounded-lg transition-colors"
+                        title="Copier"
+                      >
+                        {copied === "phonetic" ? (
+                          <Check className="w-5 h-5 text-green-600" />
+                        ) : (
+                          <Copy className="w-5 h-5 text-gray-600" />
+                        )}
+                      </button>
+                      <button
+                        onClick={handleSpeak}
+                        className="p-2 hover:bg-gray-200/50 rounded-lg transition-colors"
+                        title="Écouter"
+                      >
+                        <Volume2 className="w-5 h-5 text-gray-600" />
+                      </button>
+                    </div>
+                  </div>
+                  <div className="flex items-center">
+                    <p className="text-lg text-gray-800">{result.phonetic}</p>
+                  </div>
+                </div>
+              </div>
+            ) : (
+              <div className="space-y-4">
+                {/* Placeholder Arabic */}
+                <div className="bg-white/50 border border-gray-200/50 rounded-xl p-4 shadow-sm min-h-[100px]">
+                  <div className="flex items-center justify-between mb-2">
+                    <h3 className="font-bold text-gray-700">{t("translate.arabic")}</h3>
+                    <Copy className="w-5 h-5 text-gray-400" />
+                  </div>
+                  <div className="flex items-center justify-center">
+                    <p className="text-sm text-gray-500" dir="rtl">
+                      ترجمتك ستظهر هنا.
+                    </p>
+                  </div>
+                </div>
+
+                {/* Placeholder Phonetic */}
+                <div className="bg-white/50 border border-gray-200/50 rounded-xl p-4 shadow-sm min-h-[100px]">
+                  <div className="flex items-center justify-between mb-2">
+                    <h3 className="font-bold text-gray-700">{t("translate.phonetic")}</h3>
+                    <div className="flex gap-2">
+                      <Copy className="w-5 h-5 text-gray-400" />
+                      <Volume2 className="w-5 h-5 text-gray-400" />
+                    </div>
+                  </div>
+                  <div className="flex items-center">
+                    <p className="text-sm text-gray-500">
+                      Votre traduction apparaîtra ici.
+                    </p>
+                  </div>
+                </div>
+              </div>
             )}
           </div>
         </div>
 
-        {/* Translate Button */}
-        <button
-          onClick={handleTranslate}
-          disabled={!inputText.trim() || isLoading || limitError}
-          className="w-full bg-red-600 text-white px-6 py-4 rounded-xl hover:bg-red-700 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors flex items-center justify-center gap-2 font-medium mb-6"
-        >
-          {isLoading ? (
-            <>
-              <Loader2 className="w-5 h-5 animate-spin" />
-              {t("translate.loading")}
-            </>
-          ) : (
-            t("translate.button")
-          )}
-        </button>
+        <div className="flex justify-center my-4">
+          <button
+            onClick={handleTranslate}
+            disabled={!inputText.trim() || isLoading || limitError}
+            className="bg-moroccan-blue text-white px-8 py-3 rounded-full hover:bg-blue-700 disabled:bg-gray-400 disabled:cursor-not-allowed transition-all duration-300 flex items-center justify-center gap-2 font-medium shadow-lg transform hover:scale-105"
+          >
+            {isLoading ? (
+              <>
+                <Loader2 className="w-5 h-5 animate-spin" />
+                {t("translate.loading")}
+              </>
+            ) : (
+              t("translate.button")
+            )}
+          </button>
+        </div>
 
         {/* Limit Error */}
         {limitError && (
-          <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-xl">
+          <div className="mb-6 p-4 bg-red-500/10 border border-red-500/20 rounded-xl">
             <div className="flex items-start gap-3">
               <AlertCircle className="w-5 h-5 text-red-600 flex-shrink-0 mt-0.5" />
               <div className="flex-1">
-                <p className="text-sm font-medium text-red-900 mb-1">
+                <p className="text-sm font-medium text-red-800 mb-1">
                   {t("translate.limit.title")}
                 </p>
                 <p className="text-xs text-red-700 mb-3">
@@ -159,95 +250,6 @@ export default function TranslatePage() {
         {error && !limitError && (
           <div className="mb-6 p-4 bg-red-100 border border-red-400 text-red-700 rounded-xl">
             Erreur: {error instanceof Error ? error.message : "Une erreur est survenue"}
-          </div>
-        )}
-
-        {/* Output Sections */}
-        {result ? (
-          <div className="space-y-6">
-            {/* Arabic Script */}
-            <div className="bg-white border border-gray-300 rounded-xl p-4">
-              <div className="flex items-center justify-between mb-3">
-                <h3 className="font-bold text-gray-900">{t("translate.arabic")}</h3>
-                <button
-                  onClick={() => handleCopy(result.arabic, "arabic")}
-                  className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
-                  title="Copier"
-                >
-                  {copied === "arabic" ? (
-                    <Check className="w-5 h-5 text-green-600" />
-                  ) : (
-                    <Copy className="w-5 h-5 text-gray-600" />
-                  )}
-                </button>
-              </div>
-              <div className="min-h-[60px] flex items-center justify-center">
-                <p className="text-2xl text-gray-800" dir="rtl">
-                  {result.arabic}
-                </p>
-              </div>
-            </div>
-
-            {/* Phonetic */}
-            <div className="bg-white border border-gray-300 rounded-xl p-4">
-              <div className="flex items-center justify-between mb-3">
-                <h3 className="font-bold text-gray-900">{t("translate.phonetic")}</h3>
-                <div className="flex gap-2">
-                  <button
-                    onClick={() => handleCopy(result.phonetic, "phonetic")}
-                    className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
-                    title="Copier"
-                  >
-                    {copied === "phonetic" ? (
-                      <Check className="w-5 h-5 text-green-600" />
-                    ) : (
-                      <Copy className="w-5 h-5 text-gray-600" />
-                    )}
-                  </button>
-                  <button
-                    onClick={handleSpeak}
-                    className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
-                    title="Écouter"
-                  >
-                    <Volume2 className="w-5 h-5 text-gray-600" />
-                  </button>
-                </div>
-              </div>
-              <div className="min-h-[60px] flex items-center">
-                <p className="text-lg text-gray-800">{result.phonetic}</p>
-              </div>
-            </div>
-          </div>
-        ) : (
-          <div className="space-y-6">
-            {/* Placeholder Arabic */}
-            <div className="bg-white border border-gray-300 rounded-xl p-4">
-              <div className="flex items-center justify-between mb-3">
-                <h3 className="font-bold text-gray-900">{t("translate.arabic")}</h3>
-                <Copy className="w-5 h-5 text-gray-400" />
-              </div>
-              <div className="min-h-[60px] flex items-center justify-center">
-                <p className="text-sm text-gray-400" dir="rtl">
-                  ترجمتك ستظهر هنا.
-                </p>
-              </div>
-            </div>
-
-            {/* Placeholder Phonetic */}
-            <div className="bg-white border border-gray-300 rounded-xl p-4">
-              <div className="flex items-center justify-between mb-3">
-                <h3 className="font-bold text-gray-900">{t("translate.phonetic")}</h3>
-                <div className="flex gap-2">
-                  <Copy className="w-5 h-5 text-gray-400" />
-                  <Volume2 className="w-5 h-5 text-gray-400" />
-                </div>
-              </div>
-              <div className="min-h-[60px] flex items-center">
-                <p className="text-sm text-gray-400">
-                  Votre traduction apparaîtra ici.
-                </p>
-              </div>
-            </div>
           </div>
         )}
       </div>

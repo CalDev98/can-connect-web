@@ -25,12 +25,16 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import matchesData from "@/data/matches.json"; // Import matches data
 
 import { EmblaCarousel } from "@/components/Carousel";
+import LanguageSwitcher from "@/app/components/LanguageSwitcher";
 
 const countryCodes: { [key: string]: string } = {
-  "Morocco": "ma", "Tanzania": "tz", "Senegal": "sn", "Mali": "ml",
-  "Egypt": "eg", "Ghana": "gh", "Algeria": "dz", "Tunisia": "tn",
-  "Nigeria": "ng", "Cameroon": "cm", "Ivory Coast": "ci", "Burkina Faso": "bf",
-  "Congo": "cg", "Guinea": "gn"
+  "MAR": "ma", "TAN": "tz", "SÉN": "sn", "MAL": "ml",
+  "ÉGY": "eg", "ALG": "dz", "TUN": "tn",
+  "NGR": "ng", "CMR": "cm", "CIV": "ci", "BFA": "bf",
+  "RDC": "cg", "ZAM": "zm", "COM": "km",
+  "AFS": "za", "ANG": "ao", "ZIM": "zw", "OUG": "ug",
+  "BÉN": "bj", "BOT": "bw", "GEQ": "gq", "SOU": "sd",
+  "GAB": "ga", "MOZ": "mz"
 };
 
 export default function HomePage() {
@@ -39,7 +43,7 @@ export default function HomePage() {
 
   const nextMatch = useMemo(() => {
     const now = new Date();
-    const upcomingMatches = matchesData.filter(match => {
+    const upcomingMatches = matchesData.matches.filter(match => {
       const matchDateTime = new Date(`${match.date}T${match.time}:00`);
       return matchDateTime > now;
     });
@@ -50,7 +54,7 @@ export default function HomePage() {
       return dateA.getTime() - dateB.getTime();
     });
     return upcomingMatches.length > 0 ? upcomingMatches[0] : null;
-  }, [matchesData]);
+  }, []);
 
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
@@ -73,10 +77,10 @@ export default function HomePage() {
           <div className="flex items-center justify-between">
             <h1 className="text-lg font-bold text-gray-800">CAN Connect</h1>
             <div className="flex items-center justify-center">
-            
             <Link href="/offres" className="p-2 hover:bg-gray-100 rounded-lg transition-colors">
                 <Crown className="w-6 h-6 text-gray-800 text-moroccan-gold" />
             </Link>
+            <LanguageSwitcher />
             <Link href={user ? "/settings" : "/login"} className="p-2 flex items-center gap-1 hover:bg-gray-100 rounded-lg transition-colors">
               <UserIcon className="w-5 h-5 text-gray-600" />
             </Link>
@@ -111,11 +115,11 @@ export default function HomePage() {
               <div className="flex items-center justify-around py-2">
                 <div className="flex flex-col items-center gap-2">
                   <img
-                    src={`https://flagcdn.com/w40/${countryCodes[nextMatch.team1]?.toLowerCase()}.png`}
-                    alt={`${nextMatch.team1} flag`}
+                    src={`https://flagcdn.com/w40/${countryCodes[nextMatch.team1.code!]?.toLowerCase()}.png`}
+                    alt={`${nextMatch.team1.name} flag`}
                     className="w-10 h-10 object-contain rounded-full shadow-sm"
                   />
-                  <span className="text-sm font-bold text-gray-800">{nextMatch.team1}</span>
+                  <span className="text-sm font-bold text-gray-800">{nextMatch.team1.name}</span>
                 </div>
                 <div className="text-center">
                   <p className="text-xl font-bold text-gray-900">VS</p>
@@ -123,11 +127,11 @@ export default function HomePage() {
                 </div>
                 <div className="flex flex-col items-center gap-2">
                   <img
-                    src={`https://flagcdn.com/w40/${countryCodes[nextMatch.team2]?.toLowerCase()}.png`}
-                    alt={`${nextMatch.team2} flag`}
+                    src={`https://flagcdn.com/w40/${countryCodes[nextMatch.team2.code!]?.toLowerCase()}.png`}
+                    alt={`${nextMatch.team2.name} flag`}
                     className="w-10 h-10 object-contain rounded-full shadow-sm"
                   />
-                  <span className="text-sm font-bold text-gray-800">{nextMatch.team2}</span>
+                  <span className="text-sm font-bold text-gray-800">{nextMatch.team2.name}</span>
                 </div>
               </div>
               <div className="border-t border-gray-100 mt-3 pt-3 text-sm text-gray-600 flex justify-between items-center">
@@ -137,7 +141,7 @@ export default function HomePage() {
                 </div>
                 <div className="flex items-center gap-1">
                   <MapPin className="w-4 h-4" />
-                  <span>{nextMatch.stadium}</span>
+                  <span>{nextMatch.stadium.name}</span>
                 </div>
               </div>
             </div>

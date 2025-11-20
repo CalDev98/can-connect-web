@@ -36,6 +36,7 @@ const translations: Record<Language, Record<string, string>> = {
     "home.stadiums.desc": "Trouver le chemin vers le match",
     "home.emergency": "Urgence & Aide",
     "home.emergency.desc": "Obtenir de l'aide rapidement",
+    "home.nextMatch": "Prochain match",
     
     // Assistant
     "assistant.title": "CAN 2025 Guide",
@@ -172,6 +173,7 @@ const translations: Record<Language, Record<string, string>> = {
     "home.stadiums.desc": "Find your way to the match",
     "home.emergency": "Emergency & Help",
     "home.emergency.desc": "Get help quickly",
+    "home.nextMatch": "Next Match",
     
     // Assistant
     "assistant.title": "CAN 2025 Guide",
@@ -308,6 +310,7 @@ const translations: Record<Language, Record<string, string>> = {
     "home.stadiums.desc": "Encuentra el camino al partido",
     "home.emergency": "Emergencia y Ayuda",
     "home.emergency.desc": "Obtener ayuda rápidamente",
+    "home.nextMatch": "Próximo partido",
     
     // Assistant
     "assistant.title": "Guía CAN 2025",
@@ -443,6 +446,7 @@ const translations: Record<Language, Record<string, string>> = {
     "home.stadiums.desc": "Encontre o caminho para o jogo",
     "home.emergency": "Emergência e Ajuda",
     "home.emergency.desc": "Obter ajuda rapidamente",
+    "home.nextMatch": "Próximo Jogo",
     
     // Assistant
     "assistant.title": "Guia CAN 2025",
@@ -579,6 +583,7 @@ const translations: Record<Language, Record<string, string>> = {
     "home.stadiums.desc": "العثور على الطريق إلى المباراة",
     "home.emergency": "الطوارئ والمساعدة",
     "home.emergency.desc": "الحصول على المساعدة بسرعة",
+    "home.nextMatch": "المباراة القادمة",
     
     // Assistant
     "assistant.title": "دليل كان 2025",
