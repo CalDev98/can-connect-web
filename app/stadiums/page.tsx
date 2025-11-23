@@ -9,7 +9,7 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import { StadiumCard } from "@/components/StadiumCard"; // Import the enhanced StadiumCard
 
 interface Stadium {
-  id: number;
+  id: string;
   name: string;
   city: string;
   capacity: number;
@@ -55,7 +55,7 @@ export default function StadiumsPage() {
           stadium.longitude
         ),
       })).sort((a, b) => a.distance - b.distance)
-      .map(item => ({ ...item.stadium, distance: item.distance })); // Add distance to stadium object
+        .map(item => ({ ...item.stadium, distance: item.distance })); // Add distance to stadium object
     } else {
       filtered = filtered.map(stadium => ({ ...stadium, distance: undefined }));
     }

@@ -5,7 +5,7 @@ import Image from "next/image";
 import { useLanguage } from "@/contexts/LanguageContext"; // Import useLanguage
 
 interface Stadium {
-  id: number;
+  id: string;
   name: string;
   city: string;
   capacity: number;
@@ -23,13 +23,14 @@ interface StadiumCardProps {
 export function StadiumCard({ stadium, distance }: StadiumCardProps) {
   const { t } = useLanguage(); // Use the translation hook
   const mapsUrl = `https://www.google.com/maps?q=${stadium.latitude},${stadium.longitude}`;
-  const placeholderImage = "https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=400"; // Generic stadium image
+  //const placeholderImage = "https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=400"; // Generic stadium image
 
   return (
     <div className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 border border-gray-200">
       <div className="relative h-48 w-full bg-gray-200">
         <Image
-          src={stadium.image || placeholderImage}
+          // src={stadium.image || placeholderImage}
+          src={stadium.image.startsWith("./public") ? stadium.image.replace("./public", "") : stadium.image}
           alt={stadium.name}
           fill
           className="object-cover"
@@ -62,7 +63,7 @@ export function StadiumCard({ stadium, distance }: StadiumCardProps) {
           href={mapsUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="w-full inline-flex items-center justify-center gap-2 bg-green-800 text-white px-4 py-2.5 rounded-lg hover:bg-blue-700 transition-colors text-base font-medium mt-4"
+          className="w-full inline-flex items-center justify-center gap-2 bg-green-800 text-white px-4 py-2.5 rounded-lg hover:bg-green-700 transition-colors text-base font-medium mt-4"
         >
           <Navigation className="w-5 h-5" />
           {t("stadiums.openMaps")}
