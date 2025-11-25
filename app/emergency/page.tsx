@@ -100,7 +100,7 @@ export default function EmergencyPage() {
         </div>
 
         {/* Nearby Hospitals */}
-        <div>
+        {/* <div>
           <h2 className="text-xl font-bold text-gray-900 mb-4">{t("emergency.hospitals")}</h2>
           <div className="space-y-3">
             {emergencyData.hospitals.map((hospital) => (
@@ -126,7 +126,7 @@ export default function EmergencyPage() {
               </a>
             ))}
           </div>
-        </div>
+        </div> */}
       </main>
     </div>
   );

@@ -25,8 +25,8 @@
     "name": "Complexe sportif de Fès",
     "city": "Fès",
     "capacity": 35468,
-    "latitude": 34.0010,
-    "longitude": 4.5808,
+    "latitude": 43.634636,
+    "longitude": 3.831237,
     "address": "Route de Sefrou, Fès",
     "image": "/images/stade-fes.jpeg"
   },
@@ -75,8 +75,8 @@
     "name": "Annexe complexe Moulay Abdellah",
     "city": "Rabat",
     "capacity": 21000,
-    "latitude": 34.0209,
-    "longitude": -6.8416,
+    "latitude": 34.018605,
+    "longitude": -6.832754,
     "address": "Avenue Hassan II, Rabat",
     "image": "/images/stade_prince_moulay_abdellah.jpg"
   },

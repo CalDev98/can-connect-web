@@ -6,12 +6,17 @@
       "description": "Emergency police services"
     },
     {
+      "name": "Gendarmerie Royale",
+      "number": "177",
+      "description": "Emergency gendarmerie services"
+    },
+    {
       "name": "Ambulance",
-      "number": "15",
+      "number": "150",
       "description": "Medical emergency services"
     },
     {
-      "name": "Firefighters",
+      "name": "Pompiers",
       "number": "15",
       "description": "Fire and rescue services"
     }
@@ -87,4 +92,3 @@
     }
   ]
 }
-

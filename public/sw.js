@@ -1,4 +1,4 @@
-const CACHE_NAME = 'canconnect-v1.6';
+const CACHE_NAME = 'canconnect-v1.8';
 const urlsToCache = [
   '/',
   '/assistant',
@@ -50,8 +50,8 @@ self.addEventListener('fetch', (event) => {
   }
 
   // Skip API requests
-  if (event.request.url.includes('/api/') || 
-      event.request.url.includes('openrouter.ai')) {
+  if (event.request.url.includes('/api/') ||
+    event.request.url.includes('openrouter.ai')) {
     return;
   }
 

@@ -15,9 +15,7 @@ export default function PremiumPage() {
 
   const handleUpgrade = () => {
     setIsProcessing(true);
-    // Étape minimale : on envoie l'utilisateur vers /login
-    // Une fois connecté, il pourra être redirigé vers la page de paiement.
-    router.push("/login");
+    router.push("/signup");
   };
 
   return (
@@ -124,13 +122,13 @@ export default function PremiumPage() {
               <button
                 onClick={handleUpgrade}
                 disabled={isProcessing}
-                className="w-full bg-white text-moroccan-gold px-6 py-4 rounded-lg hover:bg-gray-100 transition-colors font-bold text-lg disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full bg-moroccan-gold text-white px-6 py-4 rounded-lg hover:bg-moroccan-gold/80 transition-colors font-bold text-lg disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {isProcessing ? t("premium.processing") : t("premium.button", { price: PREMIUM_PRICE })}
               </button>
             </div>
 
-            
+
 
             <p className="text-gray-600 text-sm text-center">
               {t("premium.disclaimer")}
