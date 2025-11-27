@@ -11,6 +11,29 @@ export function useLocation() {
   const [location, setLocation] = useState<Location | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [permissionStatus, setPermissionStatus] = useState<PermissionState | null>(null);
+
+  // Vérifier la permission
+  useEffect(() => {
+    const checkPermission = async () => {
+      if ('permissions' in navigator) {
+        try {
+          const result = await navigator.permissions.query({ name: 'geolocation' });
+          setPermissionStatus(result.state);
+
+          // Écouter les changements de permission
+          result.addEventListener('change', () => {
+            setPermissionStatus(result.state);
+          });
+        } catch (err) {
+          console.warn("Impossible de vérifier les permissions");
+        }
+      }
+    };
+
+    checkPermission();
+  }, []);
+
 
   useEffect(() => {
     if (!navigator.geolocation) {
@@ -58,12 +81,6 @@ export function useLocation() {
       options
     );
   }, []);
-
-  useEffect(() => {
-    if (location) {
-      console.log("location", location);
-    }
-  }, [location]);
 
   const calculateDistance = (
     lat1: number,
