@@ -7,7 +7,7 @@ type Language = "fr" | "en" | "es" | "pt" | "ar";
 interface LanguageContextType {
   language: Language;
   setLanguage: (lang: Language) => void;
-  t: (key: string, params?: Record<string, string | number | boolean | null | undefined >) => string;
+  t: (key: string, params?: Record<string, string | number | boolean | null | undefined>) => string;
 }
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
@@ -22,7 +22,7 @@ const translations: Record<Language, Record<string, string>> = {
     "nav.matches": "Matchs",
     "nav.emergency": "Urgence",
     "nav.translation": "Traduction",
-    
+
     // Home
     "home.welcome": "Bienvenue au Maroc !",
     "home.matches": "Matchs & Infos",
@@ -37,7 +37,7 @@ const translations: Record<Language, Record<string, string>> = {
     "home.emergency": "Urgence & Aide",
     "home.emergency.desc": "Obtenir de l'aide rapidement",
     "home.nextMatch": "Prochain match",
-    
+
     // Assistant
     "assistant.title": "CAN 2025 Guide",
     "assistant.welcome": "Bienvenue au Maroc ! Je suis votre assistant officiel CAN 2025. Comment puis-je vous aider aujourd'hui ?",
@@ -48,7 +48,7 @@ const translations: Record<Language, Record<string, string>> = {
     "assistant.limit.message": "Vous avez utilisé vos {limit} messages gratuits aujourd'hui.",
     "assistant.limit.upgrade": "Passer Premium",
     "assistant.remaining": "{count} msg",
-    
+
     // Translation
     "translate.title": "Traducteur Darija",
     "translate.from": "Traduire depuis:",
@@ -61,7 +61,7 @@ const translations: Record<Language, Record<string, string>> = {
     "translate.limit.message": "Vous avez utilisé vos {limit} traductions gratuites aujourd'hui.",
     "translate.limit.upgrade": "Passer Premium",
     "translate.remaining": "{count} trad",
-    
+
     // Stadiums
     "stadiums.title": "Les Stades de la CAN 2025",
     "stadiums.distance": "À {distance} km",
@@ -72,7 +72,7 @@ const translations: Record<Language, Record<string, string>> = {
     "stadiums.search.placeholder": "Rechercher un stade ou une ville...",
     "stadiums.search.noResults": "Aucun stade trouvé pour votre recherche.",
     "stadiums.capacity": "Capacité : {capacity} places",
-    
+
     // Matches
     "matches.title": "Calendrier des Matchs",
     "matches.filter.city": "Ville",
@@ -85,14 +85,14 @@ const translations: Record<Language, Record<string, string>> = {
     "matches.empty.title": "Aucun match pour le moment",
     "matches.empty.desc": "Il n'y a aucun match {tab} actuellement.",
     "matches.live": "En direct",
-    
+
     // Emergency
     "emergency.title": "Urgence & Assistance",
     "emergency.numbers": "Numéros d'urgence",
     "emergency.call": "Appeler",
     "emergency.hospitals": "Hôpitaux proches",
     "emergency.phrases": "Phrases d'urgence",
-    
+
     // Settings
     "settings.title": "Paramètres",
     "settings.account": "Compte",
@@ -101,6 +101,7 @@ const translations: Record<Language, Record<string, string>> = {
     "settings.account.premium.desc": "Accès illimité à toutes les fonctionnalités",
     "settings.account.free.desc": "10 messages/jour • 15 traductions/jour",
     "settings.account.upgrade": "Upgrade",
+    "settings.account.logout": "Se deconnecter",
     "settings.preferences": "Préférences",
     "settings.preferences.language": "Langue",
     "settings.preferences.language.desc": "Choisir la langue de l'interface",
@@ -125,7 +126,7 @@ const translations: Record<Language, Record<string, string>> = {
     "settings.success.clearCache": "Cache vidé avec succès !",
     "settings.confirm.clearAll": "⚠️ ATTENTION: Cela supprimera toutes vos données locales (messages, traductions, préférences). Cette action est irréversible. Continuer ?",
     "settings.success.clearAll": "Toutes les données ont été supprimées. L'application va se recharger.",
-    
+
     // Premium
     "premium.title": "Pack CAN 2025",
     "premium.free.title": "Plan Gratuit",
@@ -134,12 +135,12 @@ const translations: Record<Language, Record<string, string>> = {
     "premium.free.ads": "Publicités",
     "premium.premium.title": "Pack CAN 2025",
     "premium.premium.price": "{price}€",
-    "premium.premium.lifetime": "Expire automatiquement le 15 février 2025 (fin de la CAN).",
+    "premium.premium.lifetime": "Expire automatiquement le 20 Janvier 2026 (fin de la CAN).",
     "premium.premium.unlimited.messages": "Messages illimités",
     "premium.premium.unlimited.translations": "Traductions illimitées",
     "premium.premium.noAds": "Aucune publicité",
     "premium.premium.support": "Support prioritaire",
-    "premium.button": "Passer Premium - {price}€",
+    "premium.button": "Passer Premium - {price}MAD",
     "premium.processing": "Traitement...",
     "premium.success.title": "Vous êtes Premium !",
     "premium.success.desc": "Profitez de toutes les fonctionnalités sans limites.",
@@ -174,7 +175,7 @@ const translations: Record<Language, Record<string, string>> = {
     "home.emergency": "Emergency & Help",
     "home.emergency.desc": "Get help quickly",
     "home.nextMatch": "Next Match",
-    
+
     // Assistant
     "assistant.title": "CAN 2025 Guide",
     "assistant.welcome": "Welcome to Morocco! I'm your official CAN 2025 assistant. How can I help you today?",
@@ -185,7 +186,7 @@ const translations: Record<Language, Record<string, string>> = {
     "assistant.limit.message": "You have used your {limit} free messages today.",
     "assistant.limit.upgrade": "Upgrade to Premium",
     "assistant.remaining": "{count} msg",
-    
+
     // Translation
     "translate.title": "Darija Translator",
     "translate.from": "Translate from:",
@@ -198,7 +199,7 @@ const translations: Record<Language, Record<string, string>> = {
     "translate.limit.message": "You have used your {limit} free translations today.",
     "translate.limit.upgrade": "Upgrade to Premium",
     "translate.remaining": "{count} trad",
-    
+
     // Stadiums
     "stadiums.title": "CAN 2025 Stadiums",
     "stadiums.distance": "At {distance} km",
@@ -209,7 +210,7 @@ const translations: Record<Language, Record<string, string>> = {
     "stadiums.search.placeholder": "Search for a stadium or city...",
     "stadiums.search.noResults": "No stadiums found for your search.",
     "stadiums.capacity": "Capacity: {capacity} seats",
-    
+
     // Matches
     "matches.title": "Match Calendar",
     "matches.filter.city": "City",
@@ -222,14 +223,14 @@ const translations: Record<Language, Record<string, string>> = {
     "matches.empty.title": "No matches right now",
     "matches.empty.desc": "There are no {tab} matches currently.",
     "matches.live": "Live",
-    
+
     // Emergency
     "emergency.title": "Emergency & Assistance",
     "emergency.numbers": "Emergency numbers",
     "emergency.call": "Call",
     "emergency.hospitals": "Nearby hospitals",
     "emergency.phrases": "Emergency phrases",
-    
+
     // Settings
     "settings.title": "Settings",
     "settings.account": "Account",
@@ -238,6 +239,7 @@ const translations: Record<Language, Record<string, string>> = {
     "settings.account.premium.desc": "Unlimited access to all features",
     "settings.account.free.desc": "10 messages/day • 15 translations/day",
     "settings.account.upgrade": "Upgrade",
+    "settings.account.logout": "Logout",
     "settings.preferences": "Preferences",
     "settings.preferences.language": "Language",
     "settings.preferences.language.desc": "Choose interface language",
@@ -262,7 +264,7 @@ const translations: Record<Language, Record<string, string>> = {
     "settings.success.clearCache": "Cache cleared successfully!",
     "settings.confirm.clearAll": "⚠️ WARNING: This will delete all your local data (messages, translations, preferences). This action is irreversible. Continue?",
     "settings.success.clearAll": "All data has been deleted. The application will reload.",
-    
+
     // Premium
     "premium.title": "Pack CAN 2025",
     "premium.free.title": "Free Plan",
@@ -271,7 +273,7 @@ const translations: Record<Language, Record<string, string>> = {
     "premium.free.ads": "Ads",
     "premium.premium.title": "Pack CAN 2025",
     "premium.premium.price": "€{price}",
-    "premium.premium.lifetime": "Automatically expires on February 15, 2025 (end of AFCON)",
+    "premium.premium.lifetime": "Automatically expires on January 20, 2026 (end of AFCON)",
     "premium.premium.unlimited.messages": "Unlimited messages",
     "premium.premium.unlimited.translations": "Unlimited translations",
     "premium.premium.noAds": "No ads",
@@ -281,7 +283,7 @@ const translations: Record<Language, Record<string, string>> = {
     "premium.success.title": "You are Premium!",
     "premium.success.desc": "Enjoy all features without limits.",
     "premium.success.back": "Back to home",
-    "premium.disclaimer": "Secure payment • Immediate access • Automatically expires after AFCON (Feb 15, 2025)",
+    "premium.disclaimer": "Secure payment • Immediate access • Automatically expires after AFCON (Jan 20, 2026)",
     "premium.email.label": "Email address",
     "premium.email.placeholder": "Enter your email to receive confirmation",
     "premium.email.required": "Please enter a valid email address.",
@@ -311,7 +313,7 @@ const translations: Record<Language, Record<string, string>> = {
     "home.emergency": "Emergencia y Ayuda",
     "home.emergency.desc": "Obtener ayuda rápidamente",
     "home.nextMatch": "Próximo partido",
-    
+
     // Assistant
     "assistant.title": "Guía CAN 2025",
     "assistant.welcome": "¡Bienvenido a Marruecos! Soy tu asistente oficial de CAN 2025. ¿Cómo puedo ayudarte hoy?",
@@ -322,7 +324,7 @@ const translations: Record<Language, Record<string, string>> = {
     "assistant.limit.message": "Has usado tus {limit} mensajes gratuitos hoy.",
     "assistant.limit.upgrade": "Actualizar a Premium",
     "assistant.remaining": "{count} msg",
-    
+
     // Translation
     "translate.title": "Traductor Darija",
     "translate.from": "Traducir desde:",
@@ -335,7 +337,7 @@ const translations: Record<Language, Record<string, string>> = {
     "translate.limit.message": "Has usado tus {limit} traducciones gratuitas hoy.",
     "translate.limit.upgrade": "Actualizar a Premium",
     "translate.remaining": "{count} trad",
-    
+
     // Stadiums
     "stadiums.title": "Estadios de CAN 2025",
     "stadiums.distance": "A {distance} km",
@@ -346,7 +348,7 @@ const translations: Record<Language, Record<string, string>> = {
     "stadiums.search.placeholder": "Buscar un estadio o ciudad...",
     "stadiums.search.noResults": "No se encontraron estadios para tu búsqueda.",
     "stadiums.capacity": "Capacidad: {capacity} asientos",
-    
+
     // Matches
     "matches.title": "Calendario de Partidos",
     "matches.filter.city": "Ciudad",
@@ -358,14 +360,14 @@ const translations: Record<Language, Record<string, string>> = {
     "matches.empty.title": "No hay partidos por ahora",
     "matches.empty.desc": "Actualmente no hay partidos {tab}.",
     "matches.live": "En vivo",
-    
+
     // Emergency
     "emergency.title": "Emergencia y Asistencia",
     "emergency.numbers": "Números de emergencia",
     "emergency.call": "Llamar",
     "emergency.hospitals": "Hospitales cercanos",
     "emergency.phrases": "Frases de emergencia",
-    
+
     // Settings
     "settings.title": "Configuración",
     "settings.account": "Cuenta",
@@ -374,6 +376,7 @@ const translations: Record<Language, Record<string, string>> = {
     "settings.account.premium.desc": "Acceso ilimitado a todas las funciones",
     "settings.account.free.desc": "10 mensajes/día • 15 traducciones/día",
     "settings.account.upgrade": "Actualizar",
+    "settings.account.logout": "Cerrar sesión",
     "settings.preferences": "Preferencias",
     "settings.preferences.language": "Idioma",
     "settings.preferences.language.desc": "Elegir idioma de la interfaz",
@@ -398,7 +401,7 @@ const translations: Record<Language, Record<string, string>> = {
     "settings.success.clearCache": "¡Caché limpiada con éxito!",
     "settings.confirm.clearAll": "⚠️ ADVERTENCIA: Esto eliminará todos sus datos locales (mensajes, traducciones, preferencias). Esta acción es irreversible. ¿Continuar?",
     "settings.success.clearAll": "Todos los datos han sido eliminados. La aplicación se recargará.",
-    
+
     // Premium
     "premium.title": "Pack CAN 2025",
     "premium.free.title": "Plan Gratuito",
@@ -407,7 +410,7 @@ const translations: Record<Language, Record<string, string>> = {
     "premium.free.ads": "Anuncios",
     "premium.premium.title": "Pack CAN 2025",
     "premium.premium.price": "{price}€",
-    "premium.premium.lifetime": "Expira automáticamente el 15 de febrero de 2025 (fin de la CAN)",
+    "premium.premium.lifetime": "Expira automáticamente el 20 de enero de 2026 (fin de la CAN)",
     "premium.premium.unlimited.messages": "Mensajes ilimitados",
     "premium.premium.unlimited.translations": "Traducciones ilimitadas",
     "premium.premium.noAds": "Sin anuncios",
@@ -417,7 +420,7 @@ const translations: Record<Language, Record<string, string>> = {
     "premium.success.title": "¡Eres Premium!",
     "premium.success.desc": "Disfruta de todas las funciones sin límites.",
     "premium.success.back": "Volver al inicio",
-    "premium.disclaimer": "Pago seguro • Acceso inmediato • Expira automáticamente tras la CAN (15 febrero 2025)",
+    "premium.disclaimer": "Pago seguro • Acceso inmediato • Expira automáticamente tras la CAN (20 enero 2026)",
     "premium.email.label": "Correo electrónico",
     "premium.email.placeholder": "Introduce tu correo para recibir la confirmación",
     "premium.email.required": "Por favor, introduce un correo válido.",
@@ -447,7 +450,7 @@ const translations: Record<Language, Record<string, string>> = {
     "home.emergency": "Emergência e Ajuda",
     "home.emergency.desc": "Obter ajuda rapidamente",
     "home.nextMatch": "Próximo Jogo",
-    
+
     // Assistant
     "assistant.title": "Guia CAN 2025",
     "assistant.welcome": "Bem-vindo ao Marrocos! Sou seu assistente oficial da CAN 2025. Como posso ajudá-lo hoje?",
@@ -458,7 +461,7 @@ const translations: Record<Language, Record<string, string>> = {
     "assistant.limit.message": "Você usou suas {limit} mensagens gratuitas hoje.",
     "assistant.limit.upgrade": "Atualizar para Premium",
     "assistant.remaining": "{count} msg",
-    
+
     // Translation
     "translate.title": "Tradutor Darija",
     "translate.from": "Traduzir de:",
@@ -471,7 +474,7 @@ const translations: Record<Language, Record<string, string>> = {
     "translate.limit.message": "Você usou suas {limit} traduções gratuitas hoje.",
     "translate.limit.upgrade": "Atualizar para Premium",
     "translate.remaining": "{count} trad",
-    
+
     // Stadiums
     "stadiums.title": "Estádios da CAN 2025",
     "stadiums.distance": "A {distance} km",
@@ -482,7 +485,7 @@ const translations: Record<Language, Record<string, string>> = {
     "stadiums.search.placeholder": "Pesquisar um estádio ou cidade...",
     "stadiums.search.noResults": "Nenhum estádio encontrado para sua pesquisa.",
     "stadiums.capacity": "Capacidade: {capacity} lugares",
-    
+
     // Matches
     "matches.title": "Calendário de Jogos",
     "matches.filter.city": "Cidade",
@@ -495,14 +498,14 @@ const translations: Record<Language, Record<string, string>> = {
     "matches.empty.title": "Nenhum jogo no momento",
     "matches.empty.desc": "Não há jogos {tab} no momento.",
     "matches.live": "Ao vivo",
-    
+
     // Emergency
     "emergency.title": "Emergência e Assistência",
     "emergency.numbers": "Números de emergência",
     "emergency.call": "Ligar",
     "emergency.hospitals": "Hospitais próximos",
     "emergency.phrases": "Frases de emergência",
-    
+
     // Settings
     "settings.title": "Configurações",
     "settings.account": "Conta",
@@ -511,6 +514,7 @@ const translations: Record<Language, Record<string, string>> = {
     "settings.account.premium.desc": "Acesso ilimitado a todos os recursos",
     "settings.account.free.desc": "10 mensagens/dia • 15 traduções/dia",
     "settings.account.upgrade": "Atualizar",
+    "settings.account.logout": "Sair",
     "settings.preferences": "Preferências",
     "settings.preferences.language": "Idioma",
     "settings.preferences.language.desc": "Escolher idioma da interface",
@@ -535,7 +539,7 @@ const translations: Record<Language, Record<string, string>> = {
     "settings.success.clearCache": "Cache limpo com sucesso!",
     "settings.confirm.clearAll": "⚠️ ATENÇÃO: Isso excluirá todos os seus dados locais (mensagens, traduções, preferências). Esta ação é irreversível. Continuar?",
     "settings.success.clearAll": "Todos os dados foram excluídos. O aplicativo será recarregado.",
-    
+
     // Premium
     "premium.title": "Pack CAN 2025",
     "premium.free.title": "Plano Gratuito",
@@ -544,7 +548,7 @@ const translations: Record<Language, Record<string, string>> = {
     "premium.free.ads": "Anúncios",
     "premium.premium.title": "Pack CAN 2025",
     "premium.premium.price": "{price}€",
-    "premium.premium.lifetime": "Expira automaticamente em 15 de fevereiro de 2025 (fim da CAN)",
+    "premium.premium.lifetime": "Expira automaticamente em 20 de janeiro de 2026 (fim da CAN)",
     "premium.premium.unlimited.messages": "Mensagens ilimitadas",
     "premium.premium.unlimited.translations": "Traduções ilimitadas",
     "premium.premium.noAds": "Sem anúncios",
@@ -554,7 +558,7 @@ const translations: Record<Language, Record<string, string>> = {
     "premium.success.title": "Você é Premium!",
     "premium.success.desc": "Desfrute de todos os recursos sem limites.",
     "premium.success.back": "Voltar ao início",
-    "premium.disclaimer": "Pagamento seguro • Acesso imediato • Expira automaticamente após a CAN (15 de fevereiro de 2025)",
+    "premium.disclaimer": "Pagamento seguro • Acesso imediato • Expira automaticamente após a CAN (20 de janeiro de 2026)",
     "premium.email.label": "Endereço de e-mail",
     "premium.email.placeholder": "Digite seu e-mail para receber a confirmação",
     "premium.email.required": "Por favor, insira um e-mail válido.",
@@ -584,7 +588,7 @@ const translations: Record<Language, Record<string, string>> = {
     "home.emergency": "الطوارئ والمساعدة",
     "home.emergency.desc": "الحصول على المساعدة بسرعة",
     "home.nextMatch": "المباراة القادمة",
-    
+
     // Assistant
     "assistant.title": "دليل كان 2025",
     "assistant.welcome": "مرحباً بك في المغرب! أنا مساعدك الرسمي لكان 2025. كيف يمكنني مساعدتك اليوم؟",
@@ -595,7 +599,7 @@ const translations: Record<Language, Record<string, string>> = {
     "assistant.limit.message": "لقد استخدمت {limit} رسائل مجانية اليوم.",
     "assistant.limit.upgrade": "الترقية إلى المميز",
     "assistant.remaining": "{count} رسالة",
-    
+
     // Translation
     "translate.title": "مترجم الدارجة",
     "translate.from": "الترجمة من:",
@@ -608,7 +612,7 @@ const translations: Record<Language, Record<string, string>> = {
     "translate.limit.message": "لقد استخدمت {limit} ترجمات مجانية اليوم.",
     "translate.limit.upgrade": "الترقية إلى المميز",
     "translate.remaining": "{count} ترجمة",
-    
+
     // Stadiums
     "stadiums.title": "ملاعب كان 2025",
     "stadiums.distance": "على بعد {distance} كم",
@@ -619,7 +623,7 @@ const translations: Record<Language, Record<string, string>> = {
     "stadiums.search.placeholder": "البحث عن ملعب أو مدينة...",
     "stadiums.search.noResults": "لم يتم العثور على ملاعب لبحثك.",
     "stadiums.capacity": "السعة: {capacity} مقعد",
-    
+
     // Matches
     "matches.title": "تقويم المباريات",
     "matches.filter.city": "المدينة",
@@ -638,7 +642,7 @@ const translations: Record<Language, Record<string, string>> = {
     "emergency.call": "اتصل",
     "emergency.hospitals": "المستشفيات القريبة",
     "emergency.phrases": "عبارات الطوارئ",
-    
+
     // Settings
     "settings.title": "الإعدادات",
     "settings.account": "الحساب",
@@ -647,6 +651,7 @@ const translations: Record<Language, Record<string, string>> = {
     "settings.account.premium.desc": "وصول غير محدود لجميع الميزات",
     "settings.account.free.desc": "10 رسائل/يوم • 15 ترجمة/يوم",
     "settings.account.upgrade": "ترقية",
+    "settings.account.logout": "تسجيل الخروج",
     "settings.preferences": "التفضيلات",
     "settings.preferences.language": "اللغة",
     "settings.preferences.language.desc": "اختر لغة الواجهة",
@@ -671,7 +676,7 @@ const translations: Record<Language, Record<string, string>> = {
     "settings.success.clearCache": "تم مسح الذاكرة المؤقتة بنجاح!",
     "settings.confirm.clearAll": "⚠️ تحذير: سيؤدي هذا إلى حذف جميع بياناتك المحلية (الرسائل والترجمات والتفضيلات). هذا الإجراء لا رجعة فيه. متابعة؟",
     "settings.success.clearAll": "تم حذف جميع البيانات. سيتم إعادة تحميل التطبيق.",
-    
+
     // Premium
     "premium.title": "Pack CAN 2025",
     "premium.free.title": "الخطة المجانية",
@@ -680,7 +685,7 @@ const translations: Record<Language, Record<string, string>> = {
     "premium.free.ads": "إعلانات",
     "premium.premium.title": "Pack CAN 2025",
     "premium.premium.price": "{price}€",
-    "premium.premium.lifetime": "تنتهي صلاحيتها تلقائياً في 15 فبراير 2025 (نهاية كأس الأمم)",
+    "premium.premium.lifetime": "تنتهي صلاحيتها تلقائياً في 20 يناير 2026 (نهاية كأس الأمم)",
     "premium.premium.unlimited.messages": "رسائل غير محدودة",
     "premium.premium.unlimited.translations": "ترجمات غير محدودة",
     "premium.premium.noAds": "بدون إعلانات",
@@ -690,7 +695,7 @@ const translations: Record<Language, Record<string, string>> = {
     "premium.success.title": "أنت مميز!",
     "premium.success.desc": "استمتع بجميع الميزات بدون حدود.",
     "premium.success.back": "العودة إلى الرئيسية",
-    "premium.disclaimer": "دفع آمن • وصول فوري • تنتهي صلاحية الاشتراك تلقائياً بعد بطولة كأس الأمم (15 فبراير 2025)",
+    "premium.disclaimer": "دفع آمن • وصول فوري • تنتهي صلاحية الاشتراك تلقائياً بعد بطولة كأس الأمم (20 يناير 2026)",
     "premium.email.label": "البريد الإلكتروني",
     "premium.email.placeholder": "أدخل بريدك الإلكتروني لتلقي التأكيد",
     "premium.email.required": "يرجى إدخال بريد إلكتروني صالح.",
@@ -731,13 +736,13 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
 
   const t = (key: string, params?: Record<string, string | number | boolean | null | undefined>): string => {
     const translation = translations[language]?.[key] || translations.fr[key] || key;
-    
+
     if (params) {
       return translation.replace(/\{(\w+)\}/g, (match, paramKey) => {
         return params[paramKey]?.toString() || match;
       });
     }
-    
+
     return translation;
   };
 

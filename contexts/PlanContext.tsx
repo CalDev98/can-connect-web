@@ -22,7 +22,7 @@ const PlanContext = createContext<PlanContextType | undefined>(undefined);
 
 const FREE_MESSAGES_LIMIT = 10;
 const FREE_TRANSLATIONS_LIMIT = 15;
-const PREMIUM_PRICE = 5.99;
+const PREMIUM_PRICE = 59.99;
 
 export function PlanProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
