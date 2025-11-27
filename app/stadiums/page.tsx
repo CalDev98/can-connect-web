@@ -39,6 +39,9 @@ export default function StadiumsPage() {
   const { location, error: locationError } = useLocation();
   const [searchTerm, setSearchTerm] = useState("");
 
+  console.log("location", location);
+
+
   const filteredAndSortedStadiums = useMemo(() => {
     let filtered = stadiumsData.filter((stadium: Stadium) =>
       stadium.name.toLowerCase().includes(searchTerm.toLowerCase()) ||

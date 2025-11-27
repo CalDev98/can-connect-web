@@ -19,6 +19,12 @@ export function useLocation() {
       return;
     }
 
+    const options = {
+      enableHighAccuracy: true,
+      timeout: 5000,
+      maximumAge: 0
+    };
+
     navigator.geolocation.getCurrentPosition(
       (position) => {
         setLocation({
@@ -28,11 +34,36 @@ export function useLocation() {
         setIsLoading(false);
       },
       (err) => {
-        setError("Impossible d'obtenir votre position");
+        console.error("Geolocation error:", err);
+        let errorMessage = "Impossible d'obtenir votre position";
+
+        switch (err.code) {
+          case err.PERMISSION_DENIED:
+            errorMessage = "L'utilisateur a refusé la demande de géolocalisation.";
+            break;
+          case err.POSITION_UNAVAILABLE:
+            errorMessage = "Les informations de localisation ne sont pas disponibles.";
+            break;
+          case err.TIMEOUT:
+            errorMessage = "La demande de localisation a expiré.";
+            break;
+          default:
+            errorMessage = "Une erreur inconnue est survenue.";
+            break;
+        }
+
+        setError(errorMessage);
         setIsLoading(false);
-      }
+      },
+      options
     );
   }, []);
+
+  useEffect(() => {
+    if (location) {
+      console.log("location", location);
+    }
+  }, [location]);
 
   const calculateDistance = (
     lat1: number,
@@ -46,9 +77,9 @@ export function useLocation() {
     const a =
       Math.sin(dLat / 2) * Math.sin(dLat / 2) +
       Math.cos((lat1 * Math.PI) / 180) *
-        Math.cos((lat2 * Math.PI) / 180) *
-        Math.sin(dLon / 2) *
-        Math.sin(dLon / 2);
+      Math.cos((lat2 * Math.PI) / 180) *
+      Math.sin(dLon / 2) *
+      Math.sin(dLon / 2);
     const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
     return R * c;
   };
