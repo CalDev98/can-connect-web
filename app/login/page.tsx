@@ -131,7 +131,7 @@ export default function LoginPage() {
               <ShieldCheck className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
               <span>
                 <span className="font-semibold">Pas encore de compte ?</span> La
-                création d'un compte est l'étape pour passer Premium et
+                création d&apos;un compte est l&apos;étape pour passer Premium et
                 sauvegarder vos avantages.
               </span>
             </p>
@@ -140,7 +140,7 @@ export default function LoginPage() {
           <p className="text-center text-xs text-gray-500">
             En continuant, vous acceptez nos{" "}
             <a href="#" className="font-medium hover:underline">
-              conditions d'utilisation
+              conditions d&apos;utilisation
             </a>
             .
           </p>

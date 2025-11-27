@@ -116,9 +116,11 @@ export default function HomePage() {
               </div>
               <div className="flex items-center justify-around py-2">
                 <div className="flex flex-col items-center gap-2">
-                  <img
+                  <Image
                     src={`https://flagcdn.com/w40/${countryCodes[nextMatch.team1.code!]?.toLowerCase()}.png`}
                     alt={`${nextMatch.team1.name} flag`}
+                    width={40}
+                    height={30}
                     className="w-10 object-contain rounded shadow-sm"
                   />
                   <span className="text-sm font-bold text-gray-800">{nextMatch.team1.name}</span>
@@ -128,9 +130,11 @@ export default function HomePage() {
                   <p className="text-xs text-gray-500">{nextMatch.time} GMT+1</p>
                 </div>
                 <div className="flex flex-col items-center gap-2">
-                  <img
+                  <Image
                     src={`https://flagcdn.com/w40/${countryCodes[nextMatch.team2.code!]?.toLowerCase()}.png`}
                     alt={`${nextMatch.team2.name} flag`}
+                    width={40}
+                    height={30}
                     className="w-10 object-contain rounded shadow-sm"
                   />
                   <span className="text-sm font-bold text-gray-800">{nextMatch.team2.name}</span>

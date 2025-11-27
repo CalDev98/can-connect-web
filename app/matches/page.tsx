@@ -3,6 +3,7 @@
 import { useState, useMemo } from "react";
 import { ArrowLeft, Calendar, Clock, Shield, MapPin, Tv } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 import matchesData from "@/data/matches.json";
 import { useLanguage } from "@/contexts/LanguageContext";
 
@@ -56,9 +57,11 @@ const MatchCard = ({ match, status }: { match: any; status: string }) => {
         <div className="flex items-center justify-around">
           <div className="flex-1 flex flex-col items-center gap-2 text-center">
             {team1Code ? (
-              <img
+              <Image
                 src={`https://flagcdn.com/w80/${team1Code}.png`}
                 alt={`${match.team1.name} flag`}
+                width={48}
+                height={36}
                 className="w-12 object-contain rounded shadow-md"
               />
             ) : (
@@ -80,9 +83,11 @@ const MatchCard = ({ match, status }: { match: any; status: string }) => {
 
           <div className="flex-1 flex flex-col items-center gap-2 text-center">
             {team2Code ? (
-              <img
+              <Image
                 src={`https://flagcdn.com/w80/${team2Code}.png`}
                 alt={`${match.team2.name} flag`}
+                width={48}
+                height={36}
                 className="w-12 object-contain rounded shadow-md"
               />
             ) : (
