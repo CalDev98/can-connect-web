@@ -129,7 +129,7 @@ export default function EmergencyPage() {
           </div>
         </div> */}
       </main>
-      <BottomNav />
+      <BottomNav activeTab="emergency" />
     </div>
   );
 }

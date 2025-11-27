@@ -236,7 +236,7 @@ export default function HomePage() {
 
       {/* Bottom Navigation Bar */}
 
-      <BottomNav />
+      <BottomNav activeTab="home" />
     </div>
   );
 }

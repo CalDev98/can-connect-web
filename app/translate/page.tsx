@@ -255,7 +255,7 @@ export default function TranslatePage() {
       </div>
 
       {/* Bottom Navigation Bar */}
-      <BottomNav />
+      <BottomNav activeTab="translate" />
     </div>
   );
 }
