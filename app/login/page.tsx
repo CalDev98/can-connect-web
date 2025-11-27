@@ -83,7 +83,7 @@ export default function LoginPage() {
         {/* Stadium Light Effect */}
         <div className="absolute -top-1/4 -left-1/4 w-1/2 h-1/2 bg-white/10 rounded-full filter blur-3xl opacity-50"></div>
         <div className="absolute -bottom-1/4 -right-1/4 w-2/3 h-2/3 bg-moroccan-gold/10 rounded-full filter blur-3xl opacity-50"></div>
-        
+
         <div className="relative z-10 text-center space-y-4">
           <h1 className="text-4xl md:text-5xl font-bold tracking-tight">
             CANConnect
@@ -125,13 +125,6 @@ export default function LoginPage() {
               </button>
             ))}
           </div>
-
-          <Link
-            href="/offres"
-            className="w-full flex items-center justify-center gap-3 rounded-lg bg-moroccan-gold text-white px-4 py-3 font-medium shadow-sm transition-all hover:bg-yellow-600 disabled:opacity-60 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-moroccan-gold"
-          >
-            Passer au Premium
-          </Link>
 
           <div className="text-sm text-gray-600 bg-gray-50 p-4 rounded-lg border border-gray-200">
             <p className="flex items-start gap-2">

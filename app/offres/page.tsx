@@ -9,13 +9,23 @@ import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function PremiumPage() {
   const { t } = useLanguage();
-  const { isPremium } = usePlan();
+  const { isPremium, user } = usePlan();
   const [isProcessing, setIsProcessing] = useState(false);
   const router = useRouter();
 
+  // TODO: Replace with actual Stripe payment link
+  const STRIPE_PAYMENT_URL = "https://buy.stripe.com/test_placeholder";
+
   const handleUpgrade = () => {
     setIsProcessing(true);
-    router.push("/signup");
+
+    if (user) {
+      // User is logged in, redirect to payment
+      window.location.href = STRIPE_PAYMENT_URL;
+    } else {
+      // User is not logged in, redirect to login
+      router.push("/login");
+    }
   };
 
   return (
