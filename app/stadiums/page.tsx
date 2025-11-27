@@ -77,22 +77,21 @@ export default function StadiumsPage() {
 
       <main className="container mx-auto px-4 py-6 space-y-6">
         {/* Location Section */}
-        <div className="bg-blue-50 border border-blue-200 rounded-xl p-4">
-          <h2 className="text-sm font-bold text-blue-800 mb-2 uppercase tracking-wider">
-            {t("stadiums.yourLocation")}
-          </h2>
-          <div className="flex items-center gap-3">
-            <MapPin className="w-6 h-6 text-green-800 flex-shrink-0" />
-            {location ? (
+        {/* Location Section */}
+        {location && (
+          <div className="bg-blue-50 border border-blue-200 rounded-xl p-4">
+            <h2 className="text-sm font-bold text-blue-800 mb-2 uppercase tracking-wider">
+              {t("stadiums.yourLocation")}
+            </h2>
+            <div className="flex items-center gap-3">
+              <MapPin className="w-6 h-6 text-green-800 flex-shrink-0" />
               <p className="text-lg font-mono text-blue-900">
                 {location.latitude.toFixed(5)}, {location.longitude.toFixed(5)}
               </p>
-            ) : (
-              <p className="text-blue-800">{locationError || t("stadiums.location.unavailable")}</p>
-            )}
+            </div>
+            <p className="text-xs text-blue-700 mt-2">{t("stadiums.location.desc")}</p>
           </div>
-          <p className="text-xs text-blue-700 mt-2">{t("stadiums.location.desc")}</p>
-        </div>
+        )}
 
         {/* Search Bar */}
         <div className="relative flex items-center bg-white w-full border border-gray-200 px-4 py-2 rounded-xl gap-2">

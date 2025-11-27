@@ -4,8 +4,8 @@
     "name": "Stade Mohamed V",
     "city": "Casablanca",
     "capacity": 45000,
-    "latitude": 33.5731,
-    "longitude": -7.5898,
+    "latitude": 33.582778,
+    "longitude": 7.646944,
     "address": "Boulevard Zerktouni, Casablanca",
     "image": "/images/stade-mohammed-v.jpeg",
     "distance": 10.0
@@ -15,8 +15,8 @@
     "name": "Grand stade de Tanger",
     "city": "Tanger",
     "capacity": 75600,
-    "latitude": 35.7595,
-    "longitude": -5.8330,
+    "latitude": 35.741111,
+    "longitude": 5.858056,
     "address": "Route de Rabat, Tanger",
     "image": "/images/stade-tanger.jpg"
   },
@@ -25,8 +25,8 @@
     "name": "Complexe sportif de Fès",
     "city": "Fès",
     "capacity": 35468,
-    "latitude": 43.634636,
-    "longitude": 3.831237,
+    "latitude": 34.002778,
+    "longitude": 4.968889,
     "address": "Route de Sefrou, Fès",
     "image": "/images/stade-fes.jpeg"
   },
@@ -45,8 +45,8 @@
     "name": "Complexe sportif Moulay Abdellah",
     "city": "Rabat",
     "capacity": 69500,
-    "latitude": 34.0209,
-    "longitude": -6.8416,
+    "latitude": 33.843333,
+    "longitude": 6.889167,
     "address": "Avenue Hassan II, Rabat",
     "image": "/images/stade-rabat.jpg"
   },
@@ -55,8 +55,8 @@
     "name": "Complexe sportif Moulay El Hassan",
     "city": "Rabat",
     "capacity": 22000,
-    "latitude": 34.0209,
-    "longitude": -6.8416,
+    "latitude": 33.975833,
+    "longitude": 6.824167,
     "address": "Avenue Hassan II, Rabat",
     "image": "/images/stade_moulay_el_hassan.jpg"
   },
@@ -65,8 +65,8 @@
     "name": "Stade El Barid",
     "city": "Rabat",
     "capacity": 18000,
-    "latitude": 34.0209,
-    "longitude": -6.8416,
+    "latitude": 34.005278,
+    "longitude": 6.845278,
     "address": "Avenue Hassan II, Rabat",
     "image": "/images/stade_al_barid.jpg"
   },
@@ -75,8 +75,8 @@
     "name": "Annexe complexe Moulay Abdellah",
     "city": "Rabat",
     "capacity": 21000,
-    "latitude": 34.018605,
-    "longitude": -6.832754,
+    "latitude": 33.957222,
+    "longitude": 6.891389,
     "address": "Avenue Hassan II, Rabat",
     "image": "/images/stade_prince_moulay_abdellah.jpg"
   },
@@ -85,8 +85,8 @@
     "name": "Grand stade d'Agadir",
     "city": "Agadir",
     "capacity": 41144,
-    "latitude": 30.4278,
-    "longitude": -9.5981,
+    "latitude": 30.4272,
+    "longitude": -9.5404,
     "address": "Boulevard Mohammed V, Agadir",
     "image": "/images/stade-agadir.jpg"
   }
