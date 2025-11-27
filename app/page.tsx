@@ -65,7 +65,7 @@ export default function HomePage() {
       year: 'numeric'
     });
   };
-  
+
   return (
     <div className="min-h-screen bg-moroccan-light" style={{
       backgroundImage: 'radial-gradient(circle, rgba(255, 249, 230, 0.4) 1px, transparent 1px)',
@@ -77,13 +77,13 @@ export default function HomePage() {
           <div className="flex items-center justify-between">
             <h1 className="text-lg font-bold text-gray-800">CAN Connect</h1>
             <div className="flex items-center justify-center">
-            <Link href="/offres" className="p-2 hover:bg-gray-100 rounded-lg transition-colors">
+              <Link href="/offres" className="p-2 hover:bg-gray-100 rounded-lg transition-colors">
                 <Crown className="w-6 h-6 text-gray-800 text-moroccan-gold" />
-            </Link>
-            <LanguageSwitcher />
-            <Link href={user ? "/settings" : "/login"} className="p-2 flex items-center gap-1 hover:bg-gray-100 rounded-lg transition-colors">
-              <UserIcon className="w-5 h-5 text-gray-600" />
-            </Link>
+              </Link>
+              <LanguageSwitcher />
+              <Link href={user ? "/settings" : "/login"} className="p-2 flex items-center gap-1 hover:bg-gray-100 rounded-lg transition-colors">
+                <UserIcon className="w-5 h-5 text-gray-600" />
+              </Link>
             </div>
           </div>
         </div>
@@ -117,7 +117,7 @@ export default function HomePage() {
                   <img
                     src={`https://flagcdn.com/w40/${countryCodes[nextMatch.team1.code!]?.toLowerCase()}.png`}
                     alt={`${nextMatch.team1.name} flag`}
-                    className="w-10 h-10 object-contain rounded-full shadow-sm"
+                    className="w-10 object-contain rounded shadow-sm"
                   />
                   <span className="text-sm font-bold text-gray-800">{nextMatch.team1.name}</span>
                 </div>
@@ -129,7 +129,7 @@ export default function HomePage() {
                   <img
                     src={`https://flagcdn.com/w40/${countryCodes[nextMatch.team2.code!]?.toLowerCase()}.png`}
                     alt={`${nextMatch.team2.name} flag`}
-                    className="w-10 h-10 object-contain rounded-full shadow-sm"
+                    className="w-10 object-contain rounded shadow-sm"
                   />
                   <span className="text-sm font-bold text-gray-800">{nextMatch.team2.name}</span>
                 </div>

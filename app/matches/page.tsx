@@ -59,10 +59,10 @@ const MatchCard = ({ match, status }: { match: any; status: string }) => {
               <img
                 src={`https://flagcdn.com/w80/${team1Code}.png`}
                 alt={`${match.team1.name} flag`}
-                className="w-12 h-12 object-contain rounded-full shadow-md"
+                className="w-12 object-contain rounded shadow-md"
               />
             ) : (
-              <div className="w-12 h-12 bg-gray-200 rounded-full shadow-md"></div>
+              <div className="w-12 bg-gray-200 rounded shadow-md"></div>
             )}
             <span className="font-bold text-gray-800">{match.team1.name}</span>
           </div>
@@ -83,10 +83,10 @@ const MatchCard = ({ match, status }: { match: any; status: string }) => {
               <img
                 src={`https://flagcdn.com/w80/${team2Code}.png`}
                 alt={`${match.team2.name} flag`}
-                className="w-12 h-12 object-contain rounded-full shadow-md"
+                className="w-12 object-contain rounded shadow-md"
               />
             ) : (
-              <div className="w-12 h-12 bg-gray-200 rounded-full shadow-md"></div>
+              <div className="w-12 bg-gray-200 rounded shadow-md"></div>
             )}
             <span className="font-bold text-gray-800">{match.team2.name}</span>
           </div>
@@ -171,11 +171,10 @@ export default function MatchesPage() {
             <button
               key={tab}
               onClick={() => setActiveTab(tab as any)}
-              className={`flex-1 py-3 text-sm font-medium transition-colors ${
-                activeTab === tab
-                  ? "text-moroccan-blue border-b-2 border-moroccan-blue"
-                  : "text-gray-600 hover:bg-gray-100"
-              }`}
+              className={`flex-1 py-3 text-sm font-medium transition-colors ${activeTab === tab
+                ? "text-moroccan-blue border-b-2 border-moroccan-blue"
+                : "text-gray-600 hover:bg-gray-100"
+                }`}
             >
               {t(`matches.tabs.${tab.toLowerCase()}`)}
             </button>
