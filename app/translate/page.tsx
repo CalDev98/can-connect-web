@@ -5,6 +5,7 @@ import { useTranslation } from "@/hooks/useTranslation";
 import { ArrowLeft, Copy, Volume2, Loader2, Check, X, Crown, AlertCircle } from "lucide-react";
 import Link from "next/link";
 import { useLanguage } from "@/contexts/LanguageContext";
+import BottomNav from "@/components/BottomNav";
 
 const languages = [
   { code: "fr", name: "Français" },
@@ -81,11 +82,10 @@ export default function TranslatePage() {
                   <button
                     key={lang.code}
                     onClick={() => setSelectedLang(lang.code)}
-                    className={`flex-1 px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
-                      selectedLang === lang.code
-                        ? "bg-white shadow-sm text-moroccan-blue"
-                        : "text-gray-600 hover:bg-white/50"
-                    }`}
+                    className={`flex-1 px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${selectedLang === lang.code
+                      ? "bg-white shadow-sm text-moroccan-blue"
+                      : "text-gray-600 hover:bg-white/50"
+                      }`}
                   >
                     {lang.name}
                   </button>
@@ -253,6 +253,9 @@ export default function TranslatePage() {
           </div>
         )}
       </div>
+
+      {/* Bottom Navigation Bar */}
+      <BottomNav />
     </div>
   );
 }

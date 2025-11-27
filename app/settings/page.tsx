@@ -114,8 +114,8 @@ export default function SettingsPage() {
                     </Link>
                   )}
                 </div>
-                 {/* Logout Button */}
-                 <button
+                {/* Logout Button */}
+                <button
                   onClick={handleLogout}
                   className="w-full p-4 text-left flex items-center gap-3 hover:bg-red-50 transition-colors text-red-600"
                 >
@@ -173,7 +173,7 @@ export default function SettingsPage() {
               </select>
             </div>
 
-            
+
 
             {/* Notifications */}
             <div className="p-4 flex items-center justify-between">
@@ -187,15 +187,23 @@ export default function SettingsPage() {
                 </div>
               </div>
               <button
-                onClick={() => setNotifications(!notifications)}
-                className={`relative w-12 h-6 rounded-full transition-colors ${
-                  notifications ? "bg-moroccan-blue" : "bg-gray-300"
-                }`}
+                onClick={async () => {
+                  const newStatus = !notifications;
+                  setNotifications(newStatus);
+                  if (newStatus && user) {
+                    const { subscribeToPushNotifications } = await import("@/utils/notifications");
+                    await subscribeToPushNotifications(user.id);
+                  } else if (!newStatus && user) {
+                    const { unsubscribeFromPushNotifications } = await import("@/utils/notifications");
+                    await unsubscribeFromPushNotifications(user.id);
+                  }
+                }}
+                className={`relative w-12 h-6 rounded-full transition-colors ${notifications ? "bg-moroccan-blue" : "bg-gray-300"
+                  }`}
               >
                 <span
-                  className={`absolute top-1 left-1 w-4 h-4 bg-white rounded-full transition-transform ${
-                    notifications ? "translate-x-6" : "translate-x-0"
-                  }`}
+                  className={`absolute top-1 left-1 w-4 h-4 bg-white rounded-full transition-transform ${notifications ? "translate-x-6" : "translate-x-0"
+                    }`}
                 />
               </button>
             </div>

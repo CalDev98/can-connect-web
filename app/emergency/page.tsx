@@ -6,6 +6,7 @@ import Link from "next/link";
 import emergencyData from "@/data/emergency.json";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useLocation } from "@/hooks/useLocation";
+import BottomNav from "@/components/BottomNav";
 
 // Haversine distance function
 const getDistance = (lat1: number, lon1: number, lat2: number, lon2: number) => {
@@ -128,6 +129,7 @@ export default function EmergencyPage() {
           </div>
         </div> */}
       </main>
+      <BottomNav />
     </div>
   );
 }
