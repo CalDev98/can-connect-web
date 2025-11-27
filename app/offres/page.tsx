@@ -14,7 +14,7 @@ export default function PremiumPage() {
   const router = useRouter();
 
   // TODO: Replace with actual Stripe payment link
-  const STRIPE_PAYMENT_URL = "https://buy.stripe.com/test_placeholder";
+  const STRIPE_PAYMENT_URL = "https://buy.stripe.com/14A3cw9Wt7lc7AAdhNf7i05";
 
   const handleUpgrade = () => {
     setIsProcessing(true);

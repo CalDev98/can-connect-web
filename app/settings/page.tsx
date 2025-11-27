@@ -9,11 +9,29 @@ import { supabase } from "@/lib/supabaseClient";
 import { useRouter } from "next/navigation";
 
 export default function SettingsPage() {
-  const { isPremium, user } = usePlan();
+  const { isPremium, user, isLoading } = usePlan();
   const { language, setLanguage, t } = useLanguage();
   const [darkMode, setDarkMode] = useState(false);
   const [notifications, setNotifications] = useState(true);
   const router = useRouter();
+
+  useEffect(() => {
+    if (!isLoading && !user) {
+      router.push("/login");
+    }
+  }, [user, isLoading, router]);
+
+  if (isLoading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gray-50">
+        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-green-800"></div>
+      </div>
+    );
+  }
+
+  if (!user) {
+    return null; // Will redirect
+  }
 
   const handleLogout = async () => {
     if (!supabase) return;
@@ -107,7 +125,7 @@ export default function SettingsPage() {
                   </div>
                   {!isPremium && (
                     <Link
-                      href="/offres"
+                      href="https://buy.stripe.com/14A3cw9Wt7lc7AAdhNf7i05"
                       className="bg-moroccan-gold text-white px-4 py-2 rounded-lg hover:bg-yellow-600 transition-colors text-sm font-medium"
                     >
                       {t("settings.account.upgrade")}

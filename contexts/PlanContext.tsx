@@ -7,6 +7,7 @@ import { User } from "@supabase/supabase-js";
 interface PlanContextType {
   isPremium: boolean;
   user: User | null;
+  isLoading: boolean;
   messagesUsed: number;
   translationsUsed: number;
   messagesLimit: number;
@@ -25,6 +26,7 @@ const PREMIUM_PRICE = 5.99;
 
 export function PlanProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
   const [isPremium, setIsPremium] = useState(false);
   const [messagesUsed, setMessagesUsed] = useState(0);
   const [translationsUsed, setTranslationsUsed] = useState(0);
@@ -65,11 +67,12 @@ export function PlanProvider({ children }: { children: ReactNode }) {
         setIsPremium(data?.plan === "premium");
       }
     };
-    
+
     const { data: authListener } = supabase?.auth.onAuthStateChange(
       (event, session) => {
         const currentUser = session?.user ?? null;
         setUser(currentUser);
+        setIsLoading(false);
         if (currentUser) {
           fetchProfile(currentUser);
         } else {
@@ -82,6 +85,16 @@ export function PlanProvider({ children }: { children: ReactNode }) {
       authListener.subscription?.unsubscribe();
     };
   }, []);
+
+  const resetDailyLimits = () => {
+    const today = new Date().toDateString();
+    setMessagesUsed(0);
+    setTranslationsUsed(0);
+    setLastResetDate(today);
+    localStorage.setItem("messagesUsed", "0");
+    localStorage.setItem("translationsUsed", "0");
+    localStorage.setItem("lastResetDate", today);
+  };
 
   const upgradeToPremium = async () => {
     if (!supabase || !user) {
@@ -142,21 +155,12 @@ export function PlanProvider({ children }: { children: ReactNode }) {
     return true;
   };
 
-  const resetDailyLimits = () => {
-    const today = new Date().toDateString();
-    setMessagesUsed(0);
-    setTranslationsUsed(0);
-    setLastResetDate(today);
-    localStorage.setItem("messagesUsed", "0");
-    localStorage.setItem("translationsUsed", "0");
-    localStorage.setItem("lastResetDate", today);
-  };
-
   return (
     <PlanContext.Provider
       value={{
         isPremium,
         user,
+        isLoading,
         messagesUsed,
         translationsUsed,
         messagesLimit: isPremium ? Infinity : FREE_MESSAGES_LIMIT,
