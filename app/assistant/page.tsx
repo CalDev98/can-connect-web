@@ -10,7 +10,7 @@ import { useLanguage } from "@/contexts/LanguageContext";
 export default function AssistantPage() {
   const { t } = useLanguage();
   const { messages, sendMessage, isLoading, error, messagesUsed, messagesLimit, isPremium, canSendMessage } = useAI();
-  
+
   const quickActions = [
     t("assistant.quick.eat"),
     t("assistant.quick.visit"),
@@ -21,19 +21,7 @@ export default function AssistantPage() {
 
   const limitError = !canSendMessage();
 
-  useEffect(() => {
-    if (!hasWelcomed && messages.length === 0) {
-      setHasWelcomed(true);
-      // Add welcome message without counting towards limit
-      const welcomeMessage = {
-        role: "assistant" as const,
-        content: "Welcome to Morocco! I'm your personal assistant for a better CAN 2025 experience . How can I help you today?",
-        timestamp: new Date(),
-      };
-      // This will be handled by the hook's state, but we need to add it manually
-      // For now, we'll just show it in the UI
-    }
-  }, [hasWelcomed, messages.length]);
+
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -101,11 +89,10 @@ export default function AssistantPage() {
               </div>
             )}
             <div
-              className={`max-w-[75%] rounded-2xl px-4 py-3 shadow-sm ${
-                msg.role === "user"
-                  ? "bg-moroccan-blue text-white rounded-br-none"
-                  : "bg-white text-gray-900 rounded-bl-none"
-              }`}
+              className={`max-w-[75%] rounded-2xl px-4 py-3 shadow-sm ${msg.role === "user"
+                ? "bg-moroccan-blue text-white rounded-br-none"
+                : "bg-white text-gray-900 rounded-bl-none"
+                }`}
             >
               <p className="text-sm whitespace-pre-wrap">{msg.content}</p>
             </div>

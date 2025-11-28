@@ -40,7 +40,7 @@ const translations: Record<Language, Record<string, string>> = {
 
     // Assistant
     "assistant.title": "CAN 2025 Guide",
-    "assistant.welcome": "Bienvenue au Maroc ! Je suis votre assistant officiel CAN 2025. Comment puis-je vous aider aujourd'hui ?",
+    "assistant.welcome": "Bienvenue au Maroc ! Je suis votre assistant personnel pour une meilleure expérience CAN 2025. Comment puis-je vous aider aujourd'hui ?",
     "assistant.placeholder": "Posez votre question ici..",
     "assistant.quick.eat": "Où manger près de moi ?",
     "assistant.quick.visit": "Que visiter aujourd'hui",
@@ -178,7 +178,7 @@ const translations: Record<Language, Record<string, string>> = {
 
     // Assistant
     "assistant.title": "CAN 2025 Guide",
-    "assistant.welcome": "Welcome to Morocco! I'm your official CAN 2025 assistant. How can I help you today?",
+    "assistant.welcome": "Welcome to Morocco! I'm your personal assistant for a better CAN 2025 experience. How can I help you today?",
     "assistant.placeholder": "Ask your question here..",
     "assistant.quick.eat": "Where to eat near me?",
     "assistant.quick.visit": "What to visit today",
@@ -316,7 +316,7 @@ const translations: Record<Language, Record<string, string>> = {
 
     // Assistant
     "assistant.title": "Guía CAN 2025",
-    "assistant.welcome": "¡Bienvenido a Marruecos! Soy tu asistente oficial de CAN 2025. ¿Cómo puedo ayudarte hoy?",
+    "assistant.welcome": "¡Bienvenido a Marruecos! Soy tu asistente personal para una mejor experiencia en la CAN 2025. ¿Cómo puedo ayudarte hoy?",
     "assistant.placeholder": "Haz tu pregunta aquí..",
     "assistant.quick.eat": "¿Dónde comer cerca de mí?",
     "assistant.quick.visit": "Qué visitar hoy",
@@ -453,7 +453,7 @@ const translations: Record<Language, Record<string, string>> = {
 
     // Assistant
     "assistant.title": "Guia CAN 2025",
-    "assistant.welcome": "Bem-vindo ao Marrocos! Sou seu assistente oficial da CAN 2025. Como posso ajudá-lo hoje?",
+    "assistant.welcome": "Bem-vindo ao Marrocos! Sou o seu assistente pessoal para uma melhor experiência na CAN 2025. Como posso ajudá-lo hoje?",
     "assistant.placeholder": "Faça sua pergunta aqui..",
     "assistant.quick.eat": "Onde comer perto de mim?",
     "assistant.quick.visit": "O que visitar hoje",
@@ -591,7 +591,7 @@ const translations: Record<Language, Record<string, string>> = {
 
     // Assistant
     "assistant.title": "دليل كان 2025",
-    "assistant.welcome": "مرحباً بك في المغرب! أنا مساعدك الرسمي لكان 2025. كيف يمكنني مساعدتك اليوم؟",
+    "assistant.welcome": "مرحباً بك في المغرب! أنا مساعدك الشخصي لتجربة أفضل في كأس أمم إفريقيا 2025. كيف يمكنني مساعدتك اليوم؟",
     "assistant.placeholder": "اطرح سؤالك هنا..",
     "assistant.quick.eat": "أين يمكنني الأكل بالقرب مني؟",
     "assistant.quick.visit": "ماذا أزور اليوم",
