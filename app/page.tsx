@@ -104,12 +104,12 @@ export default function HomePage() {
           {nextMatch ? (
             <div className="bg-white rounded-xl shadow-md p-4 mb-6 border border-gray-200">
               <div className="flex justify-between items-center mb-3">
-                <span className="text-xs font-semibold text-moroccan-blue uppercase tracking-wider">
+                <span className="text-xs font-semibold text-green-900 uppercase tracking-wider">
                   {t("home.nextMatch")}
                 </span>
                 <Link
                   href="/matches"
-                  className="text-sm text-moroccan-blue hover:underline flex items-center gap-1"
+                  className="text-sm text-green-900 hover:underline flex items-center gap-1"
                 >
                   {t("home.viewSchedule")} <ChevronRight className="w-3 h-3" />
                 </Link>

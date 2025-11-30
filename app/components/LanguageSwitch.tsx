@@ -31,7 +31,7 @@ export default function LanguageSwitch({
         </button>
       ))}
       <div
-        className="absolute top-1 left-1 h-[calc(100%-8px)] w-[calc(25%-4px)] rounded-full bg-green-500 transition-transform duration-300 ease-in-out"
+        className="absolute top-1 left-1 h-[calc(100%-8px)] w-[calc(25%-4px)] rounded-full bg-green-900 transition-transform duration-300 ease-in-out"
         style={{
           transform: `translateX(${languages.findIndex((l) => l.code === selectedLang) * 100
             }%)`,

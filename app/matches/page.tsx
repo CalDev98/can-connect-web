@@ -177,7 +177,7 @@ export default function MatchesPage() {
               key={tab}
               onClick={() => setActiveTab(tab as any)}
               className={`flex-1 py-3 text-sm font-medium transition-colors ${activeTab === tab
-                ? "text-moroccan-blue border-b-2 border-moroccan-blue"
+                ? "text-green-900 border-b-2 border-green-900"
                 : "text-gray-600 hover:bg-gray-100"
                 }`}
             >

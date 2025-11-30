@@ -201,7 +201,7 @@ export default function TranslatePage() {
           <button
             onClick={handleTranslate}
             disabled={!inputText.trim() || isLoading || limitError}
-            className="w-full md:w-auto bg-gradient-to-r from-green-500 to-green-600 text-white px-10 py-4 rounded-full hover:from-green-600 hover:to-green-700 disabled:bg-gray-400 disabled:cursor-not-allowed transition-all duration-300 flex items-center justify-center gap-2 font-bold text-lg shadow-lg transform hover:scale-105"
+            className="w-full md:w-auto bg-gradient-to-r from-green-800 to-green-900 text-white px-10 py-4 rounded-full hover:from-green-900 hover:to-green-800 disabled:bg-gray-400 disabled:cursor-not-allowed transition-all duration-300 flex items-center justify-center gap-2 font-bold text-lg shadow-lg transform hover:scale-105"
           >
             {isLoading ? (
               <>
