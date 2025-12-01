@@ -173,10 +173,10 @@ export default function HomePage() {
           <div className="grid grid-cols-2 gap-4 mb-6">
             {/* AI Assistant */}
             <Link href="/assistant">
-              <div className="bg-white rounded-xl shadow-md p-5 hover:shadow-lg transition-shadow">
+              <div className="bg-white rounded-xl shadow-md p-5 hover:shadow-lg transition-shadow md:h-[150px]">
                 <div className="flex flex-col items-center text-center">
                   <div className="bg-moroccan-yellow p-3 rounded-full mb-3">
-                    <Bot className="w-8 h-8 text-moroccan-gold" />
+                    <Bot className="w-8 h-8 text-moroccan-gold md:w-6 md:h-6" />
                   </div>
                   <h3 className="font-bold text-gray-900 mb-1 text-sm">
                     {t("home.aiAssistant")}
@@ -188,10 +188,10 @@ export default function HomePage() {
 
             {/* Darija Translation */}
             <Link href="/translate">
-              <div className="bg-white rounded-xl shadow-md p-5 hover:shadow-lg transition-shadow">
+              <div className="bg-white rounded-xl shadow-md p-5 hover:shadow-lg transition-shadow md:h-[150px]">
                 <div className="flex flex-col items-center text-center">
                   <div className="bg-moroccan-yellow p-3 rounded-full mb-3">
-                    <Languages className="w-8 h-8 text-moroccan-gold" />
+                    <Languages className="w-8 h-8 text-moroccan-gold md:w-6 md:h-6" />
                   </div>
                   <h3 className="font-bold text-gray-900 mb-1 text-sm">
                     {t("home.translation")}
@@ -203,10 +203,10 @@ export default function HomePage() {
 
             {/* Locate Stadiums */}
             <Link href="/stadiums">
-              <div className="bg-white rounded-xl shadow-md p-5 hover:shadow-lg transition-shadow">
+              <div className="bg-white rounded-xl shadow-md p-5 hover:shadow-lg transition-shadow md:h-[150px]">
                 <div className="flex flex-col items-center text-center">
                   <div className="bg-moroccan-yellow p-3 rounded-full mb-3">
-                    <MapPin className="w-8 h-8 text-moroccan-gold" />
+                    <MapPin className="w-8 h-8 text-moroccan-gold md:w-6 md:h-6" />
                   </div>
                   <h3 className="font-bold text-gray-900 mb-1 text-sm">
                     {t("home.stadiums")}
@@ -218,10 +218,10 @@ export default function HomePage() {
 
             {/* Emergency & Help */}
             <Link href="/emergency">
-              <div className="bg-white rounded-xl shadow-md p-5 hover:shadow-lg transition-shadow">
+              <div className="bg-white rounded-xl shadow-md p-5 hover:shadow-lg transition-shadow md:h-[150px]">
                 <div className="flex flex-col items-center text-center">
                   <div className="bg-moroccan-yellow p-3 rounded-full mb-3">
-                    <HelpCircle className="w-8 h-8 text-moroccan-gold" />
+                    <HelpCircle className="w-8 h-8 text-moroccan-gold md:w-6 md:h-6" />
                   </div>
                   <h3 className="font-bold text-gray-900 mb-1 text-sm">
                     {t("home.emergency")}
