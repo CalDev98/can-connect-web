@@ -19,8 +19,15 @@ const countryCodes: { [key: string]: string } = {
   "GAB": "ga", "MOZ": "mz"
 };
 
-const getMatchStatus = (date: string, time: string) => {
-  const matchDateTime = new Date(`${date}T${time}:00`);
+const getMatchStatus = (match: any) => {
+  if (match.status) {
+    const status = match.status.toLowerCase();
+    if (status === "finished") return "Finished";
+    if (status === "live") return "Live";
+    if (status === "upcoming") return "Upcoming";
+  }
+
+  const matchDateTime = new Date(`${match.date}T${match.time}`);
   const now = new Date();
   const matchEnd = new Date(matchDateTime.getTime() + 120 * 60000); // Assume 120 mins for a match
 
@@ -120,7 +127,7 @@ const MatchesByDate = ({ date, matches, language }: { date: string; matches: any
       </h2>
       <div className="space-y-4">
         {matches.map(match => (
-          <MatchCard key={match.id} match={match} status={getMatchStatus(match.date, match.time)} />
+          <MatchCard key={match.id} match={match} status={getMatchStatus(match)} />
         ))}
       </div>
     </div>
@@ -172,7 +179,7 @@ export default function MatchesPage() {
   }, []);
 
   const filteredMatches = useMemo(() => {
-    return matches.filter(match => getMatchStatus(match.date, match.time) === activeTab);
+    return matches.filter(match => getMatchStatus(match) === activeTab);
   }, [activeTab, matches]);
 
   const groupedByDate = useMemo(() => {
