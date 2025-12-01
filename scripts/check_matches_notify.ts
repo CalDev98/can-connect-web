@@ -1,9 +1,9 @@
 import { createClient } from "@supabase/supabase-js";
 import webpush from "web-push";
-import matchesData from "../data/matches.json";
+import matchesData from "../data/matches.json" with { type: 'json' };
 import dotenv from "dotenv";
 
-dotenv.config();
+dotenv.config({ path: '.env.local' });
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
 const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY!; // Must use Service Role Key for backend
@@ -24,56 +24,73 @@ webpush.setVapidDetails(
 );
 
 async function checkMatchesAndNotify() {
-    console.log("Checking for upcoming matches...");
-    const now = new Date();
-    const threeHoursLater = new Date(now.getTime() + 3 * 60 * 60 * 1000);
+    console.log("Checking for finished matches...");
 
-    // Find matches starting in ~3 hours (e.g., between 2h50m and 3h10m from now)
-    // Note: This logic assumes matchesData.matches has date "YYYY-MM-DD" and time "HH:MM"
-    const upcomingMatches = matchesData.matches.filter((match) => {
-        const matchDateTime = new Date(`${match.date}T${match.time}:00`);
-        const timeDiff = matchDateTime.getTime() - now.getTime();
-        const hoursDiff = timeDiff / (1000 * 60 * 60);
+    // Find finished matches that haven't had notifications sent yet
+    const finishedMatches = matchesData.matches.filter(
+        (match) => (match as any).status === "finished"
+    );
 
-        // Check if match is roughly 3 hours away (e.g., between 2.9 and 3.1 hours)
-        return hoursDiff >= 2.9 && hoursDiff <= 3.1;
-    });
-
-    if (upcomingMatches.length === 0) {
-        console.log("No matches found starting in ~3 hours.");
+    if (finishedMatches.length === 0) {
+        console.log("No finished matches found.");
         return;
     }
 
-    console.log(`Found ${upcomingMatches.length} upcoming matches. Sending notifications...`);
+    console.log(`Found ${finishedMatches.length} finished matches. Sending notifications...`);
 
     // Fetch all users with subscriptions
-    const { data: profiles, error } = await supabase
+    const { data: profiles, error: profilesError } = await supabase
         .from("profiles")
         .select("id, subscription")
         .not("subscription", "is", null);
 
-    if (error) {
-        console.error("Error fetching profiles:", error);
+    if (profilesError) {
+        console.error("Error fetching profiles:", profilesError);
         return;
     }
 
-    for (const match of upcomingMatches) {
+    // Fetch already notified matches
+    const { data: notifiedMatches, error: notifiedMatchesError } = await supabase
+        .from("notified_matches")
+        .select("match_id");
+
+    if (notifiedMatchesError) {
+        console.error("Error fetching notified matches:", notifiedMatchesError);
+        return;
+    }
+
+    const notifiedMatchIds = new Set(notifiedMatches.map((m) => m.match_id));
+
+    for (const match of finishedMatches) {
+        if (notifiedMatchIds.has(match.id)) {
+            continue; // Skip if notification already sent
+        }
+
+        const score = (match as any).score;
         const payload = JSON.stringify({
-            title: "Match à venir !",
-            body: `${match.team1.name} vs ${match.team2.name} commence dans 3 heures !`,
-            url: `/matches`, // Or specific match URL if available
+            title: "Match Terminé !",
+            body: `${match.team1.name} ${score.team1} - ${score.team2} ${match.team2.name}`,
+            url: `/matches`,
         });
 
         for (const profile of profiles) {
             if (profile.subscription) {
                 try {
                     await webpush.sendNotification(profile.subscription, payload);
-                    console.log(`Notification sent to user ${profile.id}`);
+                    console.log(`Notification sent to user ${profile.id} for match ${match.id}`);
                 } catch (err) {
                     console.error(`Error sending notification to user ${profile.id}:`, err);
-                    // Optional: Remove invalid subscription from DB
                 }
             }
+        }
+
+        // Add match to notified list
+        const { error: insertError } = await supabase
+            .from("notified_matches")
+            .insert({ match_id: match.id });
+
+        if (insertError) {
+            console.error(`Error inserting notified match ${match.id}:`, insertError);
         }
     }
 }

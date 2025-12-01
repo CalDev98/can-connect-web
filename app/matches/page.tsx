@@ -1,11 +1,11 @@
 "use client";
 
-import { useState, useMemo } from "react";
-import { ArrowLeft, Calendar, Clock, Shield, MapPin, Tv } from "lucide-react";
+import { useState, useMemo, useEffect } from "react";
+import { ArrowLeft, Calendar, Clock, Shield, MapPin, Tv, Loader2 } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
-import matchesData from "@/data/matches.json";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { supabase } from "@/lib/supabaseClient";
 
 // --- Helper Data & Functions ---
 
@@ -36,7 +36,7 @@ const MatchCard = ({ match, status }: { match: any; status: string }) => {
   const team1Code = match.team1.code ? countryCodes[match.team1.code]?.toLowerCase() : null;
   const team2Code = match.team2.code ? countryCodes[match.team2.code]?.toLowerCase() : null;
 
-  const score = status === "Finished" ? match.score : status === "Live" ? match.live_score : null;
+  const score = status === "Finished" ? (match.score ? [match.score.team1, match.score.team2] : null) : status === "Live" ? match.live_score : null;
 
   return (
     <div className="bg-white rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden">
@@ -75,7 +75,7 @@ const MatchCard = ({ match, status }: { match: any; status: string }) => {
               <span className="text-4xl font-bold text-gray-900">{score.join(" - ")}</span>
             ) : (
               <div className="flex flex-col items-center">
-                <span className="text-2xl font-bold text-gray-800">{match.time}</span>
+                <span className="text-2xl font-bold text-gray-800">{match.time.slice(0, 5)}</span>
                 <span className="text-xs text-gray-500">GMT+1</span>
               </div>
             )}
@@ -130,18 +130,50 @@ const MatchesByDate = ({ date, matches, language }: { date: string; matches: any
 export default function MatchesPage() {
   const { t, language } = useLanguage();
   const [activeTab, setActiveTab] = useState<"Upcoming" | "Live" | "Finished">("Upcoming");
+  const [matches, setMatches] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
-  const matchesWithScores = useMemo(() => {
-    return matchesData.matches.map(match => ({
-      ...match,
-      score: [Math.floor(Math.random() * 5), Math.floor(Math.random() * 5)],
-      live_score: [Math.floor(Math.random() * 3), Math.floor(Math.random() * 3)],
-    }));
+  useEffect(() => {
+    const fetchMatches = async () => {
+      try {
+        if (!supabase) {
+          throw new Error("Supabase client not initialized");
+        }
+
+        const { data, error } = await supabase
+          .from("matches")
+          .select("*")
+          .order("date", { ascending: true })
+          .order("time", { ascending: true });
+
+        if (error) throw error;
+
+        const parsedMatches = data.map((match: any) => ({
+          ...match,
+          team1: typeof match.team1 === 'string' ? JSON.parse(match.team1) : match.team1,
+          team2: typeof match.team2 === 'string' ? JSON.parse(match.team2) : match.team2,
+          stadium: typeof match.stadium === 'string' ? JSON.parse(match.stadium) : match.stadium,
+          score: typeof match.score === 'string' ? JSON.parse(match.score) : match.score,
+          // Add random live score for demo purposes if needed, or rely on DB
+          live_score: [Math.floor(Math.random() * 3), Math.floor(Math.random() * 3)],
+        }));
+
+        setMatches(parsedMatches);
+      } catch (err: any) {
+        console.error("Error fetching matches:", err);
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchMatches();
   }, []);
 
   const filteredMatches = useMemo(() => {
-    return matchesWithScores.filter(match => getMatchStatus(match.date, match.time) === activeTab);
-  }, [activeTab, matchesWithScores]);
+    return matches.filter(match => getMatchStatus(match.date, match.time) === activeTab);
+  }, [activeTab, matches]);
 
   const groupedByDate = useMemo(() => {
     return filteredMatches.reduce((acc, match) => {
@@ -155,6 +187,29 @@ export default function MatchesPage() {
   }, [filteredMatches]);
 
   const tabs = ["Upcoming", "Live", "Finished"];
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <Loader2 className="w-10 h-10 text-green-600 animate-spin" />
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex flex-col items-center justify-center p-4">
+        <div className="text-red-500 mb-2">Error loading matches</div>
+        <div className="text-sm text-gray-500">{error}</div>
+        <button
+          onClick={() => window.location.reload()}
+          className="mt-4 px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700"
+        >
+          Retry
+        </button>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -191,7 +246,7 @@ export default function MatchesPage() {
         {Object.keys(groupedByDate).length > 0 ? (
           <div className="space-y-6">
             {Object.entries(groupedByDate).map(([date, matches]) => (
-              <MatchesByDate key={date} date={date} matches={matches} language={language} />
+              <MatchesByDate key={date} date={date} matches={matches as any[]} language={language} />
             ))}
           </div>
         ) : (
