@@ -142,11 +142,20 @@ export default function MatchesPage() {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
+    // 1. Load from LocalStorage immediately
+    const cachedMatches = localStorage.getItem("matches");
+    if (cachedMatches) {
+      try {
+        setMatches(JSON.parse(cachedMatches));
+        setLoading(false);
+      } catch (e) {
+        console.error("Error parsing cached matches:", e);
+      }
+    }
+
     const fetchMatches = async () => {
       try {
-        if (!supabase) {
-          throw new Error("Supabase client not initialized");
-        }
+        if (!supabase) return;
 
         const { data, error } = await supabase
           .from("matches")
@@ -167,15 +176,41 @@ export default function MatchesPage() {
         }));
 
         setMatches(parsedMatches);
+        localStorage.setItem("matches", JSON.stringify(parsedMatches));
+        setLoading(false);
       } catch (err: any) {
         console.error("Error fetching matches:", err);
-        setError(err.message);
-      } finally {
-        setLoading(false);
+        // Only set error if we don't have cached data
+        if (!cachedMatches) {
+          setError(err.message);
+        }
       }
     };
 
     fetchMatches();
+
+    // 2. Subscribe to Realtime changes
+    if (!supabase) return;
+
+    const channel = supabase
+      .channel('matches_changes')
+      .on(
+        'postgres_changes',
+        {
+          event: '*',
+          schema: 'public',
+          table: 'matches',
+        },
+        () => {
+          // Refresh data on any change
+          fetchMatches();
+        }
+      )
+      .subscribe();
+
+    return () => {
+      supabase?.removeChannel(channel);
+    };
   }, []);
 
   const filteredMatches = useMemo(() => {
@@ -203,7 +238,7 @@ export default function MatchesPage() {
     );
   }
 
-  if (error) {
+  if (error && matches.length === 0) {
     return (
       <div className="min-h-screen bg-gray-50 flex flex-col items-center justify-center p-4">
         <div className="text-red-500 mb-2">Error loading matches</div>
