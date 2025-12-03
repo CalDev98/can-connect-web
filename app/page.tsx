@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { usePlan } from "@/contexts/PlanContext";
-import { useMemo } from "react";
+import { useMemo, useState, useEffect } from "react";
 import {
   Menu,
   User,
@@ -23,9 +23,6 @@ import {
 } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import BottomNav from "@/components/BottomNav";
-
-import matchesData from "@/data/matches.json"; // Import matches data
-
 import { EmblaCarousel } from "@/components/Carousel";
 import LanguageSwitcher from "@/app/components/LanguageSwitcher";
 
@@ -42,21 +39,48 @@ const countryCodes: { [key: string]: string } = {
 export default function HomePage() {
   const { t, language } = useLanguage();
   const { user } = usePlan();
+  const [matches, setMatches] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
 
+  // Load matches from localStorage on component mount
+  useEffect(() => {
+    const cachedMatches = localStorage.getItem("matches");
+    if (cachedMatches) {
+      try {
+        const parsed = JSON.parse(cachedMatches);
+        setMatches(parsed);
+        setLoading(false);
+      } catch (e) {
+        console.error("Error parsing cached matches:", e);
+        setLoading(false);
+      }
+    } else {
+      setLoading(false);
+    }
+  }, []);
+
+  // Compute the next match from the loaded matches
   const nextMatch = useMemo(() => {
+    if (matches.length === 0) {
+      return null;
+    }
+
     const now = new Date();
-    const upcomingMatches = matchesData.matches.filter(match => {
-      const matchDateTime = new Date(`${match.date}T${match.time}:00`);
-      return matchDateTime > now;
+    const upcomingMatches = matches.filter((match: any) => {
+      const dateTimeString = `${match.date}T${match.time}`;
+      const matchDateTime = new Date(dateTimeString);
+      const isFuture = matchDateTime > now;
+      return isFuture;
     });
+
     // Sort by date and time to get the soonest match
-    upcomingMatches.sort((a, b) => {
-      const dateA = new Date(`${a.date}T${a.time}:00`);
-      const dateB = new Date(`${b.date}T${b.time}:00`);
+    upcomingMatches.sort((a: any, b: any) => {
+      const dateA = new Date(`${a.date}T${a.time}`);
+      const dateB = new Date(`${b.date}T${b.time}`);
       return dateA.getTime() - dateB.getTime();
     });
     return upcomingMatches.length > 0 ? upcomingMatches[0] : null;
-  }, []);
+  }, [matches]);
 
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
