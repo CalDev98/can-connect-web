@@ -71,6 +71,9 @@ export default function RootLayout({
           `}
         </Script>
 
+        {/* Google AdSense */}
+        <meta name="google-adsense-account" content="ca-pub-4848732428294200" />
+
         <Providers>
           {children}
           <ServiceWorkerRegistration />
