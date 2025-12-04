@@ -55,7 +55,17 @@ export default function RootLayout({
   return (
     <html lang="fr">
       <body className={inter.className}>
+
         <Providers>
+          {/* Google tag (gtag.js) */}
+          <script async src="https://www.googletagmanager.com/gtag/js?id=G-QQ0HEBTF05"></script>
+          <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments)}
+            gtag('js', new Date());
+
+            gtag('config', 'G-QQ0HEBTF05');
+          </script>
           {children}
           <ServiceWorkerRegistration />
           <PWAInstallPrompt />
