@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import { Providers } from "./providers";
 import { PWAInstallPrompt } from "./components/PWAInstallPrompt";
@@ -56,16 +57,21 @@ export default function RootLayout({
     <html lang="fr">
       <body className={inter.className}>
 
-        <Providers>
-          {/* Google tag (gtag.js) */}
-          <script async src="https://www.googletagmanager.com/gtag/js?id=G-QQ0HEBTF05"></script>
-          <script>
+        {/* Google Analytics */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-QQ0HEBTF05"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
             window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments)}
+            function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-
             gtag('config', 'G-QQ0HEBTF05');
-          </script>
+          `}
+        </Script>
+
+        <Providers>
           {children}
           <ServiceWorkerRegistration />
           <PWAInstallPrompt />
