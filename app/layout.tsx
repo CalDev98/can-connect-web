@@ -8,13 +8,27 @@ import { ServiceWorkerRegistration } from "./components/ServiceWorkerRegistratio
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "CANConnect - Your Guide to CAN 2025",
+  title: "CAN Connect - Your Personal Guide to CAN 2025 in Morocco",
   description: "AI Assistant, Translation, Stadium Locator, and Emergency Services for CAN 2025 visitors",
+  keywords: ["can 2025", "can connect", "can 2025 maroc", "can 2025 morocco", "can maroc"],
+  openGraph: {
+    title: "CAN Connect - Your Personal Guide to CAN 2025 in Morocco",
+    description: "AI Assistant, Translation, Stadium Locator, and Emergency Services for CAN 2025 visitors",
+    images: [
+      {
+        url: "/images/can-connect.png",
+        width: 1200,
+        height: 630,
+      },
+    ],
+    locale: "fr_FR",
+    type: "website",
+  },
   manifest: "/manifest.json",
   appleWebApp: {
     capable: true,
     statusBarStyle: "default",
-    title: "CANConnect",
+    title: "CAN Connect - Your Personal Guide to CAN 2025 in Morocco",
   },
   formatDetection: {
     telephone: false,
@@ -26,7 +40,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#0066CC",
+  themeColor: "#ffffffff",
   width: "device-width",
   initialScale: 1,
   maximumScale: 1,
@@ -39,7 +53,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="fr">
       <body className={inter.className}>
         <Providers>
           {children}

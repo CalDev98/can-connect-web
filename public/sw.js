@@ -1,4 +1,4 @@
-const CACHE_NAME = 'canconnect-v1.60';
+const CACHE_NAME = 'canconnect-v1.61';
 const urlsToCache = [
   '/',
   '/assistant',
