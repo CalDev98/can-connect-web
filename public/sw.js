@@ -1,4 +1,4 @@
-const CACHE_NAME = 'canconnect-v1.65';
+const CACHE_NAME = 'canconnect-v1.69';
 const urlsToCache = [
   '/',
   '/assistant',
@@ -106,8 +106,8 @@ self.addEventListener('push', (event) => {
   const title = data.title || 'CANConnect';
   const options = {
     body: data.body || 'Nouvelle notification',
-    icon: '/icons/icon-192x192.png',
-    badge: '/icons/icon-72x72.png',
+    icon: '/icons/icon-192-192.png',
+    badge: '/icons/icon-72-72.png',
     vibrate: [200, 100, 200],
     data: {
       url: data.url || '/'
