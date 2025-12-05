@@ -10,16 +10,30 @@ export function PWAInstallPrompt() {
   const [isStandalone, setIsStandalone] = useState(false);
 
   useEffect(() => {
+    // Check if user already dismissed
+    const dismissed = sessionStorage.getItem("pwa-prompt-dismissed") === "true";
+    console.log("PWA Install Prompt - Previously dismissed:", dismissed);
+
+    if (dismissed) {
+      return;
+    }
+
     // Detect iOS
     const iOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !(window as any).MSStream;
     setIsIOS(iOS);
+
+    console.log("PWA Install Prompt - iOS detected:", iOS);
+    console.log("PWA Install Prompt - User Agent:", navigator.userAgent);
 
     // Check if already installed (standalone mode)
     const standalone = window.matchMedia("(display-mode: standalone)").matches ||
       (window.navigator as any).standalone === true;
     setIsStandalone(standalone);
 
+    console.log("PWA Install Prompt - Standalone mode:", standalone);
+
     if (standalone) {
+      console.log("PWA Install Prompt - Already installed, not showing prompt");
       return;
     }
 
@@ -37,20 +51,18 @@ export function PWAInstallPrompt() {
       });
     }
 
-    // Check if user already dismissed
-    if (sessionStorage.getItem("pwa-prompt-dismissed") === "true") {
-      return;
-    }
-
     // For iOS, show prompt after delay since there's no beforeinstallprompt
     if (iOS) {
+      console.log("PWA Install Prompt - iOS detected, will show prompt in 3 seconds");
       setTimeout(() => {
+        console.log("PWA Install Prompt - Showing iOS prompt now");
         setShowPrompt(true);
       }, 3000);
     }
 
     // Listen for beforeinstallprompt event (Android/Chrome)
     const handleBeforeInstallPrompt = (e: Event) => {
+      console.log("PWA Install Prompt - beforeinstallprompt event received");
       e.preventDefault();
       setDeferredPrompt(e);
       // Show prompt after a delay
