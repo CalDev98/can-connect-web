@@ -1,6 +1,6 @@
 {
-  "name": "CANConnect - Guide CAN 2025",
-  "short_name": "CANConnect",
+  "name": "CAN Connect - Guide CAN 2025",
+  "short_name": "CAN Connect",
   "description": "Assistant IA, Traduction, Localisation de stades et Services d'urgence pour la CAN 2025",
   "start_url": "/",
   "permissions": [
