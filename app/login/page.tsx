@@ -36,11 +36,11 @@ const providers = [
       </svg>
     ),
   },
-  {
-    id: "apple" as const,
-    label: "Continuer avec Apple",
-    icon: <Apple className="w-5 h-5" />,
-  },
+  // {
+  //   id: "apple" as const,
+  //   label: "Continuer avec Apple",
+  //   icon: <Apple className="w-5 h-5" />,
+  // },
 ];
 
 export default function LoginPage() {
