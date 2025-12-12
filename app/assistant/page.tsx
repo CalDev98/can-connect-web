@@ -68,8 +68,8 @@ export default function AssistantPage() {
       <div className="flex-1 overflow-y-auto px-4 py-6 pb-32">
         {messages.length === 0 && (
           <div className="flex gap-3 mb-4 justify-start">
-            <div className="w-10 h-10 rounded-full bg-green-800/10 flex-shrink-0 flex items-center justify-center">
-              <Bot className="w-6 h-6 text-green-800" />
+            <div className="w-10 h-10 rounded-full bg-red-800/10 flex-shrink-0 flex items-center justify-center">
+              <Bot className="w-6 h-6 text-red-800" />
             </div>
             <div className="max-w-[75%] rounded-2xl rounded-bl-none bg-white shadow-sm text-gray-900 px-4 py-3">
               <p className="text-sm">
@@ -170,12 +170,12 @@ export default function AssistantPage() {
               // onKeyPress={(e) => e.key === "Enter" && handleSend()}
               placeholder={t("assistant.placeholder")}
               disabled={isLoading}
-              className="flex-1 px-4 py-3 bg-gray-100 rounded-full focus:outline-none focus:ring-2 focus:ring-green-800 disabled:opacity-50"
+              className="flex-1 px-4 py-3 bg-gray-100 rounded-full focus:outline-none focus:ring-2 focus:ring-red-800 disabled:opacity-50"
             />
             <button
               onClick={handleSend}
               disabled={!inputText.trim() || isLoading || limitError}
-              className="w-10 h-10 bg-green-800 rounded-full flex items-center justify-center hover:bg-blue-700 transition-colors disabled:bg-gray-300 disabled:cursor-not-allowed"
+              className="w-10 h-10 bg-red-800 rounded-full flex items-center justify-center hover:bg-blue-700 transition-colors disabled:bg-gray-300 disabled:cursor-not-allowed"
             >
               <Send className="w-5 h-5 text-white" />
             </button>

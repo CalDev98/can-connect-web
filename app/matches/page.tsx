@@ -233,7 +233,7 @@ export default function MatchesPage() {
   if (loading) {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <Loader2 className="w-10 h-10 text-green-600 animate-spin" />
+        <Loader2 className="w-10 h-10 text-red-600 animate-spin" />
       </div>
     );
   }
@@ -245,7 +245,7 @@ export default function MatchesPage() {
         <div className="text-sm text-gray-500">{error}</div>
         <button
           onClick={() => window.location.reload()}
-          className="mt-4 px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700"
+          className="mt-4 px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700"
         >
           Retry
         </button>
@@ -274,7 +274,7 @@ export default function MatchesPage() {
               key={tab}
               onClick={() => setActiveTab(tab as any)}
               className={`flex-1 py-3 text-sm font-medium transition-colors ${activeTab === tab
-                ? "text-green-900 border-b-2 border-green-900"
+                ? "text-red-900 border-b-2 border-red-900"
                 : "text-gray-600 hover:bg-gray-100"
                 }`}
             >

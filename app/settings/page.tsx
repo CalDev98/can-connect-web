@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { ArrowLeft, Crown, Bell, Globe, Trash2, Moon, Sun, Info, HelpCircle, Shield, Database, LogIn, LogOut, Mail } from "lucide-react";
+import { ArrowLeft, Crown, Bell, Globe, Trash2, Info, HelpCircle, Shield, Database, LogIn, LogOut, Mail } from "lucide-react";
 import Link from "next/link";
 import { usePlan } from "@/contexts/PlanContext";
 import { useLanguage } from "@/contexts/LanguageContext";

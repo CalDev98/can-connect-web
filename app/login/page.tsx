@@ -128,7 +128,7 @@ export default function LoginPage() {
 
           <div className="text-sm text-gray-600 bg-gray-50 p-4 rounded-lg border border-gray-200">
             <p className="flex items-start gap-2">
-              <ShieldCheck className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+              <ShieldCheck className="w-5 h-5 text-red-600 flex-shrink-0 mt-0.5" />
               <span>
                 <span className="font-semibold">Pas encore de compte ?</span> La
                 création d&apos;un compte est l&apos;étape pour passer Premium et

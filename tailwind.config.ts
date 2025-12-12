@@ -10,7 +10,7 @@ const config: Config = {
     extend: {
       colors: {
         moroccan: {
-          red: "#D22D27",
+          red: "#880f11",
           orange: "#FFA500",
           green: "#006225",
           blue: "#0066CC",

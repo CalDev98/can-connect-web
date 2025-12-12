@@ -87,18 +87,18 @@ export default function StadiumsPage() {
               {t("stadiums.yourLocation")}
             </h2>
             <div className="flex items-center gap-3">
-              <MapPin className="w-6 h-6 text-green-800 flex-shrink-0" />
-              <p className="text-lg font-mono text-blue-900">
+              <MapPin className="w-6 h-6 text-red-900 flex-shrink-0" />
+              <p className="text-lg font-mono text-red-900">
                 {location.latitude.toFixed(5)}, {location.longitude.toFixed(5)}
               </p>
             </div>
-            <p className="text-xs text-blue-700 mt-2">{t("stadiums.location.desc")}</p>
+            <p className="text-xs text-red-900 mt-2">{t("stadiums.location.desc")}</p>
           </div>
         )}
 
         {/* Search Bar */}
         <div className="relative flex items-center bg-white w-full border border-gray-200 px-4 py-2 rounded-xl gap-2">
-          <Search className="w-5 h-5 text-green-800" />
+          <Search className="w-5 h-5 text-red-900" />
           <input
             type="text"
             placeholder={t("stadiums.search.placeholder")}
