@@ -37,6 +37,8 @@ const translations: Record<Language, Record<string, string>> = {
     "home.emergency": "Urgence & Aide",
     "home.emergency.desc": "Obtenir de l'aide rapidement",
     "home.nextMatch": "Prochain match",
+    "home.buyTickets": "Acheter des billets",
+    "home.buyTickets.desc": "Acheter des billets pour les matchs",
 
     // Assistant
     "assistant.title": "CAN 2025 Guide",
@@ -175,6 +177,8 @@ const translations: Record<Language, Record<string, string>> = {
     "home.emergency": "Emergency & Help",
     "home.emergency.desc": "Get help quickly",
     "home.nextMatch": "Next Match",
+    "home.buyTickets": "Buy Tickets",
+    "home.buyTickets.desc": "Buy tickets for the matches",
 
     // Assistant
     "assistant.title": "CAN 2025 Guide",
@@ -313,6 +317,8 @@ const translations: Record<Language, Record<string, string>> = {
     "home.emergency": "Emergencia y Ayuda",
     "home.emergency.desc": "Obtener ayuda rápidamente",
     "home.nextMatch": "Próximo partido",
+    "home.buyTickets": "Comprar entradas",
+    "home.buyTickets.desc": "Comprar entradas para los partidos",
 
     // Assistant
     "assistant.title": "Guía CAN 2025",
@@ -450,6 +456,8 @@ const translations: Record<Language, Record<string, string>> = {
     "home.emergency": "Emergência e Ajuda",
     "home.emergency.desc": "Obter ajuda rapidamente",
     "home.nextMatch": "Próximo Jogo",
+    "home.buyTickets": "Comprar ingressos",
+    "home.buyTickets.desc": "Comprar ingressos para os jogos",
 
     // Assistant
     "assistant.title": "Guia CAN 2025",
@@ -588,6 +596,8 @@ const translations: Record<Language, Record<string, string>> = {
     "home.emergency": "الطوارئ والمساعدة",
     "home.emergency.desc": "الحصول على المساعدة بسرعة",
     "home.nextMatch": "المباراة القادمة",
+    "home.buyTickets": "شراء التذاكر",
+    "home.buyTickets.desc": "شراء التذاكر للمباريات",
 
     // Assistant
     "assistant.title": "دليل كان 2025",

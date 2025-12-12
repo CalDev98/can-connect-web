@@ -17,9 +17,7 @@ import {
   UserIcon,
   ChevronRight,
   Crown,
-  Phone,
-  Clock,
-  Shield,
+  TicketCheck
 } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import BottomNav from "@/components/BottomNav";
@@ -253,6 +251,21 @@ export default function HomePage() {
                     {t("home.stadiums")}
                   </h3>
                   <p className="text-xs text-gray-600">{t("home.stadiums.desc")}</p>
+                </div>
+              </div>
+            </Link>
+
+            {/* Buy Tickets */}
+            <Link href="https://tickets.cafonline.com/fr">
+              <div className="bg-white rounded-xl shadow-md p-5 hover:shadow-lg transition-shadow md:h-[150px]">
+                <div className="flex flex-col items-center text-center">
+                  <div className="bg-moroccan-yellow p-3 rounded-full mb-3">
+                    <TicketCheck className="w-8 h-8 text-moroccan-gold md:w-6 md:h-6" />
+                  </div>
+                  <h3 className="font-bold text-gray-900 mb-1 text-sm">
+                    {t("home.buyTickets")}
+                  </h3>
+                  <p className="text-xs text-gray-600">{t("home.buyTickets.desc")}</p>
                 </div>
               </div>
             </Link>
