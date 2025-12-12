@@ -25,6 +25,7 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import BottomNav from "@/components/BottomNav";
 import { EmblaCarousel } from "@/components/Carousel";
 import LanguageSwitcher from "@/app/components/LanguageSwitcher";
+import { useReactNativeData } from "@/hooks/useReactNativeData";
 
 const countryCodes: { [key: string]: string } = {
   "MAR": "ma", "TAN": "tz", "SÉN": "sn", "MAL": "ml",
@@ -37,10 +38,26 @@ const countryCodes: { [key: string]: string } = {
 };
 
 export default function HomePage() {
-  const { t, language } = useLanguage();
+  const { t, language, setLanguage } = useLanguage();
   const { user } = usePlan();
   const [matches, setMatches] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
+  const { data, isReady, isWebView } = useReactNativeData();
+
+  useEffect(() => {
+    if (isReady && data) {
+      console.log("Data ready:", data);
+
+      // Set language if present
+      if (data.language) {
+        // Ensure language is one of the supported types
+        const supportedLanguages = ["fr", "en", "es", "pt", "ar"];
+        if (supportedLanguages.includes(data.language)) {
+          setLanguage(data.language as any);
+        }
+      }
+    }
+  }, [isReady, data, setLanguage]);
 
   // Load matches from localStorage on component mount
   useEffect(() => {

@@ -4,6 +4,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { useState } from "react";
 import { PlanProvider } from "@/contexts/PlanContext";
 import { LanguageProvider } from "@/contexts/LanguageContext";
+import { LocationProvider } from "@/contexts/LocationContext";
 
 export function Providers({ children }: { children: React.ReactNode }) {
   const [queryClient] = useState(
@@ -20,7 +21,9 @@ export function Providers({ children }: { children: React.ReactNode }) {
   return (
     <QueryClientProvider client={queryClient}>
       <LanguageProvider>
-        <PlanProvider>{children}</PlanProvider>
+        <LocationProvider>
+          <PlanProvider>{children}</PlanProvider>
+        </LocationProvider>
       </LanguageProvider>
     </QueryClientProvider>
   );
