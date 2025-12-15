@@ -13,7 +13,7 @@ const countryCodes: { [key: string]: string } = {
   "MAR": "ma", "TAN": "tz", "SÉN": "sn", "MAL": "ml",
   "ÉGY": "eg", "ALG": "dz", "TUN": "tn",
   "NGR": "ng", "CMR": "cm", "CIV": "ci", "BFA": "bf",
-  "RDC": "cg", "ZAM": "zm", "COM": "km",
+  "RDC": "cd", "ZAM": "zm", "COM": "km",
   "AFS": "za", "ANG": "ao", "ZIM": "zw", "OUG": "ug",
   "BÉN": "bj", "BOT": "bw", "GEQ": "gq", "SOU": "sd",
   "GAB": "ga", "MOZ": "mz"
