@@ -29,7 +29,7 @@ const countryCodes: { [key: string]: string } = {
   "MAR": "ma", "TAN": "tz", "SÉN": "sn", "MAL": "ml",
   "ÉGY": "eg", "ALG": "dz", "TUN": "tn",
   "NGR": "ng", "CMR": "cm", "CIV": "ci", "BFA": "bf",
-  "RDC": "cg", "ZAM": "zm", "COM": "km",
+  "RDC": "cd", "ZAM": "zm", "COM": "km",
   "AFS": "za", "ANG": "ao", "ZIM": "zw", "OUG": "ug",
   "BÉN": "bj", "BOT": "bw", "GEQ": "gq", "SOU": "sd",
   "GAB": "ga", "MOZ": "mz"
@@ -109,21 +109,20 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen bg-moroccan-light" style={{
-      backgroundImage: 'radial-gradient(circle, rgba(255, 249, 230, 0.4) 1px, transparent 1px)',
-      backgroundSize: '20px 20px',
+      // backgroundImage: 'radial-gradient(circle, rgba(255, 249, 230, 0.4) 1px, transparent 1px)',
+      // backgroundSize: '20px 20px',
+      backgroundColor: "#fff"
     }}>
       {/* Header */}
-      <header className="bg-white shadow-sm sticky top-0 z-10">
+      <header className="bg-red-900 shadow-sm sticky top-0 z-10">
         <div className="container mx-auto px-4 py-3">
           <div className="flex items-center justify-between">
-            <h1 className="text-lg font-bold text-gray-800">CAN Connect</h1>
+            <h1 className="text-lg font-bold text-white">CAN Connect</h1>
             <div className="flex items-center justify-center">
-              <Link href="/offres" className="p-2 hover:bg-gray-100 rounded-lg transition-colors">
-                <Crown className="w-6 h-6 text-gray-800 text-moroccan-gold" />
-              </Link>
               <LanguageSwitcher />
-              <Link href={user ? "/settings" : "/login"} className="p-2 flex items-center gap-1 hover:bg-gray-100 rounded-lg transition-colors">
-                <UserIcon className="w-5 h-5 text-gray-600" />
+
+              <Link href="/offres" className="p-2 hover:bg-gray-100 rounded-lg transition-colors">
+                <Crown className="w-6 h-6 text-moroccan-gold" />
               </Link>
             </div>
           </div>
@@ -133,9 +132,9 @@ export default function HomePage() {
       <main className="pb-20">
         <div className="container mx-auto py-4 px-4">
           {/* Welcome Section */}
-          <div className="pt-6 pb-4">
+          {/* <div className="pt-6 pb-4">
             <h2 className="text-3xl font-bold text-gray-900">{t("home.welcome")}</h2>
-          </div>
+          </div> */}
 
           <EmblaCarousel />
 
@@ -212,10 +211,10 @@ export default function HomePage() {
           <div className="grid grid-cols-2 gap-4 mb-6">
             {/* AI Assistant */}
             <Link href="/assistant">
-              <div className="bg-white rounded-xl shadow-md p-5 hover:shadow-lg transition-shadow md:h-[150px]">
+              <div className="bg-white border border-gray-100 rounded-xl shadow-md p-5 hover:shadow-lg transition-shadow md:h-[150px]">
                 <div className="flex flex-col items-center text-center">
-                  <div className="bg-moroccan-yellow p-3 rounded-full mb-3">
-                    <Bot className="w-8 h-8 text-moroccan-gold md:w-6 md:h-6" />
+                  <div className="bg-red-50 p-3 rounded-full mb-3">
+                    <Bot className="w-8 h-8 text-red-900 md:w-6 md:h-6" />
                   </div>
                   <h3 className="font-bold text-gray-900 mb-1 text-sm">
                     {t("home.aiAssistant")}
@@ -226,11 +225,11 @@ export default function HomePage() {
             </Link>
 
             {/* Darija Translation */}
-            <Link href="/translate">
-              <div className="bg-white rounded-xl shadow-md p-5 hover:shadow-lg transition-shadow md:h-[150px]">
+            {/* <Link href="/translate">
+              <div className="bg-white border border-gray-100 rounded-xl shadow-md p-5 hover:shadow-lg transition-shadow md:h-[150px]">
                 <div className="flex flex-col items-center text-center">
-                  <div className="bg-moroccan-yellow p-3 rounded-full mb-3">
-                    <Languages className="w-8 h-8 text-moroccan-gold md:w-6 md:h-6" />
+                  <div className="bg-red-50 p-3 rounded-full mb-3">
+                    <Languages className="w-8 h-8 text-red-900 md:w-6 md:h-6" />
                   </div>
                   <h3 className="font-bold text-gray-900 mb-1 text-sm">
                     {t("home.translation")}
@@ -238,14 +237,14 @@ export default function HomePage() {
                   <p className="text-xs text-gray-600">{t("home.translation.desc")}</p>
                 </div>
               </div>
-            </Link>
+            </Link> */}
 
             {/* Locate Stadiums */}
             <Link href="/stadiums">
-              <div className="bg-white rounded-xl shadow-md p-5 hover:shadow-lg transition-shadow md:h-[150px]">
+              <div className="bg-white border border-gray-100 rounded-xl shadow-md p-5 hover:shadow-lg transition-shadow md:h-[150px]">
                 <div className="flex flex-col items-center text-center">
-                  <div className="bg-moroccan-yellow p-3 rounded-full mb-3">
-                    <MapPin className="w-8 h-8 text-moroccan-gold md:w-6 md:h-6" />
+                  <div className="bg-red-50 p-3 rounded-full mb-3">
+                    <MapPin className="w-8 h-8 text-red-900 md:w-6 md:h-6" />
                   </div>
                   <h3 className="font-bold text-gray-900 mb-1 text-sm">
                     {t("home.stadiums")}
@@ -257,10 +256,10 @@ export default function HomePage() {
 
             {/* Buy Tickets */}
             <Link href="https://tickets.cafonline.com/fr">
-              <div className="bg-white rounded-xl shadow-md p-5 hover:shadow-lg transition-shadow md:h-[150px]">
+              <div className="bg-white border border-gray-100 rounded-xl shadow-md p-5 hover:shadow-lg transition-shadow md:h-[150px]">
                 <div className="flex flex-col items-center text-center">
-                  <div className="bg-moroccan-yellow p-3 rounded-full mb-3">
-                    <TicketCheck className="w-8 h-8 text-moroccan-gold md:w-6 md:h-6" />
+                  <div className="bg-red-50 p-3 rounded-full mb-3">
+                    <TicketCheck className="w-8 h-8 text-red-900 md:w-6 md:h-6" />
                   </div>
                   <h3 className="font-bold text-gray-900 mb-1 text-sm">
                     {t("home.buyTickets")}
@@ -271,11 +270,11 @@ export default function HomePage() {
             </Link>
 
             {/* Emergency & Help */}
-            <Link href="/emergency">
-              <div className="bg-white rounded-xl shadow-md p-5 hover:shadow-lg transition-shadow md:h-[150px]">
+            {/* <Link href="/emergency">
+              <div className="bg-white border border-gray-100 rounded-xl shadow-md p-5 hover:shadow-lg transition-shadow md:h-[150px]">
                 <div className="flex flex-col items-center text-center">
-                  <div className="bg-moroccan-yellow p-3 rounded-full mb-3">
-                    <HelpCircle className="w-8 h-8 text-moroccan-gold md:w-6 md:h-6" />
+                  <div className="bg-red-50 p-3 rounded-full mb-3">
+                    <HelpCircle className="w-8 h-8 text-red-900 md:w-6 md:h-6" />
                   </div>
                   <h3 className="font-bold text-gray-900 mb-1 text-sm">
                     {t("home.emergency")}
@@ -283,7 +282,7 @@ export default function HomePage() {
                   <p className="text-xs text-gray-600">{t("home.emergency.desc")}</p>
                 </div>
               </div>
-            </Link>
+            </Link> */}
           </div>
         </div>
       </main>

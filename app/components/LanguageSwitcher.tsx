@@ -13,7 +13,7 @@ const LanguageSwitcher = () => {
 
   return (
     <div className="relative p-2 hover:bg-gray-100 rounded-lg transition-colors">
-      <Languages className="w-6 h-6 text-gray-800 cursor-pointer" />
+      <Languages className="w-6 h-6 text-white cursor-pointer" />
       <select
         onChange={handleLanguageChange}
         value={language}

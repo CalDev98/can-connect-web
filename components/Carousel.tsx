@@ -55,11 +55,11 @@ export function EmblaCarousel() {
   }, [emblaApi]);
 
   return (
-    <div className="embla mb-6 rounded-xl overflow-hidden shadow-lg" ref={emblaRef}>
+    <div className="embla mb-6 h-[200px] rounded-xl overflow-hidden shadow-lg" ref={emblaRef}>
       <div className="embla__container">
         {slides.map((slide, index) => (
           <div className="embla__slide" key={index}>
-            <div className={`relative h-64 w-full bg-gradient-to-br ${slide.gradient} flex items-center justify-center`}>
+            <div className={`relative h-[200px] w-full bg-gradient-to-br ${slide.gradient} flex items-center justify-center`}>
               <div className="absolute inset-0 opacity-20" style={{
                 backgroundImage: 'radial-gradient(circle at 100% 150%, rgba(255,255,255,0.2) 0%, transparent 50%), radial-gradient(circle at 0% -50%, rgba(255,255,255,0.2) 0%, transparent 50%)',
                 backgroundSize: '50% 50%',

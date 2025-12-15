@@ -42,17 +42,17 @@ export function StadiumCard({ stadium, distance }: StadiumCardProps) {
       </div>
       <div className="p-4 space-y-3">
         <div className="flex items-center gap-2 text-gray-700">
-          <MapPin className="w-5 h-5 text-green-800" />
+          <MapPin className="w-5 h-5 text-red-800" />
           <span className="text-base font-medium">{stadium.city}</span>
           <span className="text-gray-400">•</span>
           <span className="text-sm text-gray-500">{stadium.address}</span>
         </div>
         <div className="flex items-center gap-2 text-gray-700">
-          <Users className="w-5 h-5 text-green-800" />
+          <Users className="w-5 h-5 text-red-800" />
           <span className="text-sm">{t("stadiums.capacity", { capacity: stadium.capacity.toLocaleString() })}</span>
         </div>
         {distance !== undefined && (
-          <div className="flex items-center gap-2 text-moroccan-gold">
+          <div className="flex items-center gap-2 text-red-800">
             <Navigation className="w-5 h-5" />
             <span className="text-base font-semibold">
               {t("stadiums.distance", { distance: distance.toFixed(1) })}
@@ -63,7 +63,7 @@ export function StadiumCard({ stadium, distance }: StadiumCardProps) {
           href={mapsUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="w-full inline-flex items-center justify-center gap-2 bg-green-800 text-white px-4 py-2.5 rounded-lg hover:bg-green-700 transition-colors text-base font-medium mt-4"
+          className="w-full inline-flex items-center justify-center gap-2 bg-red-800 text-white px-4 py-2.5 rounded-lg hover:bg-red-700 transition-colors text-base font-medium mt-4"
         >
           <Navigation className="w-5 h-5" />
           {t("stadiums.openMaps")}

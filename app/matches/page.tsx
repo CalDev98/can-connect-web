@@ -46,7 +46,7 @@ const MatchCard = ({ match, status }: { match: any; status: string }) => {
   const score = status === "Finished" ? (match.score ? [match.score.team1, match.score.team2] : null) : status === "Live" ? match.live_score : null;
 
   return (
-    <div className="bg-white rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden">
+    <div className="bg-white border border-gray-100 rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden">
       <div className="p-4">
         <div className="flex justify-between items-center text-xs text-gray-500 mb-3">
           <div className="flex items-center gap-1.5">
@@ -122,7 +122,7 @@ const MatchesByDate = ({ date, matches, language }: { date: string; matches: any
 
   return (
     <div>
-      <h2 className="text-lg font-bold text-gray-800 mb-3 sticky top-16 bg-gray-50 py-2">
+      <h2 className="text-lg font-bold text-gray-800 mb-3 sticky top-16 bg-white py-2">
         {formattedDate}
       </h2>
       <div className="space-y-4">
@@ -232,7 +232,7 @@ export default function MatchesPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+      <div className="min-h-screen bg-white flex items-center justify-center">
         <Loader2 className="w-10 h-10 text-red-600 animate-spin" />
       </div>
     );
@@ -240,7 +240,7 @@ export default function MatchesPage() {
 
   if (error && matches.length === 0) {
     return (
-      <div className="min-h-screen bg-gray-50 flex flex-col items-center justify-center p-4">
+      <div className="min-h-screen bg-white flex flex-col items-center justify-center p-4">
         <div className="text-red-500 mb-2">Error loading matches</div>
         <div className="text-sm text-gray-500">{error}</div>
         <button
@@ -254,14 +254,14 @@ export default function MatchesPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-white">
       {/* Header */}
-      <header className="bg-white border-b border-gray-200 sticky top-0 z-20">
+      <header className="bg-red-900 border-b border-gray-200 sticky top-0 z-20">
         <div className="container mx-auto px-4 py-3 flex items-center justify-between">
           <Link href="/" className="p-2 hover:bg-gray-100 rounded-lg transition-colors">
-            <ArrowLeft className="w-6 h-6 text-gray-900" />
+            <ArrowLeft className="w-6 h-6 text-white" />
           </Link>
-          <h1 className="text-lg font-bold text-gray-900">{t("matches.title")}</h1>
+          <h1 className="text-lg font-bold text-white">{t("matches.title")}</h1>
           <div className="w-10"></div>
         </div>
       </header>

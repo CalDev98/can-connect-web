@@ -43,18 +43,15 @@ export default function AssistantPage() {
   const remainingMessages = isPremium ? "∞" : messagesLimit - messagesUsed;
 
   return (
-    <div className="min-h-screen bg-moroccan-light flex flex-col" style={{
-      backgroundImage: 'radial-gradient(circle, rgba(255, 249, 230, 0.4) 1px, transparent 1px)',
-      backgroundSize: '20px 20px',
-    }}>
+    <div className="min-h-screen bg-white flex flex-col">
       {/* Header */}
-      <header className="bg-white/80 backdrop-blur-sm border-b border-gray-200/50 sticky top-0 z-10">
+      <header className="bg-red-900 backdrop-blur-sm border-b border-gray-200/50 sticky top-0 z-10">
         <div className="container mx-auto px-4 py-3">
           <div className="flex items-center justify-between">
             <Link href="/" className="p-2 hover:bg-gray-100 rounded-full transition-colors">
-              <ArrowLeft className="w-6 h-6 text-gray-900" />
+              <ArrowLeft className="w-6 h-6 text-white" />
             </Link>
-            <h1 className="text-lg font-bold text-gray-900">{t("assistant.title")}</h1>
+            <h1 className="text-lg font-bold text-white">{t("assistant.title")}</h1>
             <div className="flex items-center gap-2">
               <Link href="/offres" className="p-2 hover:bg-gray-100 rounded-full transition-colors">
                 <Crown className="w-6 h-6 text-moroccan-gold" />

@@ -48,15 +48,15 @@ export default function TranslatePage() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 pb-20">
+    <div className="min-h-screen bg-white pb-20">
       {/* Header */}
-      <header className="py-6">
-        <div className="max-w-5xl w-full px-4">
+      <header className="bg-red-900">
+        <div className="max-w-5xl w-full px-4 py-3">
           <div className="flex items-center justify-between">
             <Link href="/" className="p-2 hover:bg-gray-100 rounded-full transition-colors">
-              <ArrowLeft className="w-6 h-6 text-gray-900" />
+              <ArrowLeft className="w-6 h-6 text-white" />
             </Link>
-            <h1 className="text-2xl font-bold text-gray-800">{t("translate.title")}</h1>
+            <h1 className="text-2xl font-bold text-white">{t("translate.title")}</h1>
             <div className="flex items-center gap-2">
               <Link href="/offres" className="p-2 hover:bg-gray-100 rounded-full transition-colors">
                 <Crown className="w-6 h-6 text-yellow-500" />
