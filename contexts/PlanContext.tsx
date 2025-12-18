@@ -68,6 +68,15 @@ export function PlanProvider({ children }: { children: ReactNode }) {
       }
     };
 
+    // Check for initial session
+    supabase?.auth.getSession().then(({ data: { session } }) => {
+      if (session?.user) {
+        setUser(session.user);
+        fetchProfile(session.user);
+      }
+      setIsLoading(false);
+    });
+
     const { data: authListener } = supabase?.auth.onAuthStateChange(
       (event, session) => {
         const currentUser = session?.user ?? null;

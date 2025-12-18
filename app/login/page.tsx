@@ -1,9 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Apple, ShieldCheck, ArrowLeft } from "lucide-react";
 import { supabase } from "@/lib/supabaseClient";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { usePlan } from "@/contexts/PlanContext";
 
 const providers = [
   {
@@ -23,6 +25,14 @@ const providers = [
 export default function LoginPage() {
   const [loadingProvider, setLoadingProvider] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const router = useRouter();
+  const { user, isLoading } = usePlan();
+
+  useEffect(() => {
+    if (!isLoading && user) {
+      router.replace("/");
+    }
+  }, [user, isLoading, router]);
 
   const handleLogin = async (provider: "google" | "apple") => {
     if (!supabase) {
