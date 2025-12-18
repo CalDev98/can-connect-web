@@ -95,7 +95,7 @@ export default function TranslatePage() {
                 </div>
 
                 {/* Phonetic */}
-                <div className="bg-red-100 rounded-xl p-4 shadow-lg border-transparent transition-shadow hover:shadow-xl min-h-[100px]">
+                <div className="bg-white rounded-xl p-4 shadow-lg border-transparent transition-shadow hover:shadow-xl min-h-[100px]">
                   <div className="flex items-center justify-between mb-2">
                     <h3 className="font-bold text-gray-900">{t("translate.phonetic")}</h3>
                     <div className="flex gap-2">
