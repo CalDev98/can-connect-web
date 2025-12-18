@@ -95,7 +95,7 @@ export default function TranslatePage() {
                 </div>
 
                 {/* Phonetic */}
-                <div className="bg-white rounded-xl p-4 shadow-lg border-transparent transition-shadow hover:shadow-xl min-h-[100px]">
+                <div className="bg-red-100 rounded-xl p-4 shadow-lg border-transparent transition-shadow hover:shadow-xl min-h-[100px]">
                   <div className="flex items-center justify-between mb-2">
                     <h3 className="font-bold text-gray-900">{t("translate.phonetic")}</h3>
                     <div className="flex gap-2">
@@ -110,13 +110,13 @@ export default function TranslatePage() {
                           <Copy className="w-5 h-5 text-gray-600" />
                         )}
                       </button>
-                      <button
+                      {/* <button
                         onClick={handleSpeak}
                         className="p-2 hover:bg-gray-200/50 rounded-lg transition-colors"
                         title="Écouter"
                       >
                         <Volume2 className="w-5 h-5 text-gray-600" />
-                      </button>
+                      </button> */}
                     </div>
                   </div>
                   <div className="flex items-center">
@@ -157,7 +157,7 @@ export default function TranslatePage() {
             )}
           </div>
           {/* Input Panel */}
-          <div className="md:w-1/2">
+          <div className="mt-10 md:w-1/2">
             {/* Language Selection */}
             <div className="mb-4">
               <div className="flex items-center gap-4 mb-2">

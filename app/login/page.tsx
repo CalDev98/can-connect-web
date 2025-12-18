@@ -132,7 +132,7 @@ export default function LoginPage() {
             </a>
             .
           </p>
-          <p>Veuillez lire notre <a href="https://canconnect.ma/privacy-policy" className="font-medium hover:underline">Politique de confidentialité</a></p>
+          <p className="text-center text-xs text-gray-500">Veuillez lire notre <a href="https://canconnect.ma/privacy-policy" className="font-medium hover:underline">Politique de confidentialité</a></p>
         </div>
       </div>
     </div>
