@@ -171,8 +171,6 @@ export default function MatchesPage() {
           team2: typeof match.team2 === 'string' ? JSON.parse(match.team2) : match.team2,
           stadium: typeof match.stadium === 'string' ? JSON.parse(match.stadium) : match.stadium,
           score: typeof match.score === 'string' ? JSON.parse(match.score) : match.score,
-          // Add random live score for demo purposes if needed, or rely on DB
-          live_score: [Math.floor(Math.random() * 3), Math.floor(Math.random() * 3)],
         }));
 
         setMatches(parsedMatches);

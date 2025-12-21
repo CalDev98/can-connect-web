@@ -27,12 +27,7 @@
       },
       "group": "A",
       "match_day": 1,
-      "stage": "Group Stage",
-      "status": "finished",
-      "score": {
-        "team1": 2,
-        "team2": 0
-      }
+      "stage": "Group Stage"
     },
     {
       "id": 2,
