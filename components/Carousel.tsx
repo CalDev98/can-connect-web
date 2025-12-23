@@ -13,7 +13,7 @@ const slides = [
     gradient: "from-moroccan-red to-moroccan-orange",
     image: "/images/ads/lyset_yada_training.png",
     id: "e71e6715-280d-4b83-b2f6-7462c9929d48",
-    link: "https://wa.me/212655555555?text=Bonjour, je voudrais en savoir plus sur votre service.",
+    link: "https://wa.me/212660853560?text=Bonjour, je voudrais en savoir plus sur votre service.",
   },
   {
     title: "Journey Through the Atlas",
